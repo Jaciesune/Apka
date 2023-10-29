@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "vUc96eJvtY05UPn06X8Sc/kfgtw9ulz7jNFesDmIkBm7OfcZqoDIYekshyXQTK+2y/0dCX8mUC/SHxvpNU63WA==",
+  "dgSpecHash": "4rs4Zd6s4tznJ/H+PetHIkQJHBxNqsuwmiICs7KiXE8E3wNl2+9bNst+bnUpR6qO/G4L7YtcCeQz6oqy0HbxJg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Inylle\\Desktop\\Homework\\STUDIA\\ROK 2\\MOBILNE\\PROJEKT\\ExploreX\\ExploreX\\ExploreX.csproj",
+  "projectFilePath": "D:\\School\\2023-2024\\Mobilne\\Projekt\\ExploreX\\ExploreX\\ExploreX.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Inylle\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\Inylle\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
-    "C:\\Users\\Inylle\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
-    "C:\\Users\\Inylle\\.nuget\\packages\\xamarin.essentials\\1.7.0\\xamarin.essentials.1.7.0.nupkg.sha512",
-    "C:\\Users\\Inylle\\.nuget\\packages\\xamarin.forms\\5.0.0.2196\\xamarin.forms.5.0.0.2196.nupkg.sha512"
+    "C:\\Users\\lutas\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\lutas\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512",
+    "C:\\Users\\lutas\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\lutas\\.nuget\\packages\\xamarin.essentials\\1.7.0\\xamarin.essentials.1.7.0.nupkg.sha512",
+    "C:\\Users\\lutas\\.nuget\\packages\\xamarin.forms\\5.0.0.2196\\xamarin.forms.5.0.0.2196.nupkg.sha512"
   ],
   "logs": []
 }
