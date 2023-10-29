@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ExploreX.Views.ItemsPage"
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:ExploreX.ViewModels"  
+             xmlns:model="clr-namespace:ExploreX.Models"  
+             x:Name="BrowseItemsPage">
+
+ 
+    <!--
+      x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
+      https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
+    -->
+    
+</ContentPage>
