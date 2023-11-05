@@ -5,7 +5,7 @@
              Title="{Binding Title}"
              xmlns:local="clr-namespace:ExploreX.ViewModels"  
              xmlns:model="clr-namespace:ExploreX.Models"  
-             x:Name="BrowseItemsPage">
+             x:Name="BrowseItemsPage" Shell.NavBarIsVisible="False">
 
  
     <!--

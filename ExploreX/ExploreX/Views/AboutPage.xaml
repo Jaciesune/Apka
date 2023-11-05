@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ExploreX.Views.AboutPage"
              xmlns:vm="clr-namespace:ExploreX.ViewModels" xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
-             Title="{Binding Title}">
+             Title="{Binding Title}" Shell.NavBarIsVisible="False">
 
     <StackLayout>
         <maps:Map />

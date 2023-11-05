@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:ExploreX.ViewModels" x:DataType="viewmodels:UserViewModel"
              Title="{Binding Title}"
-             x:Class="ExploreX.Views.UserPage">
+             x:Class="ExploreX.Views.UserPage" Shell.NavBarIsVisible="False">
 
 
     <ContentPage.Content>
