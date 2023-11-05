@@ -13,6 +13,7 @@ namespace ExploreX.ViewModels
         public UserViewModel()
         {
             Title = "Użytkownik";
+
         }
 
 

@@ -16,5 +16,22 @@ namespace ExploreX.Views
         {
             InitializeComponent();
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            if(email.Text=="admin" && password.Text=="123")
+            {
+                DisplayAlert("Sukces", "Logowanie powiodło się.", "Kontynuuj");
+            }
+            else
+            {
+                DisplayAlert("Błąd logowania", "Logowanie nie powiodło się.", "Spróbuj ponownie");
+            }
+        }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new RegisterPage());
+        }
     }
 }
