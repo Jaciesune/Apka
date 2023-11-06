@@ -3,13 +3,36 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:viewmodels="clr-namespace:ExploreX.ViewModels" x:DataType="viewmodels:UserViewModel"
              Title="{Binding Title}"
              x:Class="ExploreX.Views.UserPage" Shell.NavBarIsVisible="False">
-
+    
 
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Padding="40" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+
+            <Image Source="icon_login.png" WidthRequest="180" HeightRequest="180"></Image>
+            
+            <Entry x:Name="email" Placeholder="E-mail" TextColor="Black" PlaceholderColor="Gray"></Entry>
+            <Entry x:Name="password" Placeholder="Password" IsPassword="True" TextColor="Black" PlaceholderColor="Gray"></Entry>
+            <Button 
+                VerticalOptions="Center"
+                Text="Zaloguj się"
+                TextColor="White"
+                BackgroundColor="#2196F3"
+                BorderWidth="1.5"
+                CornerRadius="50"
+                Clicked="Button_Clicked"
+                ></Button>
+
+            <Label HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Nie posiadasz konta? " TextColor="Black"></Span>
+                        <Span Text="Zarejestruj się!" TextColor="#2196F3" FontAttributes="Bold" TextDecorations="Underline"></Span>
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"></TapGestureRecognizer>
+                </Label.GestureRecognizers>
+            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
