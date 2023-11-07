@@ -25,15 +25,11 @@ androidgeneratejnimarshalmethods=false
 os=windows_nt
 androidincludedebugsymbols=true
 androidpackagenamingpolicy=lowercasecrc64
-<<<<<<< HEAD
-_nugetassetstimestamp=638347904629382548
-=======
-_nugetassetstimestamp=638348034585559793
->>>>>>> 610c6895f86442d8c776704b2bb34916f17a787a
+_nugetassetstimestamp=638349524451441343
 typemapkind=strings-asm
 androidsupportedabis=arm64-v8a
 armeabi-v7a
 x86
 x86_64
 androidmanifestplaceholders=
-projectfullpath=c:\users\inylle\desktop\homework\studia\rok 2\mobilne\projekt\explorex\explorex.android\explorex.android.csproj
+projectfullpath=d:\school\2023-2024\mobilne\projekt\explorex\explorex.android\explorex.android.csproj

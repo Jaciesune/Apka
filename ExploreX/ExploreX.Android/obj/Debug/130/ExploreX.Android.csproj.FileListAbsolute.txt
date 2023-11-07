@@ -1408,3 +1408,5 @@ C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\ExploreX.
 C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\ExploreX.Android\obj\Debug\130\android\src\mono\com\google\android\gms\tasks\OnTokenCanceledListenerImplementor.java
 C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\ExploreX.Android\obj\Debug\130\res\drawable\icon_login.png
 C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\ExploreX.Android\obj\Debug\130\res\drawable\icon_register.png
+D:\School\2023-2024\Mobilne\Projekt\ExploreX\ExploreX.Android\obj\Debug\130\res\drawable\icon_login.png
+D:\School\2023-2024\Mobilne\Projekt\ExploreX\ExploreX.Android\obj\Debug\130\res\drawable\icon_register.png
