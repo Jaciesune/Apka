@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ExploreX</string>
+    <string name="haslo">Hasło</string>
+    <string name="zaloguj_sie">Zaloguj się</string>
+    <string name="zarejestruj_sie">Zarejestruj się.</string>
+    <string name="e_mail">E-mail</string>
+    <string name="has_o">Hasło</string>
+    <string name="powtorz_haslo">Powtórz hasło</string>
+    <string name="logout">Wyloguj</string>
+</resources>
