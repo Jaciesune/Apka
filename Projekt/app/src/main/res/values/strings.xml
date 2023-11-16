@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">ExploreX</string>
-    <string name="title_mapa">Mapa</string>
-    <string name="title_historia_tras">Historia Tras</string>
-    <string name="title_uzytkownik">Użytkownik</string>
-    <string name="logout">Wyloguj</string>
-</resources>
