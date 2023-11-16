@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.notifications.NotificationsFragment">
+    tools:context=".Login">
 
     <TextView
         android:layout_width="match_parent"
@@ -51,11 +51,21 @@
         android:layout_height="wrap_content"
         android:id="@+id/login_button"
         android:layout_below="@id/password"
-        android:text="Zaloguj"
+        android:text="Zaloguj się"
         android:layout_centerHorizontal="true"
         android:layout_margin="20dp"
         android:backgroundTint="#505050" />
 
-
+    <TextView
+        android:id="@+id/register_now"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_below="@id/login_button"
+        android:layout_marginTop="220dp"
+        android:gravity="center"
+        android:text="Zarejestruj się."
+        />
 
 </RelativeLayout>

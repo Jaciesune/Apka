@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.notifications.NotificationsFragment">
+    tools:context=".Register">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/zaloguj_sie"
-        android:text="Zaloguj się"
+        android:id="@+id/zarejestruj_sie"
+        android:text="Zarejestruj się"
         android:textSize="35dp"
         android:layout_margin="50dp"
         android:gravity="center"
@@ -20,8 +20,8 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/email"
-        android:layout_below="@id/zaloguj_sie"
+        android:id="@+id/reg_email"
+        android:layout_below="@id/zarejestruj_sie"
         android:background="#c0c0c0"
         android:hint="E-mail"
         android:layout_margin="10dp"
@@ -30,10 +30,10 @@
         android:drawablePadding="20dp" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/reg_password_1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/email"
+        android:layout_below="@id/reg_email"
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
@@ -46,16 +46,44 @@
         android:inputType="textPassword"
         />
 
+    <EditText
+        android:id="@+id/reg_password_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/reg_password_1"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="#c0c0c0"
+        android:drawableLeft="@drawable/baseline_lock_24"
+        android:drawablePadding="20dp"
+        android:hint="Powtórz hasło"
+        android:padding="20dp"
+        android:inputType="textPassword"
+        />
+
     <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/login_button"
-        android:layout_below="@id/password"
-        android:text="Zaloguj"
+        android:id="@+id/reg_button"
+        android:layout_below="@id/reg_password_2"
+        android:text="Zarejestruj się"
         android:layout_centerHorizontal="true"
         android:layout_margin="20dp"
         android:backgroundTint="#505050" />
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_below="@id/reg_button"
+        android:layout_marginTop="180dp"
+        android:id="@+id/login_now"
+        android:gravity="center"
+        android:text="Zaloguj się."
+        />
 
 
 </RelativeLayout>

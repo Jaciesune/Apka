@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "539833726700",
+    "firebase_url": "https://explorex-ba666-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "explorex-ba666",
+    "storage_bucket": "explorex-ba666.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:539833726700:android:ac8ecc1a7ff1ef162957c9",
+        "android_client_info": {
+          "package_name": "com.example.explorex"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKct6MeicrnBs6ArC68WgLPOX_HqIZWKM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
