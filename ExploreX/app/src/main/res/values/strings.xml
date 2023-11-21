@@ -7,4 +7,8 @@
     <string name="has_o">Hasło</string>
     <string name="powtorz_haslo">Powtórz hasło</string>
     <string name="logout">Wyloguj</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="Mapa">Mapa</string>
+    <string name="Trasy">Trasy</string>
+    <string name="Użytkownik">Użytkownik</string>
 </resources>
