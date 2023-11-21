@@ -1,6 +1,9 @@
 package com.example.explorex;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,25 +11,42 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.explorex.databinding.ActivityMainBinding;
 import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
+    ActivityMainBinding binding;
 
     FirebaseAuth auth;
     Button button;
-    TextView textView;
+
     FirebaseUser user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        // Menu
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
+
+            if(item.getItemId() == R.id.Mapa_navbar){
+                replaceFragment(new MapaFragment());
+            }else if(item.getItemId() == R.id.Trasy_navbar){
+                replaceFragment(new TrasyFragment());
+            }else{
+                replaceFragment(new UzytkownikFragment());
+            }
+            return true;
+        });
+
 
         auth = FirebaseAuth.getInstance();
         button = findViewById(R.id.logout_button);
-        textView = findViewById(R.id.user_details);
+
 
         user = auth.getCurrentUser();
         if(user == null){
@@ -34,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
             finish();
         } else {
-            textView.setText(user.getEmail());
+
         }
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -47,5 +67,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    // Menu
+    private void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.frameLayout,fragment);
+        fragmentTransaction.commit();
     }
 }
