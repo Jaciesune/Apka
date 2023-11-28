@@ -1,19 +1,46 @@
 package com.example.explorex;
 
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import android.Manifest;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.contract.ActivityResultContracts;
 
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link MapaFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MapaFragment extends Fragment {
+public class MapaFragment extends Fragment implements OnMapReadyCallback {
+    private GoogleMap myMap;
+    private final int FinePermissionCode = 1;
+
+    Location currentLocation;
+    // Required empty public constructor
+    FusedLocationProviderClient fusedLocationProviderClient;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -25,7 +52,16 @@ public class MapaFragment extends Fragment {
     private String mParam2;
 
     public MapaFragment() {
-        // Required empty public constructor
+        final ActivityResultLauncher<String> requestPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), new ActivityResultCallback<Boolean>() {
+            @Override
+            public void onActivityResult(Boolean result) {
+                if (result) {
+                    getLastLocation();
+                } else {
+                    Toast.makeText(requireContext(), "Aplikacja nie ma pozwolenia na dostęp do lokalizacji urządzenia", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     /**
@@ -49,10 +85,9 @@ public class MapaFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity());
+        getLastLocation();
+
     }
 
     @Override
@@ -60,5 +95,46 @@ public class MapaFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_mapa, container, false);
+    }
+
+    @Override
+    public void onMapReady(@NonNull GoogleMap googleMap) {
+        myMap = googleMap;
+
+        LatLng limanowa = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
+        myMap.addMarker(new MarkerOptions().position(limanowa).title("Twoja lokalizacja"));
+        myMap.moveCamera(CameraUpdateFactory.newLatLng(limanowa));
+    }
+
+    private void getLastLocation() {
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityResultLauncher<String> requestPermissionLauncher = null;
+            requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION);
+            return;
+        }
+        Task<Location> task = fusedLocationProviderClient.getLastLocation();
+        task.addOnSuccessListener(new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                if (location != null) {
+                    currentLocation = location;
+                    SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+                    mapFragment.getMapAsync(MapaFragment.this);
+                }
+            }
+        });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == FinePermissionCode) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                getLastLocation();
+            } else {
+                Toast.makeText(requireContext(), "Aplikacja nie ma pozwolenia na dostęp do lokalizacji urządzenia", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
