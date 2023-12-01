@@ -101,9 +101,14 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(@NonNull GoogleMap googleMap) {
         myMap = googleMap;
 
-        LatLng limanowa = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-        myMap.addMarker(new MarkerOptions().position(limanowa).title("Twoja lokalizacja"));
-        myMap.moveCamera(CameraUpdateFactory.newLatLng(limanowa));
+        if (currentLocation != null) {
+            LatLng currentLatLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
+            myMap.addMarker(new MarkerOptions().position(currentLatLng).title("Twoja lokalizacja"));
+            myMap.moveCamera(CameraUpdateFactory.newLatLng(currentLatLng));
+        } else {
+            // Handle the case where currentLocation is null (e.g., show a default location)
+            Toast.makeText(requireContext(), "Lokalizacja jest niedostępna", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void getLastLocation() {
