@@ -17,10 +17,12 @@ import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -38,6 +40,7 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
     private GoogleMap myMap;
     private final int FinePermissionCode = 1;
 
+    private ActivityResultLauncher<String> requestPermissionLauncher;
     Location currentLocation;
     // Required empty public constructor
     FusedLocationProviderClient fusedLocationProviderClient;
@@ -52,16 +55,7 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
     private String mParam2;
 
     public MapaFragment() {
-        final ActivityResultLauncher<String> requestPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), new ActivityResultCallback<Boolean>() {
-            @Override
-            public void onActivityResult(Boolean result) {
-                if (result) {
-                    getLastLocation();
-                } else {
-                    Toast.makeText(requireContext(), "Aplikacja nie ma pozwolenia na dostęp do lokalizacji urządzenia", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
+
     }
 
     /**
@@ -85,9 +79,21 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Initialize the class-level requestPermissionLauncher here in onCreate
+        requestPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), new ActivityResultCallback<Boolean>() {
+            @Override
+            public void onActivityResult(Boolean result) {
+                if (result) {
+                    getLastLocation();
+                } else {
+                    Toast.makeText(requireContext(), "Aplikacja nie ma pozwolenia na dostęp do lokalizacji urządzenia", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity());
         getLastLocation();
-
     }
 
     @Override
@@ -101,6 +107,7 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(@NonNull GoogleMap googleMap) {
         myMap = googleMap;
 
+<<<<<<< HEAD
         if (currentLocation != null) {
             LatLng currentLatLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
             myMap.addMarker(new MarkerOptions().position(currentLatLng).title("Twoja lokalizacja"));
@@ -109,12 +116,23 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
             // Handle the case where currentLocation is null (e.g., show a default location)
             Toast.makeText(requireContext(), "Lokalizacja jest niedostępna", Toast.LENGTH_SHORT).show();
         }
+=======
+        LatLng location = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
+        myMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+        MarkerOptions options = new MarkerOptions().position(location).title("Twoja lokalizacja");
+        options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET));
+        myMap.addMarker(options);
+
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(location, 15);
+        googleMap.animateCamera(cameraUpdate);
+
+>>>>>>> e1d9733eb80b2589803516f9063a667742701acd
     }
 
     private void getLastLocation() {
         if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityResultLauncher<String> requestPermissionLauncher = null;
+            // Use the class-level requestPermissionLauncher instead of creating a new local one
             requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION);
             return;
         }
