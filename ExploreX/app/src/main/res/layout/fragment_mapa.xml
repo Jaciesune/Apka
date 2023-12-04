@@ -13,4 +13,12 @@
         android:name="com.google.android.gms.maps.SupportMapFragment"
         tools:layout="@layout/fragment_trasy" />
 
+    <Button
+        android:id="@+id/btnSetStartPoint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:text="Rozpocznij" />
+
 </FrameLayout>
