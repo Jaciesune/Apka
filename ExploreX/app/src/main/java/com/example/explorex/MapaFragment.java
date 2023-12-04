@@ -107,16 +107,6 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(@NonNull GoogleMap googleMap) {
         myMap = googleMap;
 
-<<<<<<< HEAD
-        if (currentLocation != null) {
-            LatLng currentLatLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-            myMap.addMarker(new MarkerOptions().position(currentLatLng).title("Twoja lokalizacja"));
-            myMap.moveCamera(CameraUpdateFactory.newLatLng(currentLatLng));
-        } else {
-            // Handle the case where currentLocation is null (e.g., show a default location)
-            Toast.makeText(requireContext(), "Lokalizacja jest niedostępna", Toast.LENGTH_SHORT).show();
-        }
-=======
         LatLng location = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
         myMap.moveCamera(CameraUpdateFactory.newLatLng(location));
         MarkerOptions options = new MarkerOptions().position(location).title("Twoja lokalizacja");
@@ -126,7 +116,6 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(location, 15);
         googleMap.animateCamera(cameraUpdate);
 
->>>>>>> e1d9733eb80b2589803516f9063a667742701acd
     }
 
     private void getLastLocation() {
