@@ -44,6 +44,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteListener {
     private GoogleMap myMap;
@@ -58,6 +59,9 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
     private Button btnSetStartPoint;
     private OnRouteCompleteListener routeCompleteListener;
     private ArrayList<LatLng> trasaPoints = new ArrayList<>();
+    private List<List<LatLng>> savedRoutes = new ArrayList<>();
+    private LatLng startPoint;
+    private LatLng finishPoint;
 
     public interface OnRouteCompleteListener {
         void onRouteComplete(String routeInfo);
@@ -69,6 +73,7 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        List<List<LatLng>> savedRoutes = new ArrayList<>();
 
         // Initialize the class-level requestPermissionLauncher here in onCreate
         requestPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), new ActivityResultCallback<Boolean>() {
@@ -115,11 +120,19 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
 
         if (isStartPointSet) {
             trasaPoints.clear();
+            // Capture the starting location on the first click
+            startPoint = currentLocationLatLng();
             startLocationTracking();
         } else {
+            // Capture the finishing location on the second click
+            finishPoint = currentLocationLatLng();
             stopLocationTracking();
             saveAndDisplayRoute();
         }
+    }
+
+    private LatLng currentLocationLatLng() {
+        return new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
     }
 
     private void updateButtonText() {
@@ -148,6 +161,11 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
         // Zapisz trasaPoints w TrasyFragment i zaktualizuj widok
         if (routeCompleteListener != null) {
             routeCompleteListener.onRouteComplete("Informacje o trasie");
+
+            // Add the current route points to savedRoutes in TrasyFragment
+            if (trasyFragment != null) {
+                trasyFragment.addRoute(trasaPoints);
+            }
         }
     }
 
@@ -283,21 +301,21 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
     public void onRouteStart() {
         Log.d("TAG", "yes started");
     }
-
+    
     public void onRouteComplete(String routeInfo) {
-        // Check if trasyFragment is not null before updating
-        if (trasyFragment != null) {
-            trasyFragment.updateRouteInfo(routeInfo);
-        }
+        // Handle the route information received from MapaFragment
+        trasyFragment.updateRouteInfo(routeInfo);
     }
 
+    @Override
     public void onRouteSuccess(ArrayList<RouteInfoModel> routeInfoModelArrayList, int routeIndexing) {
-        ArrayList<Polyline> polylines = new ArrayList<>();  // Przenieś inicjalizację tutaj
+        ArrayList<Polyline> polylines = new ArrayList<>();
 
         PolylineOptions polylineOptions = new PolylineOptions();
+        List<LatLng> currentRoutePoints = new ArrayList<>();
+
         for (int i = 0; i < routeInfoModelArrayList.size(); i++) {
             if (i == routeIndexing) {
-                Log.e("TAG", "onRoutingSuccess: routeIndexing" + routeIndexing);
                 polylineOptions.color(Color.BLACK);
                 polylineOptions.width(12);
                 polylineOptions.addAll(routeInfoModelArrayList.get(routeIndexing).getPoints());
@@ -305,8 +323,14 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
                 polylineOptions.endCap(new RoundCap());
                 Polyline polyline = myMap.addPolyline(polylineOptions);
                 polylines.add(polyline);
+
+                // Collect route points
+                currentRoutePoints.addAll(routeInfoModelArrayList.get(routeIndexing).getPoints());
             }
         }
+
+        // Save the current route points
+        savedRoutes.add(currentRoutePoints);
     }
 
     public void onRouteCancelled() {

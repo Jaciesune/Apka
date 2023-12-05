@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <TextView
+        android:id="@+id/textViewStartPoint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Start Point"/>
+
+    <TextView
+        android:id="@+id/textViewFinishPoint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Finish Point"/>
+
+</LinearLayout>
