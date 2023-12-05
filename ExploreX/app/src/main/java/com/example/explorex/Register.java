@@ -105,9 +105,6 @@ public class Register extends AppCompatActivity {
                 } else {
                     Toast.makeText(Register.this, "Hasła się nie zgadzają", Toast.LENGTH_SHORT).show();
                 }
-
-
-
             }
         });
     }

@@ -52,4 +52,5 @@ dependencies {
     implementation("com.google.android.gms:play-services-maps:18.2.0")
     implementation("com.google.android.gms:play-services-location:21.0.1")
     implementation("com.github.dangiashish:Google-Direction-Api:1.6")
+    implementation("androidx.navigation:navigation-fragment-ktx:2.7.5")
 }
