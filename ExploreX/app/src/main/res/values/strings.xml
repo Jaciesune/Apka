@@ -13,4 +13,5 @@
     <string name="map_api_key">AIzaSyAKT_bvR0k932mGb3Iw75-XjXMsS1Mc5ms</string>
     <string name="Inicio">Rozpocznij</string>
     <string name="Finito">Zakończ</string>
+    <string name="zalogowany_jako">Zalogowany jako</string>
 </resources>

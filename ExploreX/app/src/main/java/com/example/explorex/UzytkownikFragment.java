@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 import com.example.explorex.databinding.FragmentUzytkownikBinding;
@@ -15,6 +16,7 @@ import com.google.firebase.auth.FirebaseUser;
 public class UzytkownikFragment extends Fragment {
 
     private FragmentUzytkownikBinding binding;
+    private TextView textViewLoggedUser;
 
     public static UzytkownikFragment newInstance() {
         return new UzytkownikFragment();
@@ -32,6 +34,9 @@ public class UzytkownikFragment extends Fragment {
 
         // Update this line to get the logoutButton from MainActivity
         Button logoutButton = ((MainActivity) requireActivity()).getLogoutButton();
+
+        // Find the TextView for the logged-in user
+        textViewLoggedUser = binding.textViewLoggedUser;
 
         // Check if the user is logged in
         FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -54,9 +59,21 @@ public class UzytkownikFragment extends Fragment {
                     requireActivity().finish();
                 }
             });
+
+            // Display "Zalogowany jako " followed by the user's email
+            textViewLoggedUser.setText(user.getEmail());
         } else {
             // User is not logged in, hide the logout button
             logoutButton.setVisibility(View.GONE);
+
+            // Clear the text if the user is not logged in
+            textViewLoggedUser.setText("");
+        }
+
+        if (user != null) {
+            // User is logged in, display the email
+            TextView textViewLoggedUser = binding.textViewLoggedUser;
+            textViewLoggedUser.setText(user.getEmail());
         }
 
         return rootView;
