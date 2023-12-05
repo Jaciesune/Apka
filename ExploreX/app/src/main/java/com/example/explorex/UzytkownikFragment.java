@@ -1,44 +1,23 @@
 package com.example.explorex;
 
+import android.content.Intent;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link UzytkownikFragment#newInstance} factory method to
- * create an instance of this fragment.
- *
- */
+import androidx.fragment.app.Fragment;
+import com.example.explorex.databinding.FragmentUzytkownikBinding;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class UzytkownikFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private FragmentUzytkownikBinding binding;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment UzytkownikFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static UzytkownikFragment newInstance(String param1, String param2) {
-        UzytkownikFragment fragment = new UzytkownikFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+    public static UzytkownikFragment newInstance() {
+        return new UzytkownikFragment();
     }
 
     public UzytkownikFragment() {
@@ -46,18 +25,40 @@ public class UzytkownikFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_uzytkownik, container, false);
+        binding = FragmentUzytkownikBinding.inflate(inflater, container, false);
+        View rootView = binding.getRoot();
+
+        // Update this line to get the logoutButton from MainActivity
+        Button logoutButton = ((MainActivity) requireActivity()).getLogoutButton();
+
+        // Check if the user is logged in
+        FirebaseAuth auth = FirebaseAuth.getInstance();
+        FirebaseUser user = auth.getCurrentUser();
+
+        if (user != null) {
+            // User is logged in, show the logout button
+            logoutButton.setVisibility(View.VISIBLE);
+
+            // Set click listener for the logout button
+            logoutButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Sign out the user
+                    auth.signOut();
+
+                    // Redirect to the login screen
+                    Intent intent = new Intent(requireContext(), Login.class);
+                    startActivity(intent);
+                    requireActivity().finish();
+                }
+            });
+        } else {
+            // User is not logged in, hide the logout button
+            logoutButton.setVisibility(View.GONE);
+        }
+
+        return rootView;
     }
 }

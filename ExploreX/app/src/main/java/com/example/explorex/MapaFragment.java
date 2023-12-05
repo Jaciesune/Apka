@@ -1,6 +1,7 @@
 package com.example.explorex;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
@@ -42,13 +43,14 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.maps.model.RoundCap;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteListener {
     private GoogleMap myMap;
-    private TrasyFragment trasyFragment;
     private final int FinePermissionCode = 1;
     private ActivityResultLauncher<String> requestPermissionLauncher;
     Location currentLocation;
@@ -57,15 +59,8 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
     private LatLng destLoc;
     private boolean isStartPointSet = false;
     private Button btnSetStartPoint;
-    private OnRouteCompleteListener routeCompleteListener;
-    private ArrayList<LatLng> trasaPoints = new ArrayList<>();
-    private List<List<LatLng>> savedRoutes = new ArrayList<>();
-    private LatLng startPoint;
-    private LatLng finishPoint;
-
-    public interface OnRouteCompleteListener {
-        void onRouteComplete(String routeInfo);
-    }
+    private Handler handler = new Handler(Looper.getMainLooper());
+    private ArrayList<LatLng> routePoints = new ArrayList<>();
 
     public MapaFragment() {
     }
@@ -73,7 +68,6 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        List<List<LatLng>> savedRoutes = new ArrayList<>();
 
         // Initialize the class-level requestPermissionLauncher here in onCreate
         requestPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), new ActivityResultCallback<Boolean>() {
@@ -92,7 +86,8 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_mapa, container, false);
 
         btnSetStartPoint = rootView.findViewById(R.id.btnSetStartPoint);
@@ -103,36 +98,40 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
             }
         });
 
-        // Store a reference to TrasyFragment when it's created
-        if (trasyFragment == null) {
-            trasyFragment = new TrasyFragment();
-            getChildFragmentManager().beginTransaction()
-                    .replace(R.id.mapContainer, trasyFragment)
-                    .commit();
-        }
-
         return rootView;
     }
 
     private void toggleButtonText() {
         isStartPointSet = !isStartPointSet;
         updateButtonText();
-
-        if (isStartPointSet) {
-            trasaPoints.clear();
-            // Capture the starting location on the first click
-            startPoint = currentLocationLatLng();
-            startLocationTracking();
-        } else {
-            // Capture the finishing location on the second click
-            finishPoint = currentLocationLatLng();
-            stopLocationTracking();
-            saveAndDisplayRoute();
+        if (!isStartPointSet) {
+            saveRouteToFile();
         }
     }
 
-    private LatLng currentLocationLatLng() {
-        return new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
+    private void saveRouteToFile() {
+        // Check if routePoints is not empty
+        if (!routePoints.isEmpty()) {
+            try {
+                // Open a file output stream for "trasy.txt"
+                FileOutputStream fos = requireContext().openFileOutput("trasy.txt", Context.MODE_PRIVATE);
+                OutputStreamWriter osw = new OutputStreamWriter(fos);
+
+                // Iterate through routePoints and write each LatLng to the file
+                for (LatLng point : routePoints) {
+                    osw.write(point.latitude + "," + point.longitude + "\n");
+                }
+
+                // Close the streams
+                osw.close();
+                fos.close();
+
+                Toast.makeText(requireContext(), "Trasa zapisana do pliku trasy.txt", Toast.LENGTH_SHORT).show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(requireContext(), "Błąd podczas zapisywania trasy do pliku", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     private void updateButtonText() {
@@ -143,31 +142,7 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
         }
     }
 
-    private void startLocationTracking() {
-        // Tutaj dodaj kod do śledzenia lokalizacji użytkownika
-        // Możesz użyć FusedLocationProviderClient i LocationCallback
-        // Dodaj odczytane punkty trasy do listy trasaPoints
-    }
 
-    public void setOnRouteCompleteListener(OnRouteCompleteListener listener) {
-        routeCompleteListener = listener;
-    }
-
-    private void stopLocationTracking() {
-        // Tutaj dodaj kod do zatrzymania śledzenia lokalizacji użytkownika
-    }
-
-    private void saveAndDisplayRoute() {
-        // Zapisz trasaPoints w TrasyFragment i zaktualizuj widok
-        if (routeCompleteListener != null) {
-            routeCompleteListener.onRouteComplete("Informacje o trasie");
-
-            // Add the current route points to savedRoutes in TrasyFragment
-            if (trasyFragment != null) {
-                trasyFragment.addRoute(trasaPoints);
-            }
-        }
-    }
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
@@ -201,13 +176,13 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
                 markerOptions.position(latLng);
                 markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET));
                 myMap.addMarker(markerOptions);
+                routePoints.add(latLng);
 
                 addStartPointButton();
                 getRoutePoints(location, destLoc);
             }
         });
     }
-
     private void getLastLocation() {
         if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -222,12 +197,8 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
 
                 if (location != null) {
                     currentLocation = location;
-                    SupportMapFragment mapFragment = SupportMapFragment.newInstance();
-                    getChildFragmentManager().beginTransaction()
-                            .replace(R.id.mapContainer, mapFragment)
-                            .commit();
+                    SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapContainer);
                     mapFragment.getMapAsync(MapaFragment.this);
-
                 }
             }
         });
@@ -249,13 +220,10 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
                         // Tutaj obsłuż logikę po naciśnięciu przycisku
                         // Na przykład możesz użyć punktu startowego do innych operacji
                         Toast.makeText(requireContext(), "Punkt startowy wyznaczony!", Toast.LENGTH_SHORT).show();
+
                         // Zaktualizuj stan przycisku i tekst
                         isStartPointSet = true;
                         updateButtonText();
-                        // Przekazanie informacji o trasie
-                        if (routeCompleteListener != null) {
-                            routeCompleteListener.onRouteComplete("Informacje o trasie"); // Tutaj możesz przekazać faktyczne informacje o trasie
-                        }
                         return true;
                     }
                     return false;
@@ -301,21 +269,14 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
     public void onRouteStart() {
         Log.d("TAG", "yes started");
     }
-    
-    public void onRouteComplete(String routeInfo) {
-        // Handle the route information received from MapaFragment
-        trasyFragment.updateRouteInfo(routeInfo);
-    }
 
-    @Override
     public void onRouteSuccess(ArrayList<RouteInfoModel> routeInfoModelArrayList, int routeIndexing) {
-        ArrayList<Polyline> polylines = new ArrayList<>();
+        ArrayList<Polyline> polylines = new ArrayList<>();  // Przenieś inicjalizację tutaj
 
         PolylineOptions polylineOptions = new PolylineOptions();
-        List<LatLng> currentRoutePoints = new ArrayList<>();
-
         for (int i = 0; i < routeInfoModelArrayList.size(); i++) {
             if (i == routeIndexing) {
+                Log.e("TAG", "onRoutingSuccess: routeIndexing" + routeIndexing);
                 polylineOptions.color(Color.BLACK);
                 polylineOptions.width(12);
                 polylineOptions.addAll(routeInfoModelArrayList.get(routeIndexing).getPoints());
@@ -323,14 +284,8 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
                 polylineOptions.endCap(new RoundCap());
                 Polyline polyline = myMap.addPolyline(polylineOptions);
                 polylines.add(polyline);
-
-                // Collect route points
-                currentRoutePoints.addAll(routeInfoModelArrayList.get(routeIndexing).getPoints());
             }
         }
-
-        // Save the current route points
-        savedRoutes.add(currentRoutePoints);
     }
 
     public void onRouteCancelled() {
