@@ -197,7 +197,7 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
 
                 if (location != null) {
                     currentLocation = location;
-                    SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
+                    SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapContainer);
                     mapFragment.getMapAsync(MapaFragment.this);
                 }
             }
