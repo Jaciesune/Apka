@@ -1,6 +1,7 @@
 package com.example.explorex;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Location;
@@ -42,6 +43,9 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.maps.model.RoundCap;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
 
 import java.util.ArrayList;
 
@@ -56,6 +60,7 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
     private boolean isStartPointSet = false;
     private Button btnSetStartPoint;
     private Handler handler = new Handler(Looper.getMainLooper());
+    private ArrayList<LatLng> routePoints = new ArrayList<>();
 
     public MapaFragment() {
     }
@@ -99,6 +104,34 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
     private void toggleButtonText() {
         isStartPointSet = !isStartPointSet;
         updateButtonText();
+        if (!isStartPointSet) {
+            saveRouteToFile();
+        }
+    }
+
+    private void saveRouteToFile() {
+        // Check if routePoints is not empty
+        if (!routePoints.isEmpty()) {
+            try {
+                // Open a file output stream for "trasy.txt"
+                FileOutputStream fos = requireContext().openFileOutput("trasy.txt", Context.MODE_PRIVATE);
+                OutputStreamWriter osw = new OutputStreamWriter(fos);
+
+                // Iterate through routePoints and write each LatLng to the file
+                for (LatLng point : routePoints) {
+                    osw.write(point.latitude + "," + point.longitude + "\n");
+                }
+
+                // Close the streams
+                osw.close();
+                fos.close();
+
+                Toast.makeText(requireContext(), "Trasa zapisana do pliku trasy.txt", Toast.LENGTH_SHORT).show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(requireContext(), "Błąd podczas zapisywania trasy do pliku", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     private void updateButtonText() {
@@ -143,6 +176,7 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
                 markerOptions.position(latLng);
                 markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET));
                 myMap.addMarker(markerOptions);
+                routePoints.add(latLng);
 
                 addStartPointButton();
                 getRoutePoints(location, destLoc);
