@@ -21,7 +21,6 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class Register extends AppCompatActivity {
 
-
     TextView reg_email, reg_pass_1, reg_pass_2;
     MaterialButton reg_button;
     FirebaseAuth mAuth;
