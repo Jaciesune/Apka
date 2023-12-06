@@ -36,6 +36,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.Polyline;
@@ -43,8 +44,15 @@ import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.android.gms.maps.model.RoundCap;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationResult;
+
+import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 
 import java.util.ArrayList;
@@ -61,6 +69,10 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
     private Button btnSetStartPoint;
     private Handler handler = new Handler(Looper.getMainLooper());
     private ArrayList<LatLng> routePoints = new ArrayList<>();
+    private ArrayList<ArrayList<LatLng>> savedRoutes = new ArrayList<>();
+    private Marker locationMarker;
+    private LocationRequest locationRequest;
+    private LocationCallback locationCallback;
 
     public MapaFragment() {
     }
@@ -68,21 +80,43 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Initialize the launcher
+        requestPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(),
+                isGranted -> {
+                    if (isGranted) {
+                        // Permission is granted, proceed with the operation
+                        getLastLocation();
+                    } else {
+                        // Permission is denied
+                        Toast.makeText(requireContext(), "Permission denied", Toast.LENGTH_SHORT).show();
+                    }
+                }
+        );
 
-        // Initialize the class-level requestPermissionLauncher here in onCreate
-        requestPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(), new ActivityResultCallback<Boolean>() {
+        // Initialize location request
+        locationRequest = new LocationRequest();
+        locationRequest.setInterval(5000); // 5 seconds
+        locationRequest.setFastestInterval(3000); // 3 seconds
+        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
+
+        // Initialize the location callback
+        locationCallback = new LocationCallback() {
             @Override
-            public void onActivityResult(Boolean result) {
-                if (result) {
-                    getLastLocation();
-                } else {
-                    Toast.makeText(requireContext(), "Aplikacja nie ma pozwolenia na dostęp do lokalizacji urządzenia", Toast.LENGTH_SHORT).show();
+            public void onLocationResult(LocationResult locationResult) {
+                if (locationResult == null) {
+                    return;
+                }
+                for (Location location : locationResult.getLocations()) {
+                    // Handle location updates here
+                    updateLocationMarker(new LatLng(location.getLatitude(), location.getLongitude()));
                 }
             }
-        });
+        };
 
+        // Initialize the fusedLocationProviderClient
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity());
         getLastLocation();
+        savedRoutes = loadSavedRoutesFromFile();
     }
 
     @Override
@@ -104,7 +138,12 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
     private void toggleButtonText() {
         isStartPointSet = !isStartPointSet;
         updateButtonText();
-        if (!isStartPointSet) {
+
+        if (isStartPointSet) {
+            // Rozpocznij pobieranie lokalizacji użytkownika i rysowanie trasy
+            getLastLocation();
+        } else {
+            // Zakończ rysowanie trasy i zapisz do pliku
             saveRouteToFile();
         }
     }
@@ -130,9 +169,14 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
             } catch (IOException e) {
                 e.printStackTrace();
                 Toast.makeText(requireContext(), "Błąd podczas zapisywania trasy do pliku", Toast.LENGTH_SHORT).show();
+                Log.e("TAG", "Error saving route to file: " + e.getMessage());
             }
+        } else {
+            Log.e("TAG", "Route points list is empty. No data to save to file.");
         }
     }
+
+
 
     private void updateButtonText() {
         if (isStartPointSet) {
@@ -148,10 +192,15 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
     public void onMapReady(@NonNull GoogleMap googleMap) {
         myMap = googleMap;
 
+        // Request location updates
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                && ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
+        }
+
         if (currentLocation != null) {
             LatLng currentLatLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-            myMap.addMarker(new MarkerOptions().position(currentLatLng).title("Twoja lokalizacja"));
-            myMap.moveCamera(CameraUpdateFactory.newLatLng(currentLatLng));
+            updateLocationMarker(currentLatLng);
         } else {
             Toast.makeText(requireContext(), "Lokalizacja jest niedostępna", Toast.LENGTH_SHORT).show();
         }
@@ -164,25 +213,91 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
 
         CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(location, 15);
         googleMap.animateCamera(cameraUpdate);
+
         myMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(@NonNull LatLng latLng) {
-                myMap.clear();
-                MarkerOptions options = new MarkerOptions().position(location).title("Twoja lokalizacja");
-                options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET));
-                myMap.addMarker(options);
-                destLoc = latLng;
-                MarkerOptions markerOptions = new MarkerOptions();
-                markerOptions.position(latLng);
-                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET));
-                myMap.addMarker(markerOptions);
-                routePoints.add(latLng);
+                if (isStartPointSet) {
+                    myMap.clear();
+                    if (userLoc != null) {
+                        updateLocationMarker(userLoc);
+                    }
 
-                addStartPointButton();
-                getRoutePoints(location, destLoc);
+                    destLoc = latLng;
+                    MarkerOptions markerOptions = new MarkerOptions().position(latLng);
+                    markerOptions.position(latLng);
+                    markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET));
+                    myMap.addMarker(markerOptions);
+                    routePoints.add(latLng);
+
+                    updateMapView(userLoc, destLoc);
+
+                    drawRouteOnMap(savedRoutes, routePoints);
+
+                    savedRoutes.add(routePoints);
+                    routePoints = new ArrayList<>();
+
+                    addStartPointButton();
+                    updateButtonText();
+                }
             }
         });
     }
+
+    private void drawRouteOnMap(ArrayList<ArrayList<LatLng>> routes, ArrayList<LatLng> currentRoute) {
+        for (ArrayList<LatLng> route : routes) {
+            PolylineOptions polylineOptions = new PolylineOptions();
+            polylineOptions.color(Color.BLUE);
+            polylineOptions.width(12);
+            polylineOptions.addAll(route);
+            polylineOptions.startCap(new RoundCap());
+            polylineOptions.endCap(new RoundCap());
+            myMap.addPolyline(polylineOptions);
+        }
+
+        // Draw the current route
+        PolylineOptions currentRouteOptions = new PolylineOptions();
+        currentRouteOptions.color(Color.RED);
+        currentRouteOptions.width(12);
+        currentRouteOptions.addAll(currentRoute);
+        currentRouteOptions.startCap(new RoundCap());
+        currentRouteOptions.endCap(new RoundCap());
+        myMap.addPolyline(currentRouteOptions);
+    }
+
+    private void updateLocationMarker(LatLng latLng) {
+        if (myMap != null) {
+            // Sprawdź, czy myMap nie jest nullem przed dodaniem markera
+            if (locationMarker == null) {
+                MarkerOptions markerOptions = new MarkerOptions().position(latLng);
+                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
+                locationMarker = myMap.addMarker(markerOptions);
+            } else {
+                locationMarker.setPosition(latLng);
+            }
+
+            if (isStartPointSet) {
+                // Dodaj kod dotyczący aktualizacji widoku związanego z punktem początkowym, jeśli jest taka potrzeba
+                // ...
+
+                // Przykład: Centrowanie kamery na nowej lokalizacji
+                myMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+            }
+        }
+    }
+
+    private void updateMapView(LatLng startPoint, LatLng endPoint) {
+        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+        builder.include(startPoint);
+        builder.include(endPoint);
+        LatLngBounds bounds = builder.build();
+
+        int padding = 100; // margines w pikselach
+        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+        myMap.animateCamera(cameraUpdate);
+    }
+
+
     private void getLastLocation() {
         if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -194,9 +309,10 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
         task.addOnSuccessListener(new OnSuccessListener<Location>() {
             @Override
             public void onSuccess(Location location) {
-
                 if (location != null) {
                     currentLocation = location;
+                    LatLng currentLatLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
+                    updateLocationMarker(currentLatLng); // Dodane: Aktualizuj marker lokalizacji
                     SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapContainer);
                     mapFragment.getMapAsync(MapaFragment.this);
                 }
@@ -290,5 +406,35 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
     public void onRouteCancelled() {
         Log.d("TAG", "route canceled");
         // restart your route drawing
+    }
+
+    private ArrayList<ArrayList<LatLng>> loadSavedRoutesFromFile() {
+        ArrayList<ArrayList<LatLng>> savedRoutes = new ArrayList<>();
+        try {
+            FileInputStream fis = requireContext().openFileInput("trasy.txt");
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fis));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                String[] coordinates = line.split(",");
+                ArrayList<LatLng> route = new ArrayList<>();
+                for (int i = 0; i < coordinates.length; i += 2) {
+                    double lat = Double.parseDouble(coordinates[i]);
+                    double lng = Double.parseDouble(coordinates[i + 1]);
+                    route.add(new LatLng(lat, lng));
+                }
+                savedRoutes.add(route);
+            }
+            bufferedReader.close();
+        } catch (IOException | NumberFormatException e) {
+            e.printStackTrace();
+            Toast.makeText(requireContext(), "Error loading routes from file", Toast.LENGTH_SHORT).show();
+        }
+        return savedRoutes;
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+        // Remove location updates when the fragment is stopped
+        fusedLocationProviderClient.removeLocationUpdates(locationCallback);
     }
 }

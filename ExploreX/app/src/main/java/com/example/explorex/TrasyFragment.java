@@ -5,14 +5,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.gms.maps.model.LatLng;
 
 import java.io.BufferedReader;
 import java.io.FileOutputStream;
@@ -21,28 +20,21 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+
 public class TrasyFragment extends Fragment {
 
-    private ListView listViewRoutes;
     private RecyclerView recyclerView;
     private TrasyAdapter trasyAdapter;
+    private ArrayList<ArrayList<LatLng>> savedRoutes = new ArrayList<>();
 
     public TrasyFragment() {
         // Required empty public constructor
     }
 
-    public static TrasyFragment newInstance(String param1, String param2) {
-        TrasyFragment fragment = new TrasyFragment();
-        Bundle args = new Bundle();
-        fragment.setArguments(args);
-        return fragment;
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-        }
+        savedRoutes = loadSavedRoutesFromFile();
     }
 
     @Override
@@ -53,7 +45,7 @@ public class TrasyFragment extends Fragment {
         recyclerView = rootView.findViewById(R.id.recyclerViewRoutes);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
 
-        trasyAdapter = new TrasyAdapter(loadSavedRoutes(), new TrasyAdapter.OnItemClickListener() {
+        trasyAdapter = new TrasyAdapter(savedRoutes, new TrasyAdapter.OnItemClickListener() {
             @Override
             public void onDeleteClick(int position) {
                 removeRoute(position);
@@ -66,56 +58,58 @@ public class TrasyFragment extends Fragment {
     }
 
     private void removeRoute(int position) {
-        ArrayList<String> updatedRoutes = loadSavedRoutes();
-        updatedRoutes.remove(position);
-        trasyAdapter.updateRoutes(updatedRoutes);
-
-        // Zapisz zaktualizowaną listę tras do pliku
-        saveRoutesToFile(updatedRoutes);
+        savedRoutes.remove(position);
+        trasyAdapter.updateRoutes(savedRoutes);
+        saveRoutesToFile(savedRoutes);
     }
 
-    private void saveRoutesToFile(ArrayList<String> routes) {
+    private void saveRoutesToFile(ArrayList<ArrayList<LatLng>> routes) {
         try {
-            // Otwórz plik "trasy.txt" w trybie zastępowania (czyli usuń istniejący i utwórz nowy)
             FileOutputStream fos = requireContext().openFileOutput("trasy.txt", Context.MODE_PRIVATE);
             OutputStreamWriter osw = new OutputStreamWriter(fos);
 
-            // Iteruj przez listę tras i zapisuj każdy wpis do pliku
-            for (String route : routes) {
-                osw.write(route + "\n");
+            for (ArrayList<LatLng> route : routes) {
+                for (LatLng point : route) {
+                    osw.write(point.latitude + "," + point.longitude + ",");
+                }
+                osw.write("\n");
             }
 
-            // Zamknij strumienie
             osw.close();
             fos.close();
 
-            Toast.makeText(requireContext(), "Zaktualizowano plik trasy.txt", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(), "Updated trasy.txt file", Toast.LENGTH_SHORT).show();
         } catch (IOException e) {
             e.printStackTrace();
-            Toast.makeText(requireContext(), "Błąd podczas zapisywania trasy do pliku", Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireContext(), "Error saving routes to file", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private ArrayList<String> loadSavedRoutes() {
-        ArrayList<String> savedRoutes = new ArrayList<>();
+    private ArrayList<ArrayList<LatLng>> loadSavedRoutesFromFile() {
+        ArrayList<ArrayList<LatLng>> savedRoutes = new ArrayList<>();
         try {
-            // Open the file "trasy.txt" for reading
             InputStream inputStream = requireContext().openFileInput("trasy.txt");
             InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
             BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
 
-            // Read each line from the file and add it to the list
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                savedRoutes.add(line);
+                String[] coordinates = line.split(",");
+                ArrayList<LatLng> route = new ArrayList<>();
+                for (int i = 0; i < coordinates.length; i += 2) {
+                    double lat = Double.parseDouble(coordinates[i]);
+                    double lng = Double.parseDouble(coordinates[i + 1]);
+                    route.add(new LatLng(lat, lng));
+                }
+                savedRoutes.add(route);
             }
 
-            // Close the streams
             bufferedReader.close();
             inputStreamReader.close();
             inputStream.close();
-        } catch (IOException e) {
+        } catch (IOException | NumberFormatException e) {
             e.printStackTrace();
+            Toast.makeText(requireContext(), "Error loading routes from file", Toast.LENGTH_SHORT).show();
         }
         return savedRoutes;
     }
