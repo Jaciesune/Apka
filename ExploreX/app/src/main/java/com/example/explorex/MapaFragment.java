@@ -113,8 +113,8 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
         // Check if routePoints is not empty
         if (!routePoints.isEmpty()) {
             try {
-                // Open a file output stream for "trasy.txt"
-                FileOutputStream fos = requireContext().openFileOutput("trasy.txt", Context.MODE_PRIVATE);
+                // Open a file output stream for "trasy.txt" in append mode
+                FileOutputStream fos = requireContext().openFileOutput("trasy.txt", Context.MODE_APPEND);
                 OutputStreamWriter osw = new OutputStreamWriter(fos);
 
                 // Iterate through routePoints and write each LatLng to the file
@@ -126,7 +126,7 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
                 osw.close();
                 fos.close();
 
-                Toast.makeText(requireContext(), "Trasa zapisana do pliku trasy.txt", Toast.LENGTH_SHORT).show();
+                Toast.makeText(requireContext(), "Trasa dodana do pliku trasy.txt", Toast.LENGTH_SHORT).show();
             } catch (IOException e) {
                 e.printStackTrace();
                 Toast.makeText(requireContext(), "Błąd podczas zapisywania trasy do pliku", Toast.LENGTH_SHORT).show();
@@ -211,7 +211,6 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
             startMarkerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
             myMap.addMarker(startMarkerOptions);
 
-            //37.302224, -121.876321 - San Jose
             // Dodaj przycisk do wyznaczania punktu startowego
             myMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                 @Override
