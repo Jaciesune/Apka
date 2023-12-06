@@ -54,6 +54,4 @@ dependencies {
     implementation("com.github.dangiashish:Google-Direction-Api:1.6")
     implementation("com.google.android.material:material:x.y.z")
     implementation("androidx.constraintlayout:constraintlayout:x.y.z")
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
-
 }
