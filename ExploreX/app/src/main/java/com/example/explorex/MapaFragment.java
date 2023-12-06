@@ -211,7 +211,6 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
             startMarkerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
             myMap.addMarker(startMarkerOptions);
 
-            //37.302224, -121.876321 - San Jose
             // Dodaj przycisk do wyznaczania punktu startowego
             myMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                 @Override
