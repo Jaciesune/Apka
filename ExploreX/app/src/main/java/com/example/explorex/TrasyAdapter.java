@@ -13,19 +13,19 @@ import java.util.ArrayList;
 
 public class TrasyAdapter extends RecyclerView.Adapter<TrasyAdapter.ViewHolder> {
 
-    private ArrayList<String> routes;
+    private ArrayList<GroupedLatLng> routes;
     private OnItemClickListener listener;
 
     public interface OnItemClickListener {
         void onDeleteClick(int position);
     }
 
-    public TrasyAdapter(ArrayList<String> routes, OnItemClickListener listener) {
+    public TrasyAdapter(ArrayList<GroupedLatLng> routes, OnItemClickListener listener) {
         this.routes = routes;
         this.listener = listener;
     }
 
-    public void updateRoutes(ArrayList<String> updatedRoutes) {
+    public void updateRoutes(ArrayList<GroupedLatLng> updatedRoutes) {
         this.routes = updatedRoutes;
         notifyDataSetChanged();
     }
@@ -39,8 +39,9 @@ public class TrasyAdapter extends RecyclerView.Adapter<TrasyAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        String route = routes.get(position);
-        holder.tvRoute.setText(route);
+        GroupedLatLng route = routes.get(position);
+        // Assuming tvRoute is a TextView in your item_route layout
+        holder.tvRoute.setText(String.format("Group %d - Lat: %f, Lng: %f", route.getGroup(), route.getLatLng().latitude, route.getLatLng().longitude));
 
         holder.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,13 +63,13 @@ public class TrasyAdapter extends RecyclerView.Adapter<TrasyAdapter.ViewHolder> 
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        public ImageButton btnDelete;  // Change the type to ImageButton
+        public ImageButton btnDelete;
         TextView tvRoute;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvRoute = itemView.findViewById(R.id.tvRoute);
-            btnDelete = itemView.findViewById(R.id.btnDelete);  // Assign the ImageButton
+            btnDelete = itemView.findViewById(R.id.btnDelete);
         }
     }
 }

@@ -60,7 +60,10 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
     private boolean isStartPointSet = false;
     private Button btnSetStartPoint;
     private Handler handler = new Handler(Looper.getMainLooper());
-    private ArrayList<LatLng> routePoints = new ArrayList<>();
+    private ArrayList<GroupedLatLng> routePoints = new ArrayList<>();
+
+    private int currentGroup = 1; // Domyślna grupa
+    private ArrayList<LatLng> currentRoute = new ArrayList<>();
 
     public MapaFragment() {
     }
@@ -104,22 +107,40 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
     private void toggleButtonText() {
         isStartPointSet = !isStartPointSet;
         updateButtonText();
-        if (!isStartPointSet) {
-            saveRouteToFile();
+
+        if (isStartPointSet) {
+            // Zainicjuj nową grupę, gdy rozpoczynasz trasę
+            currentGroup++;
+            currentRoute.clear();
+        } else {
+            // Zakończ trasę i przypisz punkty do grupy w pliku
+            assignRouteToGroup(currentGroup, currentRoute);
         }
     }
+    private void assignRouteToGroup(int group, ArrayList<LatLng> route) {
+        // Przypisz identyfikator grupy do każdego punktu trasy
+        for (LatLng point : route) {
+            routePoints.add(new GroupedLatLng(point, group));
+        }
 
-    private void saveRouteToFile() {
+        // Dodaj punkty trasy do pliku
+        saveRouteToFile(routePoints);
+    }
+
+    private void saveRouteToFile(ArrayList<GroupedLatLng> route) {
+        // Clear the routePoints ArrayList before adding new points
+        routePoints.clear();
+
         // Check if routePoints is not empty
-        if (!routePoints.isEmpty()) {
+        if (!route.isEmpty()) {
             try {
                 // Open a file output stream for "trasy.txt" in append mode
                 FileOutputStream fos = requireContext().openFileOutput("trasy.txt", Context.MODE_APPEND);
                 OutputStreamWriter osw = new OutputStreamWriter(fos);
 
                 // Iterate through routePoints and write each LatLng to the file
-                for (LatLng point : routePoints) {
-                    osw.write(point.latitude + "," + point.longitude + "\n");
+                for (GroupedLatLng point : route) {
+                    osw.write(point.getLatLng().latitude + "," + point.getLatLng().longitude + "\n");
                 }
 
                 // Close the streams
@@ -141,8 +162,6 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
             btnSetStartPoint.setText("Rozpocznij");
         }
     }
-
-
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
@@ -176,9 +195,13 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
                 markerOptions.position(latLng);
                 markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET));
                 myMap.addMarker(markerOptions);
-                routePoints.add(latLng);
+
+                // Create a GroupedLatLng object and add it to routePoints
+                GroupedLatLng groupedLatLng = new GroupedLatLng(latLng, currentGroup);
+                routePoints.add(groupedLatLng);
 
                 addStartPointButton();
+                currentRoute.add(latLng);
                 getRoutePoints(location, destLoc);
             }
         });
@@ -251,6 +274,10 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
         } else {
             userLoc = start;
             destLoc = end;
+
+            // Utwórz listę punktów trasy bez przypisanej grupy
+            ArrayList<LatLng> routeWithoutGroup = new ArrayList<>(currentRoute);
+
             RouteDrawing routeDrawing = new RouteDrawing.Builder()
                     .context(requireActivity())
                     .travelMode(AbstractRouting.TravelMode.DRIVING)
@@ -260,6 +287,14 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
                     .build();
             routeDrawing.execute();
         }
+        // Log the size and contents of currentRoute before calling assignRouteToGroup
+        Log.d("MapaFragment", "Current Route Size: " + currentRoute.size());
+        for (LatLng point : currentRoute) {
+            Log.d("MapaFragment", "Route Point: " + point.latitude + ", " + point.longitude);
+        }
+
+        // Call assignRouteToGroup
+        assignRouteToGroup(currentGroup, currentRoute);
     }
 
     public void onRouteFailure(ErrorHandling e) {
@@ -271,7 +306,7 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
     }
 
     public void onRouteSuccess(ArrayList<RouteInfoModel> routeInfoModelArrayList, int routeIndexing) {
-        ArrayList<Polyline> polylines = new ArrayList<>();  // Przenieś inicjalizację tutaj
+        ArrayList<Polyline> polylines = new ArrayList<>();
 
         PolylineOptions polylineOptions = new PolylineOptions();
         for (int i = 0; i < routeInfoModelArrayList.size(); i++) {
@@ -286,6 +321,15 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteL
                 polylines.add(polyline);
             }
         }
+
+        // Log the size and contents of currentRoute before calling assignRouteToGroup
+        Log.d("MapaFragment", "Current Route Size: " + currentRoute.size());
+        for (LatLng point : currentRoute) {
+            Log.d("MapaFragment", "Route Point: " + point.latitude + ", " + point.longitude);
+        }
+
+        // Call assignRouteToGroup
+        assignRouteToGroup(currentGroup, currentRoute);
     }
 
     public void onRouteCancelled() {
