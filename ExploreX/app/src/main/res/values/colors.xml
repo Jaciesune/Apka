@@ -2,4 +2,14 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- LightMode Colors -->
+    <color name="lightModeColorPrimary">#FFFFFF</color>
+    <color name="lightModeColorPrimaryDark">#4126b5</color>
+    <color name="lightModeColorAccent">#98e7ed</color>
+
+    <!-- NightMode Colors -->
+    <color name="nightModeColorPrimary">#121212</color>
+    <color name="nightModeColorPrimaryDark">#1a0108</color>
+    <color name="nightModeColorAccent">#e8b3c2</color>
 </resources>
