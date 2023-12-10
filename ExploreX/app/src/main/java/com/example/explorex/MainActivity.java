@@ -12,6 +12,10 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.explorex.databinding.ActivityMainBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.android.gms.maps.model.LatLng;
+
+import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -75,5 +79,18 @@ public class MainActivity extends AppCompatActivity {
     }
     public Button getLogoutButton() {
         return logoutButton;
+    }
+
+    public void showRouteOnMap(ArrayList<LatLng> route) {
+        MapaFragment mapaFragment = new MapaFragment();
+        Bundle bundle = new Bundle();
+        bundle.putParcelableArrayList("ROUTE", route);
+        mapaFragment.setArguments(bundle);
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frameLayout, mapaFragment)
+                .addToBackStack(null)
+                .commit();
     }
 }

@@ -1,440 +1,317 @@
 package com.example.explorex;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.location.Criteria;
 import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
-import android.util.Log;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResultCallback;
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
-import com.codebyashish.googledirectionapi.AbstractRouting;
-import com.codebyashish.googledirectionapi.ErrorHandling;
-import com.codebyashish.googledirectionapi.RouteDrawing;
-import com.codebyashish.googledirectionapi.RouteInfoModel;
-import com.codebyashish.googledirectionapi.RouteListener;
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
-import com.google.android.gms.maps.model.RoundCap;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-
 import java.util.ArrayList;
+import java.util.List;
 
-public class MapaFragment extends Fragment implements OnMapReadyCallback, RouteListener {
+public class MapaFragment extends Fragment implements OnMapReadyCallback {
+
     private GoogleMap myMap;
-    private final int FinePermissionCode = 1;
-    private ActivityResultLauncher<String> requestPermissionLauncher;
-    Location currentLocation;
-    FusedLocationProviderClient fusedLocationProviderClient;
-    private LatLng userLoc;
-    private LatLng destLoc;
-    private boolean isStartPointSet = false;
     private Button btnSetStartPoint;
-    private Handler handler = new Handler(Looper.getMainLooper());
-    private ArrayList<LatLng> routePoints = new ArrayList<>();
-    private ArrayList<ArrayList<LatLng>> savedRoutes = new ArrayList<>();
-    private Marker locationMarker;
-    private LocationRequest locationRequest;
-    private LocationCallback locationCallback;
+    private EditText editText;
+    private ListView savedRoutesListView;
+
+    private boolean recordingRoute = false;
+    private PolylineOptions routePolyline;
+    private List<LatLng> routePoints;
+    private List<String> savedRouteFiles;
+
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
+    private Handler locationUpdateHandler;
+    private static final int LOCATION_UPDATE_INTERVAL = 1000;
+    private String enteredFileName;
 
     public MapaFragment() {
+        // Required empty public constructor
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // Initialize the launcher
-        requestPermissionLauncher = registerForActivityResult(new ActivityResultContracts.RequestPermission(),
-                isGranted -> {
-                    if (isGranted) {
-                        // Permission is granted, proceed with the operation
-                        getLastLocation();
-                    } else {
-                        // Permission is denied
-                        Toast.makeText(requireContext(), "Permission denied", Toast.LENGTH_SHORT).show();
-                    }
-                }
-        );
-
-        // Initialize location request
-        locationRequest = new LocationRequest();
-        locationRequest.setInterval(5000); // 5 seconds
-        locationRequest.setFastestInterval(3000); // 3 seconds
-        locationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
-
-        // Initialize the location callback
-        locationCallback = new LocationCallback() {
-            @Override
-            public void onLocationResult(LocationResult locationResult) {
-                if (locationResult == null) {
-                    return;
-                }
-                for (Location location : locationResult.getLocations()) {
-                    // Handle location updates here
-                    updateLocationMarker(new LatLng(location.getLatitude(), location.getLongitude()));
-                }
-            }
-        };
-
-        // Initialize the fusedLocationProviderClient
-        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(requireActivity());
-        getLastLocation();
-        savedRoutes = loadSavedRoutesFromFile();
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_mapa, container, false);
 
         btnSetStartPoint = rootView.findViewById(R.id.btnSetStartPoint);
+
         btnSetStartPoint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                toggleButtonText();
+                if (recordingRoute) {
+                    // If recording a route, stop recording
+                    stopRecordingRoute();
+                    saveLocationToFile("defaultFileName");
+                } else {
+                    // If not recording a route, start recording
+                    showFileNameDialog();
+                }
             }
         });
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapContainer);
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(this);
+        }
 
         return rootView;
     }
 
-    private void toggleButtonText() {
-        isStartPointSet = !isStartPointSet;
-        updateButtonText();
+    private void showFileNameDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("Rozpocznij trasę");
 
-        if (isStartPointSet) {
-            // Rozpocznij pobieranie lokalizacji użytkownika i rysowanie trasy
-            getLastLocation();
-        } else {
-            // Zakończ rysowanie trasy i zapisz do pliku
-            saveRouteToFile();
-        }
-    }
+        final EditText editText = new EditText(requireContext());
+        editText.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(editText);
 
-    private void saveRouteToFile() {
-        // Check if routePoints is not empty
-        if (!routePoints.isEmpty()) {
-            try {
-                // Open a file output stream for "trasy.txt" in append mode
-                FileOutputStream fos = requireContext().openFileOutput("trasy.txt", Context.MODE_APPEND);
-                OutputStreamWriter osw = new OutputStreamWriter(fos);
+        builder.setPositiveButton("Start", (dialog, which) -> {
+            // Store the entered text in the class-level variable
+            enteredFileName = editText.getText().toString().trim();
 
-                // Iterate through routePoints and write each LatLng to the file
-                for (LatLng point : routePoints) {
-                    osw.write(point.latitude + "," + point.longitude + "\n");
-                }
-
-                // Close the streams
-                osw.close();
-                fos.close();
-
-                Toast.makeText(requireContext(), "Trasa dodana do pliku trasy.txt", Toast.LENGTH_SHORT).show();
-            } catch (IOException e) {
-                e.printStackTrace();
-                Toast.makeText(requireContext(), "Błąd podczas zapisywania trasy do pliku", Toast.LENGTH_SHORT).show();
-                Log.e("TAG", "Error saving route to file: " + e.getMessage());
-            }
-        } else {
-            Log.e("TAG", "Route points list is empty. No data to save to file.");
-        }
-    }
-
-
-
-    private void updateButtonText() {
-        if (isStartPointSet) {
-            btnSetStartPoint.setText("Zakończ");
-        } else {
-            btnSetStartPoint.setText("Rozpocznij");
-        }
-    }
-
-
-
-    @Override
-    public void onMapReady(@NonNull GoogleMap googleMap) {
-        myMap = googleMap;
-
-        // Request location updates
-        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
-        }
-
-        if (currentLocation != null) {
-            LatLng currentLatLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-            updateLocationMarker(currentLatLng);
-        } else {
-            Toast.makeText(requireContext(), "Lokalizacja jest niedostępna", Toast.LENGTH_SHORT).show();
-        }
-
-        LatLng location = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-        myMap.moveCamera(CameraUpdateFactory.newLatLng(location));
-        MarkerOptions options = new MarkerOptions().position(location).title("Twoja lokalizacja");
-        options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET));
-        myMap.addMarker(options);
-
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngZoom(location, 15);
-        googleMap.animateCamera(cameraUpdate);
-
-        myMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
-            @Override
-            public void onMapClick(@NonNull LatLng latLng) {
-                if (isStartPointSet) {
-                    myMap.clear();
-                    if (userLoc != null) {
-                        updateLocationMarker(userLoc);
-                    }
-
-                    destLoc = latLng;
-                    MarkerOptions markerOptions = new MarkerOptions().position(latLng);
-                    markerOptions.position(latLng);
-                    markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET));
-                    myMap.addMarker(markerOptions);
-                    routePoints.add(latLng);
-
-                    updateMapView(userLoc, destLoc);
-
-                    drawRouteOnMap(savedRoutes, routePoints);
-
-                    savedRoutes.add(routePoints);
-                    routePoints = new ArrayList<>();
-
-                    addStartPointButton();
-                    updateButtonText();
-                }
+            if (!enteredFileName.isEmpty()) {
+                startRecordingRoute(enteredFileName);
             }
         });
+
+        builder.setNegativeButton("Anuluj", (dialog, which) -> dialog.cancel());
+
+        builder.show();
     }
 
-    private void drawRouteOnMap(ArrayList<ArrayList<LatLng>> routes, ArrayList<LatLng> currentRoute) {
-        for (ArrayList<LatLng> route : routes) {
-            PolylineOptions polylineOptions = new PolylineOptions();
-            polylineOptions.color(Color.BLUE);
-            polylineOptions.width(12);
-            polylineOptions.addAll(route);
-            polylineOptions.startCap(new RoundCap());
-            polylineOptions.endCap(new RoundCap());
-            myMap.addPolyline(polylineOptions);
+    private void startRecordingRoute(String fileName) {
+        recordingRoute = true;
+        btnSetStartPoint.setText("Zakończ");
+        routePolyline = new PolylineOptions().color(Color.BLUE).width(5);
+        routePoints = new ArrayList<>();
+
+        // Start location updates
+        startLocationUpdates();
+    }
+
+    private void stopRecordingRoute() {
+        // Stop location updates
+        stopLocationUpdates();
+
+        recordingRoute = false;
+        btnSetStartPoint.setText("Start");
+
+        // Use the stored file name or generate a unique one
+        String fileName = (enteredFileName != null && !enteredFileName.isEmpty()) ? enteredFileName : "route_" + System.currentTimeMillis();
+
+        // Save route data to file
+        saveRouteToFile(fileName);
+
+        // Draw the recorded route on the map
+        drawRouteOnMap(routePoints);
+
+        // Display a toast indicating that the file is saved
+        String toastMessage = "Trasa zapisana pod nazwą '" + fileName + "' w: " + getExternalFilePath(fileName);
+        Toast.makeText(requireContext(), toastMessage, Toast.LENGTH_LONG).show();
+    }
+
+    private void startLocationUpdates() {
+        locationUpdateHandler = new Handler(Looper.getMainLooper());
+        locationUpdateHandler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                // Update location every LOCATION_UPDATE_INTERVAL milliseconds
+                updateLocation();
+                locationUpdateHandler.postDelayed(this, LOCATION_UPDATE_INTERVAL);
+            }
+        }, LOCATION_UPDATE_INTERVAL);
+    }
+
+    private void stopLocationUpdates() {
+        if (locationUpdateHandler != null) {
+            locationUpdateHandler.removeCallbacksAndMessages(null);
         }
-
-        // Draw the current route
-        PolylineOptions currentRouteOptions = new PolylineOptions();
-        currentRouteOptions.color(Color.RED);
-        currentRouteOptions.width(12);
-        currentRouteOptions.addAll(currentRoute);
-        currentRouteOptions.startCap(new RoundCap());
-        currentRouteOptions.endCap(new RoundCap());
-        myMap.addPolyline(currentRouteOptions);
     }
 
-    private void updateLocationMarker(LatLng latLng) {
-        if (myMap != null) {
-            // Sprawdź, czy myMap nie jest nullem przed dodaniem markera
-            if (locationMarker == null) {
-                MarkerOptions markerOptions = new MarkerOptions().position(latLng);
-                markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-                locationMarker = myMap.addMarker(markerOptions);
+    private void updateLocation() {
+        if (checkLocationPermission()) {
+            if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                    || ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+
+                LocationManager locationManager = (LocationManager) requireContext().getSystemService(Context.LOCATION_SERVICE);
+                Criteria criteria = new Criteria();
+                String provider = locationManager.getBestProvider(criteria, true);
+                Location location = locationManager.getLastKnownLocation(provider);
+                if (location != null) {
+                    LatLng currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
+                    routePoints.add(currentLocation);
+                    routePolyline.add(currentLocation);
+                }
             } else {
-                locationMarker.setPosition(latLng);
-            }
-
-            if (isStartPointSet) {
-                // Dodaj kod dotyczący aktualizacji widoku związanego z punktem początkowym, jeśli jest taka potrzeba
-                // ...
-
-                // Przykład: Centrowanie kamery na nowej lokalizacji
-                myMap.animateCamera(CameraUpdateFactory.newLatLng(latLng));
+                // Handle the case where location permission is not granted
             }
         }
     }
 
-    private void updateMapView(LatLng startPoint, LatLng endPoint) {
-        LatLngBounds.Builder builder = new LatLngBounds.Builder();
-        builder.include(startPoint);
-        builder.include(endPoint);
-        LatLngBounds bounds = builder.build();
-
-        int padding = 100; // margines w pikselach
-        CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, padding);
-        myMap.animateCamera(cameraUpdate);
-    }
-
-
-    private void getLastLocation() {
+    private void saveLocationToFile(String fileName) {
+        LocationManager locationManager = (LocationManager) requireContext().getSystemService(Context.LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
+        String provider = locationManager.getBestProvider(criteria, true);
         if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // Use the class-level requestPermissionLauncher instead of creating a new local one
-            requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION);
+                || ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // Request permissions here
+            requestLocationPermissions();
             return;
         }
-        Task<Location> task = fusedLocationProviderClient.getLastLocation();
-        task.addOnSuccessListener(new OnSuccessListener<Location>() {
-            @Override
-            public void onSuccess(Location location) {
-                if (location != null) {
-                    currentLocation = location;
-                    LatLng currentLatLng = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-                    updateLocationMarker(currentLatLng); // Dodane: Aktualizuj marker lokalizacji
-                    SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapContainer);
-                    mapFragment.getMapAsync(MapaFragment.this);
-                }
+        Location location = locationManager.getLastKnownLocation(provider);
+        if (location != null) {
+            LatLng endPoint = new LatLng(location.getLatitude(), location.getLongitude());
+            routePoints.add(endPoint);
+            routePolyline.add(endPoint);
+        }
+
+        recordingRoute = false;
+        btnSetStartPoint.setText("Start");
+        saveRouteToFile(fileName);
+        drawRouteOnMap(routePoints);
+    }
+
+    private void requestLocationPermissions() {
+        ActivityCompat.requestPermissions(requireActivity(),
+                new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+                LOCATION_PERMISSION_REQUEST_CODE);
+    }
+
+    private void drawRouteOnMap(List<LatLng> route) {
+        if (myMap != null && route != null && !route.isEmpty()) {
+            PolylineOptions polylineOptions = new PolylineOptions();
+            polylineOptions.addAll(route);
+            myMap.addPolyline(polylineOptions);
+        }
+    }
+
+    private void saveRouteToFile(String fileName) {
+        StringBuilder routeData = new StringBuilder();
+        for (LatLng point : routePoints) {
+            routeData.append(point.latitude).append(",").append(point.longitude).append("\n");
+        }
+
+        try {
+            FileOutputStream fos = new FileOutputStream(getExternalFilePath(fileName), true);
+            OutputStreamWriter osw = new OutputStreamWriter(fos);
+            osw.write(routeData.toString());
+            osw.close();
+            fos.close();
+
+            // Display a toast indicating that the file is saved
+            String toastMessage = "Plik '" + fileName + "' zapisany w: " + getExternalFilePath(fileName);
+            Toast.makeText(requireContext(), toastMessage, Toast.LENGTH_LONG).show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String getExternalFilePath(String fileName) {
+        // Get the public storage directory on the device
+        File directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS + "/Routes");
+
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+
+        // Create the file path with the directory name, file name, and extension
+        return directory.getAbsolutePath() + "/" + fileName + ".txt";
+    }
+
+    private void updateSavedRoutesList() {
+        // Pobierz listę plików zapisanych tras z katalogu publicznego przechowywania
+        File directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
+        File[] files = directory.listFiles();
+
+        // Zaktualizuj listę zapisanych tras
+        savedRouteFiles = new ArrayList<>();
+        if (files != null) {
+            for (File file : files) {
+                savedRouteFiles.add(file.getName());
             }
+        }
+
+        // Utwórz adapter i ustaw go dla widoku listy
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1, savedRouteFiles);
+        savedRoutesListView.setAdapter(adapter);
+
+        // Dodaj nasłuchiwanie zdarzeń kliknięcia na element listy
+        savedRoutesListView.setOnItemClickListener((parent, view, position, id) -> {
+            String selectedFileName = savedRouteFiles.get(position);
+            // Tutaj możesz obsłużyć wybór zapisanego pliku
+            Toast.makeText(requireContext(), "Wybrano trasę: " + selectedFileName, Toast.LENGTH_SHORT).show();
         });
     }
 
-    private void addStartPointButton() {
-        if (myMap != null) {
-            LatLng startPoint = new LatLng(currentLocation.getLatitude(), currentLocation.getLongitude());
-            MarkerOptions startMarkerOptions = new MarkerOptions().position(startPoint).title("Punkt startowy");
-            startMarkerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-            myMap.addMarker(startMarkerOptions);
-
-            // Dodaj przycisk do wyznaczania punktu startowego
-            myMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-                @Override
-                public boolean onMarkerClick(Marker marker) {
-                    if (marker.getTitle().equals("Punkt startowy")) {
-                        // Tutaj obsłuż logikę po naciśnięciu przycisku
-                        // Na przykład możesz użyć punktu startowego do innych operacji
-                        Toast.makeText(requireContext(), "Punkt startowy wyznaczony!", Toast.LENGTH_SHORT).show();
-
-                        // Zaktualizuj stan przycisku i tekst
-                        isStartPointSet = true;
-                        updateButtonText();
-                        return true;
-                    }
-                    return false;
-                }
-            });
-        }
-    }
-
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == FinePermissionCode) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                getLastLocation();
-            } else {
-                Toast.makeText(requireContext(), "Aplikacja nie ma pozwolenia na dostęp do lokalizacji urządzenia", Toast.LENGTH_SHORT).show();
-            }
+    public void onMapReady(GoogleMap googleMap) {
+        myMap = googleMap;
+
+        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                || ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            myMap.setMyLocationEnabled(true);
+        }
+
+        LocationManager locationManager = (LocationManager) requireContext().getSystemService(Context.LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
+        String provider = locationManager.getBestProvider(criteria, true);
+        Location location = locationManager.getLastKnownLocation(provider);
+        if (location != null) {
+            LatLng currentLatLng = new LatLng(location.getLatitude(), location.getLongitude());
+            myMap.addMarker(new MarkerOptions().position(currentLatLng).title("Aktualna lokalizacja").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
+            myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15));
         }
     }
 
-    public void getRoutePoints(LatLng start, LatLng end) {
-        if (start == null || end == null) {
-            Toast.makeText(requireContext(), "Unable to get location", Toast.LENGTH_LONG).show();
-            Log.e("TAG", " latlngs are null");
-        } else {
-            userLoc = start;
-            destLoc = end;
-            RouteDrawing routeDrawing = new RouteDrawing.Builder()
-                    .context(requireActivity())
-                    .travelMode(AbstractRouting.TravelMode.DRIVING)
-                    .withListener((RouteListener) this)
-                    .alternativeRoutes(true)
-                    .waypoints(userLoc, destLoc)
-                    .build();
-            routeDrawing.execute();
-        }
-    }
-
-    public void onRouteFailure(ErrorHandling e) {
-        Log.w("TAG", "onRoutingFailure: " + e);
-    }
-
-    public void onRouteStart() {
-        Log.d("TAG", "yes started");
-    }
-
-    public void onRouteSuccess(ArrayList<RouteInfoModel> routeInfoModelArrayList, int routeIndexing) {
-        ArrayList<Polyline> polylines = new ArrayList<>();  // Przenieś inicjalizację tutaj
-
-        PolylineOptions polylineOptions = new PolylineOptions();
-        for (int i = 0; i < routeInfoModelArrayList.size(); i++) {
-            if (i == routeIndexing) {
-                Log.e("TAG", "onRoutingSuccess: routeIndexing" + routeIndexing);
-                polylineOptions.color(Color.BLACK);
-                polylineOptions.width(12);
-                polylineOptions.addAll(routeInfoModelArrayList.get(routeIndexing).getPoints());
-                polylineOptions.startCap(new RoundCap());
-                polylineOptions.endCap(new RoundCap());
-                Polyline polyline = myMap.addPolyline(polylineOptions);
-                polylines.add(polyline);
-            }
-        }
-    }
-
-    public void onRouteCancelled() {
-        Log.d("TAG", "route canceled");
-        // restart your route drawing
-    }
-
-    private ArrayList<ArrayList<LatLng>> loadSavedRoutesFromFile() {
-        ArrayList<ArrayList<LatLng>> savedRoutes = new ArrayList<>();
+    private void createFile(String fileName) {
         try {
-            FileInputStream fis = requireContext().openFileInput("trasy.txt");
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fis));
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                String[] coordinates = line.split(",");
-                ArrayList<LatLng> route = new ArrayList<>();
-                for (int i = 0; i < coordinates.length; i += 2) {
-                    double lat = Double.parseDouble(coordinates[i]);
-                    double lng = Double.parseDouble(coordinates[i + 1]);
-                    route.add(new LatLng(lat, lng));
-                }
-                savedRoutes.add(route);
-            }
-            bufferedReader.close();
-        } catch (IOException | NumberFormatException e) {
+            FileOutputStream fos = requireContext().openFileOutput(fileName + ".txt", Context.MODE_APPEND);
+            OutputStreamWriter osw = new OutputStreamWriter(fos);
+            osw.write("Zawartość pliku");
+            osw.close();
+            fos.close();
+        } catch (IOException e) {
             e.printStackTrace();
-            Toast.makeText(requireContext(), "Error loading routes from file", Toast.LENGTH_SHORT).show();
         }
-        return savedRoutes;
     }
-    @Override
-    public void onStop() {
-        super.onStop();
-        // Remove location updates when the fragment is stopped
-        fusedLocationProviderClient.removeLocationUpdates(locationCallback);
+
+    private boolean checkLocationPermission() {
+        return ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                || ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED;
     }
 }

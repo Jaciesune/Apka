@@ -20,6 +20,7 @@ public class TrasyAdapter extends RecyclerView.Adapter<TrasyAdapter.ViewHolder> 
 
     public interface OnItemClickListener {
         void onDeleteClick(int position);
+        void onItemClick(int position);
     }
 
     public TrasyAdapter(ArrayList<ArrayList<LatLng>> routes, OnItemClickListener listener) {
@@ -55,6 +56,19 @@ public class TrasyAdapter extends RecyclerView.Adapter<TrasyAdapter.ViewHolder> 
                 }
             }
         });
+
+        // Dodaj obsługę zdarzenia kliknięcia na element listy
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (listener != null) {
+                    int adapterPosition = holder.getAdapterPosition();
+                    if (adapterPosition != RecyclerView.NO_POSITION) {
+                        listener.onItemClick(adapterPosition);
+                    }
+                }
+            }
+        });
     }
 
     @Override
@@ -65,7 +79,7 @@ public class TrasyAdapter extends RecyclerView.Adapter<TrasyAdapter.ViewHolder> 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         public ImageButton btnDelete;
-        TextView tvRoute;
+        public TextView tvRoute;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
