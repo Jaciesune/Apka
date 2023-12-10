@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="ic_launcher_background">#7052F1</color>
+    <color name="lightModeColorAccent">#98e7ed</color>
+    <color name="lightModeColorPrimary">#FFFFFF</color>
+    <color name="lightModeColorPrimaryDark">#7052F1</color>
+    <color name="nightModeColorAccent">#e8b3c2</color>
+    <color name="nightModeColorPrimary">#121212</color>
+    <color name="nightModeColorPrimaryDark">#a7424b</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="Finito">Zakończ</string>
+    <string name="Inicio">Rozpocznij</string>
+    <string name="Mapa">Mapa</string>
+    <string name="Trasy">Trasy</string>
+    <string name="Użytkownik">Użytkownik</string>
+    <string name="app_name">ExploreX</string>
+    <string name="e_mail">E-mail</string>
+    <string name="firebase_database_url" translatable="false">https://explorex-ba666-default-rtdb.europe-west1.firebasedatabase.app</string>
+    <string name="gcm_defaultSenderId" translatable="false">539833726700</string>
+    <string name="google_api_key" translatable="false">AIzaSyAKct6MeicrnBs6ArC68WgLPOX_HqIZWKM</string>
+    <string name="google_app_id" translatable="false">1:539833726700:android:856344a601f8c8972957c9</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAKct6MeicrnBs6ArC68WgLPOX_HqIZWKM</string>
+    <string name="google_storage_bucket" translatable="false">explorex-ba666.appspot.com</string>
+    <string name="has_o">Hasło</string>
+    <string name="haslo">Hasło</string>
+    <string name="logout">Wyloguj</string>
+    <string name="map_api_key">AIzaSyAKT_bvR0k932mGb3Iw75-XjXMsS1Mc5ms</string>
+    <string name="powtorz_haslo">Powtórz hasło</string>
+    <string name="project_id" translatable="false">explorex-ba666</string>
+    <string name="zalogowany_jako">Zalogowany jako</string>
+    <string name="zaloguj_sie">Zaloguj się</string>
+    <string name="zarejestruj_sie">Zarejestruj się.</string>
+    <style name="Base.Theme.ExploreX" parent="Theme.Material3.DayNight.NoActionBar">
+        
+        
+    </style>
+    <style name="Theme.ExploreX" parent="Base.Theme.ExploreX"/>
+</resources>

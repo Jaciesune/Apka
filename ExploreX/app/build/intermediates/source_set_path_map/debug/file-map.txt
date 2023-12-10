@@ -1,0 +1,41 @@
+com.example.explorex.app-activity-1.8.0-0 C:\Users\Inylle\.gradle\caches\transforms-3\038e721058076c1a6900b224b2212dc2\transformed\activity-1.8.0\res
+com.example.explorex.app-play-services-maps-18.2.0-1 C:\Users\Inylle\.gradle\caches\transforms-3\0486d2bcfdf214e9d8712f3589ea9087\transformed\play-services-maps-18.2.0\res
+com.example.explorex.app-core-runtime-2.2.0-2 C:\Users\Inylle\.gradle\caches\transforms-3\1533edd473df621b672eca26f04e9c49\transformed\core-runtime-2.2.0\res
+com.example.explorex.app-lifecycle-livedata-2.6.1-3 C:\Users\Inylle\.gradle\caches\transforms-3\23111cf00938e66cf02143a2756ad3a8\transformed\lifecycle-livedata-2.6.1\res
+com.example.explorex.app-firebase-common-20.4.2-4 C:\Users\Inylle\.gradle\caches\transforms-3\2710805c419e8cbaf939421bbbc993aa\transformed\firebase-common-20.4.2\res
+com.example.explorex.app-lifecycle-runtime-2.6.1-5 C:\Users\Inylle\.gradle\caches\transforms-3\2c2201f7d8fb3d0af814dd503284254f\transformed\lifecycle-runtime-2.6.1\res
+com.example.explorex.app-core-ktx-1.9.0-6 C:\Users\Inylle\.gradle\caches\transforms-3\3e13c3ab8c88b33579cd1162e0ad9b1b\transformed\core-ktx-1.9.0\res
+com.example.explorex.app-material-1.10.0-7 C:\Users\Inylle\.gradle\caches\transforms-3\40edaa3566063b5bf721b42698eb0f51\transformed\material-1.10.0\res
+com.example.explorex.app-core-1.9.0-8 C:\Users\Inylle\.gradle\caches\transforms-3\4ef38977c2e5999f75059a452f3f5df9\transformed\core-1.9.0\res
+com.example.explorex.app-startup-runtime-1.1.1-9 C:\Users\Inylle\.gradle\caches\transforms-3\5369f1195e444a3296e4f1f3a03a3c89\transformed\startup-runtime-1.1.1\res
+com.example.explorex.app-lifecycle-livedata-core-2.6.1-10 C:\Users\Inylle\.gradle\caches\transforms-3\5b2c0ee4b5e06841b08c58ee145fd621\transformed\lifecycle-livedata-core-2.6.1\res
+com.example.explorex.app-browser-1.4.0-11 C:\Users\Inylle\.gradle\caches\transforms-3\63ea340fb1d8baf6ba4f1e83db7be173\transformed\browser-1.4.0\res
+com.example.explorex.app-transition-1.2.0-12 C:\Users\Inylle\.gradle\caches\transforms-3\79a4db5007c180fbe70e70bf8d543bf4\transformed\transition-1.2.0\res
+com.example.explorex.app-constraintlayout-2.1.4-13 C:\Users\Inylle\.gradle\caches\transforms-3\7c11b619ed0b1cc8ca2186c050650596\transformed\constraintlayout-2.1.4\res
+com.example.explorex.app-recyclerview-1.3.2-14 C:\Users\Inylle\.gradle\caches\transforms-3\7d20e233e168a403405752378397313f\transformed\recyclerview-1.3.2\res
+com.example.explorex.app-lifecycle-viewmodel-2.6.1-15 C:\Users\Inylle\.gradle\caches\transforms-3\879ffcd9b929e9645956bb6a1ea397c2\transformed\lifecycle-viewmodel-2.6.1\res
+com.example.explorex.app-viewpager2-1.1.0-beta02-16 C:\Users\Inylle\.gradle\caches\transforms-3\9984fbe24882bb70faa748376b94d998\transformed\viewpager2-1.1.0-beta02\res
+com.example.explorex.app-lifecycle-viewmodel-savedstate-2.6.1-17 C:\Users\Inylle\.gradle\caches\transforms-3\a066d5ae3efa603bda9ea958258168c4\transformed\lifecycle-viewmodel-savedstate-2.6.1\res
+com.example.explorex.app-emoji2-1.2.0-18 C:\Users\Inylle\.gradle\caches\transforms-3\b1f6aa6794e70fa39718940c64fe0fc9\transformed\emoji2-1.2.0\res
+com.example.explorex.app-profileinstaller-1.3.0-19 C:\Users\Inylle\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\res
+com.example.explorex.app-savedstate-1.2.1-20 C:\Users\Inylle\.gradle\caches\transforms-3\b90226339d240019d48739cc6abddf78\transformed\savedstate-1.2.1\res
+com.example.explorex.app-play-services-base-18.1.0-21 C:\Users\Inylle\.gradle\caches\transforms-3\bc1f30bcb410468b045fedb58b052fea\transformed\play-services-base-18.1.0\res
+com.example.explorex.app-coordinatorlayout-1.1.0-22 C:\Users\Inylle\.gradle\caches\transforms-3\bda2f3c1b1ab67e56e56226fe4b45a01\transformed\coordinatorlayout-1.1.0\res
+com.example.explorex.app-lifecycle-process-2.6.1-23 C:\Users\Inylle\.gradle\caches\transforms-3\c6836b87af8dc1b4fd7ba54a39a14198\transformed\lifecycle-process-2.6.1\res
+com.example.explorex.app-appcompat-resources-1.6.1-24 C:\Users\Inylle\.gradle\caches\transforms-3\cd253dbd22b30a7a6e2669f74b436c71\transformed\appcompat-resources-1.6.1\res
+com.example.explorex.app-appcompat-1.6.1-25 C:\Users\Inylle\.gradle\caches\transforms-3\e3f6bfab50c8163db78f3c6ec02c64e8\transformed\appcompat-1.6.1\res
+com.example.explorex.app-emoji2-views-helper-1.2.0-26 C:\Users\Inylle\.gradle\caches\transforms-3\e55f7ef68e380b8426fb820738262e27\transformed\emoji2-views-helper-1.2.0\res
+com.example.explorex.app-drawerlayout-1.1.1-27 C:\Users\Inylle\.gradle\caches\transforms-3\e98923e73924efdb4a8276df53193584\transformed\drawerlayout-1.1.1\res
+com.example.explorex.app-play-services-basement-18.1.0-28 C:\Users\Inylle\.gradle\caches\transforms-3\e992bcd92a6855b58da6c90f9b92b07e\transformed\play-services-basement-18.1.0\res
+com.example.explorex.app-cardview-1.0.0-29 C:\Users\Inylle\.gradle\caches\transforms-3\f894df28e013aa5579e6f71be090dec5\transformed\cardview-1.0.0\res
+com.example.explorex.app-fragment-1.6.2-30 C:\Users\Inylle\.gradle\caches\transforms-3\f9c32439afc96b2ecde6a0ff0ebfef92\transformed\fragment-1.6.2\res
+com.example.explorex.app-annotation-experimental-1.3.0-31 C:\Users\Inylle\.gradle\caches\transforms-3\fb3749072db03c0afe1216cff719d970\transformed\annotation-experimental-1.3.0\res
+com.example.explorex.app-customview-poolingcontainer-1.0.0-32 C:\Users\Inylle\.gradle\caches\transforms-3\ffc5747439b0e3c8dc4e81a7d06f78d5\transformed\customview-poolingcontainer-1.0.0\res
+com.example.explorex.app-pngs-33 C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\build\generated\res\pngs\debug
+com.example.explorex.app-res-34 C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\build\generated\res\processDebugGoogleServices
+com.example.explorex.app-resValues-35 C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\build\generated\res\resValues\debug
+com.example.explorex.app-packageDebugResources-36 C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.explorex.app-packageDebugResources-37 C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.explorex.app-merged_res-38 C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\build\intermediates\merged_res\debug
+com.example.explorex.app-debug-39 C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\debug\res
+com.example.explorex.app-main-40 C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\res

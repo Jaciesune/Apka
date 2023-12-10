@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="firebase_database_url" translatable="false">https://explorex-ba666-default-rtdb.europe-west1.firebasedatabase.app</string>
+    <string name="gcm_defaultSenderId" translatable="false">539833726700</string>
+    <string name="google_api_key" translatable="false">AIzaSyAKct6MeicrnBs6ArC68WgLPOX_HqIZWKM</string>
+    <string name="google_app_id" translatable="false">1:539833726700:android:856344a601f8c8972957c9</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAKct6MeicrnBs6ArC68WgLPOX_HqIZWKM</string>
+    <string name="google_storage_bucket" translatable="false">explorex-ba666.appspot.com</string>
+    <string name="project_id" translatable="false">explorex-ba666</string>
+</resources>

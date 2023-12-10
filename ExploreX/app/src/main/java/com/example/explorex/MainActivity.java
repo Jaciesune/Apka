@@ -1,10 +1,16 @@
 package com.example.explorex;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Interpolator;
 import android.view.animation.PathInterpolator;
@@ -12,10 +18,13 @@ import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import com.example.explorex.databinding.ActivityMainBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.button.MaterialButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import android.hardware.Sensor;
@@ -25,6 +34,10 @@ import android.hardware.SensorManager;
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.TextView;
+
+import java.util.Arrays;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
@@ -114,6 +127,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
+    private final long FIVE_SECONDS_IN_MILLIS = 5000;
+    private boolean isNightModePending = false;
+    private long nightModeStartTime = 0;
+
     @Override
     public void onSensorChanged(SensorEvent event) {
         if (event.sensor.getType() == Sensor.TYPE_LIGHT) {
@@ -122,28 +139,111 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             // Adjust the threshold based on your preference
             float threshold = 25.0f;
 
-            int newColor;
             if (lightLevel < threshold && !isNightMode) {
                 // Enable NightMode
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-                isNightMode = true;
-                targetColor = getResources().getColor(R.color.nightModeColorPrimary);
-                newColor = targetColor;
+                if (!isNightModePending) {
+                    isNightModePending = true;
+                    nightModeStartTime = System.currentTimeMillis();
+                }
             } else if (lightLevel >= threshold && isNightMode) {
                 // Enable LightMode
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
-                isNightMode = false;
-                targetColor = getResources().getColor(R.color.lightModeColorPrimary);
-                newColor = targetColor;
+                if (!isNightModePending) {
+                    isNightModePending = true;
+                    nightModeStartTime = System.currentTimeMillis();
+                }
             } else {
-                // Use a custom easing function for smoother transition
-                float fraction = calculateFraction(lightLevel, threshold, 500.0f);
-                newColor = (int) new ArgbEvaluator().evaluate(fraction, currentColor, targetColor);
+                // Reset the timer if the condition is not met
+                isNightModePending = false;
+                nightModeStartTime = 0;
             }
 
-            // Animate the color change
-            animateColorChange(newColor);
+            // Check if the condition has been met for at least 5 seconds
+            if (isNightModePending && (System.currentTimeMillis() - nightModeStartTime) >= FIVE_SECONDS_IN_MILLIS) {
+                // Change the mode
+                isNightMode = !isNightMode;
+                int newColor = isNightMode ? getResources().getColor(R.color.nightModeColorPrimary)
+                        : getResources().getColor(R.color.lightModeColorPrimary);
+
+                // Animate the color change
+                animateColorChange(newColor);
+
+                // Apply the night mode changes to the current views without recreating the activity
+                applyNightMode(isNightMode);
+
+                // Reset the timer and flag
+                isNightModePending = false;
+                nightModeStartTime = 0;
+            }
         }
+    }
+
+
+    private void applyNightMode(boolean isNightMode) {
+        // Determine background, button, and text colors based on day/night mode
+        int backgroundColor = isNightMode
+                ? ContextCompat.getColor(this, R.color.nightModeColorPrimary)
+                : ContextCompat.getColor(this, R.color.lightModeColorPrimary);
+
+        int buttonColor = isNightMode
+                ? ContextCompat.getColor(this, R.color.nightModeColorPrimaryDark)
+                : ContextCompat.getColor(this, R.color.lightModeColorPrimaryDark);
+
+        int textColor = isNightMode
+                ? ContextCompat.getColor(this, R.color.white)
+                : ContextCompat.getColor(this, R.color.black);
+
+        // Set background color
+        binding.bottomNavigationView.setBackgroundColor(backgroundColor);
+
+        // Set item text colors
+        ColorStateList itemTextColorStateList = new ColorStateList(
+                new int[][]{
+                        new int[]{android.R.attr.state_checked},
+                        new int[]{-android.R.attr.state_checked},
+                },
+                new int[]{
+                        textColor, // Color for checked state
+                        textColor, // Color for unchecked state
+                }
+        );
+        binding.bottomNavigationView.setItemTextColor(itemTextColorStateList);
+
+        // Set icon colors
+        int iconColorSelected = isNightMode
+                ? ContextCompat.getColor(this, R.color.nightModeColorPrimaryDark)
+                : ContextCompat.getColor(this, R.color.lightModeColorPrimaryDark);
+
+
+        // Explicitly set item icon tint for the checked state
+        ColorStateList itemIconColorStateList = new ColorStateList(
+                new int[][]{
+                        new int[]{android.R.attr.state_checked},
+                        new int[]{-android.R.attr.state_checked},
+                },
+                new int[]{
+                        iconColorSelected, // Color for selected state
+                        iconColorSelected, // Color for unselected state
+                }
+        );
+        binding.bottomNavigationView.setItemIconTintList(itemIconColorStateList);
+
+        Arrays.asList(R.id.logout_button, R.id.btnSetStartPoint, R.id.textViewLoggedUser, R.id.textViewUzytkownik)
+                .forEach(id -> {
+                    View view = findViewById(id);
+                    if (view != null) {
+                        if(id != R.id.textViewUzytkownik)
+                        {
+                            view.setBackgroundColor(buttonColor);
+                        }else
+                        if (view instanceof TextView) {
+                            if(id == R.id.textViewUzytkownik)
+                            {
+
+                            }
+                            ((TextView) view).setTextColor(textColor);
+                        }
+                    }
+                });
     }
 
     // Custom easing function using PathInterpolator
