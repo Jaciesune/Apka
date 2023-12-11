@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,8 +55,12 @@ public class TrasyAdapter extends RecyclerView.Adapter<TrasyAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String filePath = savedRouteFilePaths.get(position);
+        File file = new File(filePath);
 
-        holder.tvFileName.setText("Route " + (position + 1));
+        // usuwanie rozszerzenia pliku
+        String fileName = removeFileExtension(file.getName());
+
+        holder.tvFileName.setText(fileName);
 
         holder.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +69,6 @@ public class TrasyAdapter extends RecyclerView.Adapter<TrasyAdapter.ViewHolder> 
             }
         });
 
-        // Handle item click if needed
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -88,6 +92,16 @@ public class TrasyAdapter extends RecyclerView.Adapter<TrasyAdapter.ViewHolder> 
                 }
             }
         });
+    }
+
+    // Metoda do usuwania rozszerzenia z nazwy pliku
+    private String removeFileExtension(String fileName) {
+        int lastDotPosition = fileName.lastIndexOf(".");
+        if (lastDotPosition != -1) {
+            return fileName.substring(0, lastDotPosition);
+        } else {
+            return fileName;
+        }
     }
 
     private void showDeleteConfirmationDialog(final int position, View view) {
