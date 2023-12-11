@@ -75,10 +75,11 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
                 if (recordingRoute) {
                     // If recording a route, stop recording
                     stopRecordingRoute();
-                    saveLocationToFile("defaultFileName");
+                    // Save location using the entered file name
+                    saveLocationToFile(enteredFileName);
                 } else {
-                    // If not recording a route, start recording
-                    showFileNameDialog();
+                    // If not recording a route, show dialog for file name and start recording
+                    showFileNameDialogAndStartRecording();
                 }
             }
         });
@@ -89,6 +90,33 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
         }
 
         return rootView;
+    }
+
+    private void showFileNameDialogAndStartRecording() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("Rozpocznij trasę");
+
+        final EditText editText = new EditText(requireContext());
+        editText.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(editText);
+
+        builder.setPositiveButton("Start", (dialog, which) -> {
+            // Store the entered text in the class-level variable
+            enteredFileName = editText.getText().toString().trim();
+
+            if (!enteredFileName.isEmpty()) {
+                // Start recording route with the entered file name
+                startRecordingRoute(enteredFileName);
+
+                // Display a toast indicating the start of recording with the file name
+                String toastMessage = "Rozpoczęto nagrywanie trasy. Nazwa pliku: '" + enteredFileName + "'";
+                Toast.makeText(requireContext(), toastMessage, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        builder.setNegativeButton("Anuluj", (dialog, which) -> dialog.cancel());
+
+        builder.show();
     }
 
     private void showFileNameDialog() {
@@ -211,12 +239,16 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
                 LOCATION_PERMISSION_REQUEST_CODE);
     }
 
-    private void drawRouteOnMap(List<LatLng> route) {
+    public void drawRouteOnMap(List<LatLng> route) {
         if (myMap != null && route != null && !route.isEmpty()) {
             PolylineOptions polylineOptions = new PolylineOptions();
             polylineOptions.addAll(route);
             myMap.addPolyline(polylineOptions);
         }
+    }
+
+    public class Constants {
+        public static final String ROUTES_DIRECTORY = "Routes";
     }
 
     private void saveRouteToFile(String fileName) {
@@ -243,7 +275,7 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
 
     private String getExternalFilePath(String fileName) {
         // Get the public storage directory on the device
-        File directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS + "/Routes");
+        File directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS + "/" + Constants.ROUTES_DIRECTORY);
 
         if (!directory.exists()) {
             directory.mkdirs();
@@ -255,7 +287,7 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
 
     private void updateSavedRoutesList() {
         // Pobierz listę plików zapisanych tras z katalogu publicznego przechowywania
-        File directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
+        File directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS + "/" + Constants.ROUTES_DIRECTORY);
         File[] files = directory.listFiles();
 
         // Zaktualizuj listę zapisanych tras

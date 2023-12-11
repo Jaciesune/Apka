@@ -1,13 +1,15 @@
 package com.example.explorex;
 
-import android.content.Context;
+import com.google.android.gms.maps.model.LatLng;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,42 +17,19 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class TrasyFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private TrasyAdapter trasyAdapter;
-    private ArrayList<ArrayList<LatLng>> savedRoutes = new ArrayList<>();
-
-    private ArrayList<String> routeNames = new ArrayList<>();
+    private ArrayList<String> savedRouteFilePaths = new ArrayList<>(); // Change to ArrayList
 
     public TrasyFragment() {
-
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        savedRoutes = loadSavedRoutesFromFile();
-        routeNames = loadRouteNamesFromFile();
-    }
-
-    private ArrayList<String> loadRouteNamesFromFile() {
-        ArrayList<String> routeNames = new ArrayList<>();
-        File filesDir = requireContext().getFilesDir();
-        File[] files = filesDir.listFiles();
-        for (File file : files) {
-            if (file.isFile() && file.getName().endsWith(".txt")) {
-                routeNames.add(file.getName().replace(".txt", ""));
-            }
-        }
-        return routeNames;
+        // Required empty public constructor
     }
 
     @Override
@@ -60,88 +39,129 @@ public class TrasyFragment extends Fragment {
         recyclerView = rootView.findViewById(R.id.recyclerViewRoutes);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
 
-        trasyAdapter = new TrasyAdapter(savedRoutes, new TrasyAdapter.OnItemClickListener() {
+        trasyAdapter = new TrasyAdapter(savedRouteFilePaths, new TrasyAdapter.OnItemClickListener() {
             @Override
             public void onDeleteClick(int position) {
-                removeRoute(position);
+                deleteFile(position);
             }
 
+            @Override
             public void onItemClick(int position) {
-                showRouteOnMap(position);
+                String selectedFilePath = savedRouteFilePaths.get(position);
+                // Implement your logic for opening or displaying the route
+            }
+
+            public void onShowRouteClick(int position) {
+                String selectedFilePath = savedRouteFilePaths.get(position);
+                showRouteOnMap(selectedFilePath);
             }
         });
 
         recyclerView.setAdapter(trasyAdapter);
 
+        // Ustaw słuchacza dla przycisku "Pokaż trasę"
+        trasyAdapter.setOnShowRouteClickListener(new TrasyAdapter.OnItemClickListener() {
+            @Override
+            public void onDeleteClick(int position) {
+
+            }
+
+            @Override
+            public void onItemClick(int position) {
+
+            }
+
+            public void onShowRouteClick(int position) {
+                String selectedFilePath = savedRouteFilePaths.get(position);
+                showRouteOnMap(selectedFilePath);
+            }
+        });
+
+        // Load saved routes when the fragment is created
+        loadSavedRoutes();
+
         return rootView;
     }
 
-    private void showRouteOnMap(int position) {
-        // Przekazanie wybranej trasy do fragmentu MapaFragment
-        if (getActivity() instanceof MainActivity) {
-            MainActivity mainActivity = (MainActivity) getActivity();
+    private void showRouteOnMap(String filePath) {
+        // Implementuj logikę do wczytywania punktów trasy z pliku
+        List<LatLng> routePoints = loadRoutePointsFromFile(filePath);
 
-            // Zmiana - przekazujemy pojedynczą trasę, a nie całą listę tras
-            ArrayList<LatLng> selectedRoute = savedRoutes.get(position);
-            mainActivity.showRouteOnMap(selectedRoute);
+        // Sprawdź, czy istnieje MapaFragment
+        MapaFragment mapaFragment = getMapaFragment();
+
+        if (mapaFragment != null) {
+            // Wywołaj metodę drawRouteOnMap z MapaFragment
+            mapaFragment.drawRouteOnMap(routePoints);
+        } else {
+            // MapaFragment nie istnieje lub nie jest dostępny
+            // Możesz obsłużyć to odpowiednio
+            Toast.makeText(requireContext(), "Map is not available", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void removeRoute(int position) {
-        savedRoutes.remove(position);
-        trasyAdapter.updateRoutes(savedRoutes);
-        saveRoutesToFile(savedRoutes);
+    // Metoda do uzyskania dostępu do MapaFragment (przykładowa implementacja)
+    private MapaFragment getMapaFragment() {
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        return (MapaFragment) fragmentManager.findFragmentById(R.id.mapContainer);
     }
 
-    private void saveRoutesToFile(ArrayList<ArrayList<LatLng>> routes) {
-        try {
-            FileOutputStream fos = requireContext().openFileOutput("trasy.txt", Context.MODE_PRIVATE);
-            OutputStreamWriter osw = new OutputStreamWriter(fos);
+    // Metoda do wczytywania punktów trasy z pliku (przykładowa implementacja)
+    private List<LatLng> loadRoutePointsFromFile(String filePath) {
 
-            for (ArrayList<LatLng> route : routes) {
-                for (LatLng point : route) {
-                    osw.write(point.latitude + "," + point.longitude + ",");
-                }
-                osw.write("\n");
+        List<LatLng> routePoints = new ArrayList<>();
+
+        try {
+            File file = new File(filePath);
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String[] coordinates = line.split(",");
+                double latitude = Double.parseDouble(coordinates[0].trim());
+                double longitude = Double.parseDouble(coordinates[1].trim());
+                LatLng point = new LatLng(latitude, longitude);
+                routePoints.add(point);
             }
 
-            osw.close();
-            fos.close();
-
-            Toast.makeText(requireContext(), "Updated trasy.txt file", Toast.LENGTH_SHORT).show();
+            br.close();
         } catch (IOException e) {
             e.printStackTrace();
-            Toast.makeText(requireContext(), "Error saving routes to file", Toast.LENGTH_SHORT).show();
+        }
+
+        return routePoints;
+    }
+
+    private void deleteFile(int position) {
+        String filePath = savedRouteFilePaths.get(position);
+        File fileToDelete = new File(filePath);
+
+        if (fileToDelete.exists()) {
+            if (fileToDelete.delete()) {
+                // Usunięto plik
+                savedRouteFilePaths.remove(position);
+                trasyAdapter.notifyItemRemoved(position);
+            } else {
+                // Błąd podczas usuwania pliku
+                Toast.makeText(requireContext(), "Błąd podczas usuwania pliku", Toast.LENGTH_SHORT).show();
+            }
+        } else {
+            // Plik nie istnieje
+            Toast.makeText(requireContext(), "Plik nie istnieje", Toast.LENGTH_SHORT).show();
         }
     }
 
-    private ArrayList<ArrayList<LatLng>> loadSavedRoutesFromFile() {
-        ArrayList<ArrayList<LatLng>> savedRoutes = new ArrayList<>();
-        try {
-            InputStream inputStream = requireContext().openFileInput("trasy.txt");
-            InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-            BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+    private void loadSavedRoutes() {
+        File directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS + "/" + MapaFragment.Constants.ROUTES_DIRECTORY);
+        File[] files = directory.listFiles();
 
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                String[] coordinates = line.split(",");
-                ArrayList<LatLng> route = new ArrayList<>();
-                for (int i = 0; i < coordinates.length; i += 2) {
-                    double lat = Double.parseDouble(coordinates[i]);
-                    double lng = Double.parseDouble(coordinates[i + 1]);
-                    route.add(new LatLng(lat, lng));
-                }
-                savedRoutes.add(route);
+        if (files != null) {
+            for (File file : files) {
+                savedRouteFilePaths.add(file.getAbsolutePath());
             }
-
-            bufferedReader.close();
-            inputStreamReader.close();
-            inputStream.close();
-        } catch (IOException | NumberFormatException e) {
-            e.printStackTrace();
-            // Dodaj obsługę błędu, np. gdy plik nie istnieje
-            Toast.makeText(requireContext(), "Error loading routes from file", Toast.LENGTH_SHORT).show();
         }
-        return savedRoutes;
+
+        // Notify the adapter that the data has changed
+        trasyAdapter.updateRoutePaths(savedRouteFilePaths);
     }
 }
