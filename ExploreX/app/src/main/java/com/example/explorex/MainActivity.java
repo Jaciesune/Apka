@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
-    private final long FIVE_SECONDS_IN_MILLIS = 5000;
+    private final long THREE_SECONDS_IN_MILLIS = 3000;
     private boolean isNightModePending = false;
     private long nightModeStartTime = 0;
 
@@ -157,12 +157,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 nightModeStartTime = 0;
             }
 
-            // Check if the condition has been met for at least 5 seconds
-            if (isNightModePending && (System.currentTimeMillis() - nightModeStartTime) >= FIVE_SECONDS_IN_MILLIS) {
+            // Check if the condition has been met for at least 3 seconds
+            if (isNightModePending && (System.currentTimeMillis() - nightModeStartTime) >= THREE_SECONDS_IN_MILLIS) {
                 // Change the mode
                 isNightMode = !isNightMode;
-                int newColor = isNightMode ? getResources().getColor(R.color.nightModeColorPrimary)
-                        : getResources().getColor(R.color.lightModeColorPrimary);
+                int newColor = isNightMode
+                        ? ContextCompat.getColor(this, R.color.nightModeColorPrimary)
+                        : ContextCompat.getColor(this, R.color.lightModeColorPrimary);
 
                 // Animate the color change
                 animateColorChange(newColor);
@@ -176,6 +177,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
         }
     }
+
+
 
 
     private void applyNightMode(boolean isNightMode) {
