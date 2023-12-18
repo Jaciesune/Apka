@@ -1,0 +1,186 @@
+[
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\drawable_ic_trasy_night.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\drawable\\ic_trasy_night.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\layout_activity_login.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\mipmap-xxhdpi\\ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\layout_item_route.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\layout\\item_route.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\layout_fragment_mapa.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\layout\\fragment_mapa.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\mipmap-hdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\drawable_baseline_person_24.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\drawable\\baseline_person_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\layout_activity_google_map.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\layout\\activity_google_map.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\mipmap-mdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\layout_activity_register.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\layout\\activity_register.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\drawable_ripple_light_mode.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\drawable\\ripple_light_mode.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\menu_bottom_nav_menu.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\menu\\bottom_nav_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\mipmap-xxxhdpi\\ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\drawable_bottom_nav_item_background_layer.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\drawable\\bottom_nav_item_background_layer.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\layout_fragment_trasy.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\layout\\fragment_trasy.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\mipmap-xhdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\mipmap-xhdpi\\ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\mipmap-hdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\drawable_ripple_night_mode.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\drawable\\ripple_night_mode.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\drawable_baseline_alternate_email_24.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\drawable\\baseline_alternate_email_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\mipmap-hdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\mipmap-hdpi\\ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\drawable_baseline_map_24.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\drawable\\baseline_map_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\drawable_baseline_lock_24.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\drawable\\baseline_lock_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\drawable_baseline_architecture_24.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\drawable\\baseline_architecture_24.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\drawable_bottom_nav_item_background_night.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\drawable\\bottom_nav_item_background_night.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\drawable_bottom_nav_item_background.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\drawable\\bottom_nav_item_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\drawable_ripple_selector_light.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\drawable\\ripple_selector_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\mipmap-mdpi_ic_launcher_foreground.webp.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\mipmap-mdpi\\ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\mipmap-anydpi-v26\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\layout_fragment_uzytkownik.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\layout\\fragment_uzytkownik.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\drawable_bottom_nav_item_background_light.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\drawable\\bottom_nav_item_background_light.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\drawable_ic_uzytkownik_night.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\drawable\\ic_uzytkownik_night.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\drawable_ic_map_night.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\drawable\\ic_map_night.xml"
+    },
+    {
+        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-38:\\drawable_ripple_selector.xml.flat",
+        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\drawable\\ripple_selector.xml"
+    }
+]

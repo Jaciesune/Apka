@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Mapa"
+        android:icon="@drawable/baseline_map_24"
+        android:id="@+id/Mapa_navbar"
+        />
+    <item
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Trasy"
+        android:icon="@drawable/baseline_architecture_24"
+        android:id="@+id/Trasy_navbar"
+
+        />
+    <item
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:title="Użytkownik"
+        android:icon="@drawable/baseline_person_24"
+        android:id="@+id/Użytkownik_navbar"
+
+        />
+</menu>
