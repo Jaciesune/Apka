@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.explorex.app-mergeDebugResources-36:/values-ka/values-ka.xml",
+            "outputFile": "com.example.explorex.app-mergeDebugResources-37:/values-ka/values-ka.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Inylle\\.gradle\\caches\\transforms-3\\63ea340fb1d8baf6ba4f1e83db7be173\\transformed\\browser-1.4.0\\res\\values-ka\\values-ka.xml",

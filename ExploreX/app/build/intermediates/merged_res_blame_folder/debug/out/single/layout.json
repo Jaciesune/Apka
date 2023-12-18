@@ -1,38 +1,34 @@
 [
     {
-        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-mergeDebugResources-37:\\layout\\activity_register.xml",
-        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\layout\\activity_register.xml"
+        "merged": "com.example.explorex.app-mergeDebugResources-38:/layout/activity_login.xml",
+        "source": "com.example.explorex.app-main-41:/layout/activity_login.xml"
     },
     {
-        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-mergeDebugResources-37:\\layout\\fragment_trasy.xml",
-        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\layout\\fragment_trasy.xml"
+        "merged": "com.example.explorex.app-mergeDebugResources-38:/layout/fragment_trasy.xml",
+        "source": "com.example.explorex.app-main-41:/layout/fragment_trasy.xml"
     },
     {
-        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-mergeDebugResources-37:\\layout\\activity_login.xml",
-        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\layout\\activity_login.xml"
+        "merged": "com.example.explorex.app-mergeDebugResources-38:/layout/activity_google_map.xml",
+        "source": "com.example.explorex.app-main-41:/layout/activity_google_map.xml"
     },
     {
-        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-mergeDebugResources-37:\\layout\\item_route.xml",
-        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\layout\\item_route.xml"
+        "merged": "com.example.explorex.app-mergeDebugResources-38:/layout/item_route.xml",
+        "source": "com.example.explorex.app-main-41:/layout/item_route.xml"
     },
     {
-        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-mergeDebugResources-37:\\layout\\fragment_uzytkownik.xml",
-        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\layout\\fragment_uzytkownik.xml"
+        "merged": "com.example.explorex.app-mergeDebugResources-38:/layout/activity_register.xml",
+        "source": "com.example.explorex.app-main-41:/layout/activity_register.xml"
     },
     {
-        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-mergeDebugResources-37:\\layout\\fragment_mapa.xml",
-        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\layout\\fragment_mapa.xml"
+        "merged": "com.example.explorex.app-mergeDebugResources-38:/layout/fragment_uzytkownik.xml",
+        "source": "com.example.explorex.app-main-41:/layout/fragment_uzytkownik.xml"
     },
     {
-        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-mergeDebugResources-37:\\layout\\activity_main.xml",
-        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\layout\\activity_main.xml"
+        "merged": "com.example.explorex.app-mergeDebugResources-38:/layout/fragment_mapa.xml",
+        "source": "com.example.explorex.app-main-41:/layout/fragment_mapa.xml"
     },
     {
-        "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-mergeDebugResources-37:\\layout\\activity_google_map.xml",
-        "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-40:\\layout\\activity_google_map.xml"
-    },
-    {
-        "merged": "com.example.explorex.app-mergeDebugResources-37:/layout/fragment_uzytkownik.xml",
-        "source": "com.example.explorex.app-main-40:/layout/fragment_uzytkownik.xml"
+        "merged": "com.example.explorex.app-mergeDebugResources-38:/layout/activity_main.xml",
+        "source": "com.example.explorex.app-main-41:/layout/activity_main.xml"
     }
 ]

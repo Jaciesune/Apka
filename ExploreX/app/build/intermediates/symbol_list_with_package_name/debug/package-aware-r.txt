@@ -2999,6 +2999,7 @@ drawable baseline_architecture_24
 drawable baseline_lock_24
 drawable baseline_map_24
 drawable baseline_person_24
+drawable baseline_route_24
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -3233,6 +3234,7 @@ id browser_actions_menu_items
 id browser_actions_menu_view
 id btnDelete
 id btnSetStartPoint
+id btnShowRoute
 id buttonPanel
 id cache_measures
 id callMeasure
@@ -3629,7 +3631,7 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
-id tvRoute
+id tvFileName
 id unchecked
 id uniform
 id unlabeled
@@ -3937,6 +3939,7 @@ string fab_transformation_sheet_behavior
 string fallback_menu_item_copy_link
 string fallback_menu_item_open_in_browser
 string fallback_menu_item_share_link
+string fcm_fallback_notification_channel_label
 string firebase_database_url
 string gcm_defaultSenderId
 string google_api_key

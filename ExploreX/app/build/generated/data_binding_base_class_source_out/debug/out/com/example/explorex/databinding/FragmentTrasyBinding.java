@@ -4,7 +4,7 @@ package com.example.explorex.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,12 +17,12 @@ import java.lang.String;
 
 public final class FragmentTrasyBinding implements ViewBinding {
   @NonNull
-  private final RelativeLayout rootView;
+  private final LinearLayout rootView;
 
   @NonNull
   public final RecyclerView recyclerViewRoutes;
 
-  private FragmentTrasyBinding(@NonNull RelativeLayout rootView,
+  private FragmentTrasyBinding(@NonNull LinearLayout rootView,
       @NonNull RecyclerView recyclerViewRoutes) {
     this.rootView = rootView;
     this.recyclerViewRoutes = recyclerViewRoutes;
@@ -30,7 +30,7 @@ public final class FragmentTrasyBinding implements ViewBinding {
 
   @Override
   @NonNull
-  public RelativeLayout getRoot() {
+  public LinearLayout getRoot() {
     return rootView;
   }
 
@@ -61,7 +61,7 @@ public final class FragmentTrasyBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentTrasyBinding((RelativeLayout) rootView, recyclerViewRoutes);
+      return new FragmentTrasyBinding((LinearLayout) rootView, recyclerViewRoutes);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

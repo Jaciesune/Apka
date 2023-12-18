@@ -24,13 +24,17 @@ public final class ItemRouteBinding implements ViewBinding {
   public final ImageButton btnDelete;
 
   @NonNull
-  public final TextView tvRoute;
+  public final ImageButton btnShowRoute;
+
+  @NonNull
+  public final TextView tvFileName;
 
   private ItemRouteBinding(@NonNull RelativeLayout rootView, @NonNull ImageButton btnDelete,
-      @NonNull TextView tvRoute) {
+      @NonNull ImageButton btnShowRoute, @NonNull TextView tvFileName) {
     this.rootView = rootView;
     this.btnDelete = btnDelete;
-    this.tvRoute = tvRoute;
+    this.btnShowRoute = btnShowRoute;
+    this.tvFileName = tvFileName;
   }
 
   @Override
@@ -66,13 +70,19 @@ public final class ItemRouteBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.tvRoute;
-      TextView tvRoute = ViewBindings.findChildViewById(rootView, id);
-      if (tvRoute == null) {
+      id = R.id.btnShowRoute;
+      ImageButton btnShowRoute = ViewBindings.findChildViewById(rootView, id);
+      if (btnShowRoute == null) {
         break missingId;
       }
 
-      return new ItemRouteBinding((RelativeLayout) rootView, btnDelete, tvRoute);
+      id = R.id.tvFileName;
+      TextView tvFileName = ViewBindings.findChildViewById(rootView, id);
+      if (tvFileName == null) {
+        break missingId;
+      }
+
+      return new ItemRouteBinding((RelativeLayout) rootView, btnDelete, btnShowRoute, tvFileName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

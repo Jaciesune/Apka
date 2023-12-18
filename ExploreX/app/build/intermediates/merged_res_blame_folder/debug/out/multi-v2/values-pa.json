@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.explorex.app-mergeDebugResources-36:/values-pa/values-pa.xml",
+            "outputFile": "com.example.explorex.app-mergeDebugResources-37:/values-pa/values-pa.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Inylle\\.gradle\\caches\\transforms-3\\40edaa3566063b5bf721b42698eb0f51\\transformed\\material-1.10.0\\res\\values-pa\\values-pa.xml",

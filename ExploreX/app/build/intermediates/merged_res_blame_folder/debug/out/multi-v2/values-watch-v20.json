@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.explorex.app-mergeDebugResources-36:/values-watch-v20/values-watch-v20.xml",
+            "outputFile": "com.example.explorex.app-mergeDebugResources-37:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Inylle\\.gradle\\caches\\transforms-3\\e3f6bfab50c8163db78f3c6ec02c64e8\\transformed\\appcompat-1.6.1\\res\\values-watch-v20\\values-watch-v20.xml",
