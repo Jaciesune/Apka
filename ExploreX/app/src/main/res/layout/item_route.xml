@@ -19,7 +19,8 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="18dp"
         android:layout_toStartOf="@+id/btnDelete"
-        android:src="@drawable/baseline_route_24" />
+        android:src="@drawable/baseline_route_24"
+        android:onClick="showRouteOnMap" />
 
     <ImageButton
         android:id="@+id/btnDelete"

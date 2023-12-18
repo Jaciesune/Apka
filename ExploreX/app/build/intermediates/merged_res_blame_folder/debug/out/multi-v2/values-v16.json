@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.explorex.app-mergeDebugResources-36:/values-v16/values-v16.xml",
+            "outputFile": "com.example.explorex.app-mergeDebugResources-37:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Inylle\\.gradle\\caches\\transforms-3\\4ef38977c2e5999f75059a452f3f5df9\\transformed\\core-1.9.0\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\lutas\\.gradle\\caches\\transforms-3\\4ef38977c2e5999f75059a452f3f5df9\\transformed\\core-1.9.0\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Inylle\\.gradle\\caches\\transforms-3\\e3f6bfab50c8163db78f3c6ec02c64e8\\transformed\\appcompat-1.6.1\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\lutas\\.gradle\\caches\\transforms-3\\e3f6bfab50c8163db78f3c6ec02c64e8\\transformed\\appcompat-1.6.1\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

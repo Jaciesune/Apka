@@ -1,9 +1,9 @@
-#Tue Dec 12 00:39:15 CET 2023
-base.0=C\:\\Users\\Inylle\\Desktop\\Homework\\STUDIA\\ROK 2\\MOBILNE\\PROJEKT\\ExploreX\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
-base.1=C\:\\Users\\Inylle\\Desktop\\Homework\\STUDIA\\ROK 2\\MOBILNE\\PROJEKT\\ExploreX\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
-base.2=C\:\\Users\\Inylle\\Desktop\\Homework\\STUDIA\\ROK 2\\MOBILNE\\PROJEKT\\ExploreX\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\4\\classes.dex
-base.3=C\:\\Users\\Inylle\\Desktop\\Homework\\STUDIA\\ROK 2\\MOBILNE\\PROJEKT\\ExploreX\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
-base.4=C\:\\Users\\Inylle\\Desktop\\Homework\\STUDIA\\ROK 2\\MOBILNE\\PROJEKT\\ExploreX\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
+#Mon Dec 18 19:03:02 CET 2023
+base.0=D\:\\School\\2023-2024\\Mobilne\\ExploreX\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+base.1=D\:\\School\\2023-2024\\Mobilne\\ExploreX\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
+base.2=D\:\\School\\2023-2024\\Mobilne\\ExploreX\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\4\\classes.dex
+base.3=D\:\\School\\2023-2024\\Mobilne\\ExploreX\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\7\\classes.dex
+base.4=D\:\\School\\2023-2024\\Mobilne\\ExploreX\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes2.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=4/classes.dex

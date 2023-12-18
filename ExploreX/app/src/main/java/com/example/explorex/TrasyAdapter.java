@@ -19,9 +19,10 @@ import java.util.List;
 
 public class TrasyAdapter extends RecyclerView.Adapter<TrasyAdapter.ViewHolder> {
 
-    private ArrayList<String> savedRouteFilePaths;  // Correct variable name
+    private ArrayList<String> savedRouteFilePaths;
     private OnItemClickListener listener;
     private OnItemClickListener showRouteListener;
+
 
     public interface OnItemClickListener {
         void onDeleteClick(int position);

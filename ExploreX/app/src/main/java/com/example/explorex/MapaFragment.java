@@ -20,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,20 +36,19 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
-
 public class MapaFragment extends Fragment implements OnMapReadyCallback {
-
     private GoogleMap myMap;
     private Button btnSetStartPoint;
     private EditText editText;
     private ListView savedRoutesListView;
-
     private boolean recordingRoute = false;
     private PolylineOptions routePolyline;
     private List<LatLng> routePoints;
@@ -68,24 +68,28 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
         View rootView = inflater.inflate(R.layout.fragment_mapa, container, false);
 
         btnSetStartPoint = rootView.findViewById(R.id.btnSetStartPoint);
-
         btnSetStartPoint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (recordingRoute) {
-                    // If recording a route, stop recording
+                    // jeśli nagrywa, zakończ
                     stopRecordingRoute();
-                    // Save location using the entered file name
+                    // zapisz używając nazwy podanej przez usera
                     saveLocationToFile(enteredFileName);
                 } else {
-                    // If not recording a route, show dialog for file name and start recording
+                    // jeśli nie nagrywa, rozpocznij i zapisz plik o podanej nazwie
                     showFileNameDialogAndStartRecording();
                 }
             }
         });
 
-        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.mapContainer);
-        if (mapFragment != null) {
+        // Sprawdzanie czy map fragment jest dodany
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentByTag("mapFragmentTag");
+
+        if (mapFragment == null) {
+            // Jeśli SupportMapFragment nie jest dodany, dodajemy dynamicznie
+            mapFragment = new SupportMapFragment();
+            getChildFragmentManager().beginTransaction().replace(R.id.mapContainer, mapFragment, "mapFragmentTag").commit();
             mapFragment.getMapAsync(this);
         }
 
@@ -99,7 +103,6 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
         final EditText editText = new EditText(requireContext());
         editText.setInputType(InputType.TYPE_CLASS_TEXT);
         builder.setView(editText);
-
         builder.setPositiveButton("Start", (dialog, which) -> {
             // Store the entered text in the class-level variable
             enteredFileName = editText.getText().toString().trim();
@@ -107,26 +110,21 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
             if (!enteredFileName.isEmpty()) {
                 // Start recording route with the entered file name
                 startRecordingRoute(enteredFileName);
-
                 // Display a toast indicating the start of recording with the file name
                 String toastMessage = "Rozpoczęto nagrywanie trasy. Nazwa pliku: '" + enteredFileName + "'";
                 Toast.makeText(requireContext(), toastMessage, Toast.LENGTH_SHORT).show();
             }
         });
-
         builder.setNegativeButton("Anuluj", (dialog, which) -> dialog.cancel());
-
         builder.show();
     }
 
     private void showFileNameDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("Rozpocznij trasę");
-
         final EditText editText = new EditText(requireContext());
         editText.setInputType(InputType.TYPE_CLASS_TEXT);
         builder.setView(editText);
-
         builder.setPositiveButton("Start", (dialog, which) -> {
             // Store the entered text in the class-level variable
             enteredFileName = editText.getText().toString().trim();
@@ -135,9 +133,7 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
                 startRecordingRoute(enteredFileName);
             }
         });
-
         builder.setNegativeButton("Anuluj", (dialog, which) -> dialog.cancel());
-
         builder.show();
     }
 
@@ -146,7 +142,6 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
         btnSetStartPoint.setText("Zakończ");
         routePolyline = new PolylineOptions().color(Color.BLUE).width(5);
         routePoints = new ArrayList<>();
-
         // Start location updates
         startLocationUpdates();
     }
@@ -154,19 +149,14 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
     private void stopRecordingRoute() {
         // Stop location updates
         stopLocationUpdates();
-
         recordingRoute = false;
         btnSetStartPoint.setText("Start");
-
         // Use the stored file name or generate a unique one
         String fileName = (enteredFileName != null && !enteredFileName.isEmpty()) ? enteredFileName : "route_" + System.currentTimeMillis();
-
         // Save route data to file
         saveRouteToFile(fileName);
-
         // Draw the recorded route on the map
         drawRouteOnMap(routePoints);
-
         // Display a toast indicating that the file is saved
         String toastMessage = "Trasa zapisana pod nazwą '" + fileName + "' w: " + getExternalFilePath(fileName);
         Toast.makeText(requireContext(), toastMessage, Toast.LENGTH_LONG).show();
@@ -194,7 +184,6 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
         if (checkLocationPermission()) {
             if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                     || ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-
                 LocationManager locationManager = (LocationManager) requireContext().getSystemService(Context.LOCATION_SERVICE);
                 Criteria criteria = new Criteria();
                 String provider = locationManager.getBestProvider(criteria, true);
@@ -226,7 +215,6 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
             routePoints.add(endPoint);
             routePolyline.add(endPoint);
         }
-
         recordingRoute = false;
         btnSetStartPoint.setText("Start");
         saveRouteToFile(fileName);
@@ -250,7 +238,6 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
     public class Constants {
         public static final String ROUTES_DIRECTORY = "Routes";
     }
-
     private void saveRouteToFile(String fileName) {
         StringBuilder routeData = new StringBuilder();
         for (LatLng point : routePoints) {
@@ -263,11 +250,9 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
             osw.write(routeData.toString());
             osw.close();
             fos.close();
-
             // Display a toast indicating that the file is saved
             String toastMessage = "Plik '" + fileName + "' zapisany w: " + getExternalFilePath(fileName);
             Toast.makeText(requireContext(), toastMessage, Toast.LENGTH_LONG).show();
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -280,9 +265,43 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
         if (!directory.exists()) {
             directory.mkdirs();
         }
-
         // Create the file path with the directory name, file name, and extension
         return directory.getAbsolutePath() + "/" + fileName + ".txt";
+    }
+    public void loadAndDrawRoute(String filePath) {
+        List<LatLng> routePoints = loadRoutePointsFromFile(filePath);
+        drawRouteOnMap(routePoints);
+    }
+    public void showRouteOnMap(String filePath) {
+        List<LatLng> routePoints = loadRoutePointsFromFile(filePath);
+
+        if (!routePoints.isEmpty()) {
+            drawRouteOnMap(routePoints);
+        } else {
+            Toast.makeText(requireContext(), "Trasa nie zawiera punktów", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private List<LatLng> loadRoutePointsFromFile(String filePath) {
+        List<LatLng> routePoints = new ArrayList<>();
+
+        try {
+            File file = new File(filePath);
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String[] coordinates = line.split(",");
+                double latitude = Double.parseDouble(coordinates[0].trim());
+                double longitude = Double.parseDouble(coordinates[1].trim());
+                LatLng point = new LatLng(latitude, longitude);
+                routePoints.add(point);
+            }
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return routePoints;
     }
 
     private void updateSavedRoutesList() {
@@ -297,7 +316,6 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
                 savedRouteFiles.add(file.getName());
             }
         }
-
         // Utwórz adapter i ustaw go dla widoku listy
         ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1, savedRouteFiles);
         savedRoutesListView.setAdapter(adapter);
@@ -309,7 +327,6 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
             Toast.makeText(requireContext(), "Wybrano trasę: " + selectedFileName, Toast.LENGTH_SHORT).show();
         });
     }
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         myMap = googleMap;
@@ -318,18 +335,20 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
                 || ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             myMap.setMyLocationEnabled(true);
         }
-
         LocationManager locationManager = (LocationManager) requireContext().getSystemService(Context.LOCATION_SERVICE);
         Criteria criteria = new Criteria();
         String provider = locationManager.getBestProvider(criteria, true);
         Location location = locationManager.getLastKnownLocation(provider);
+        if (getArguments() != null && getArguments().containsKey("routeFilePath")) {
+            String routeFilePath = getArguments().getString("routeFilePath");
+            showRouteOnMap(routeFilePath);
+        }
         if (location != null) {
             LatLng currentLatLng = new LatLng(location.getLatitude(), location.getLongitude());
             myMap.addMarker(new MarkerOptions().position(currentLatLng).title("Aktualna lokalizacja").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
             myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15));
         }
     }
-
     private void createFile(String fileName) {
         try {
             FileOutputStream fos = requireContext().openFileOutput(fileName + ".txt", Context.MODE_APPEND);
@@ -341,7 +360,6 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
             e.printStackTrace();
         }
     }
-
     private boolean checkLocationPermission() {
         return ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                 || ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED;

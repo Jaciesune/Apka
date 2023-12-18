@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.explorex.app-mergeDebugResources-36:/values-ldrtl-v17/values-ldrtl-v17.xml",
+            "outputFile": "com.example.explorex.app-mergeDebugResources-37:/values-ldrtl-v17/values-ldrtl-v17.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Inylle\\.gradle\\caches\\transforms-3\\40edaa3566063b5bf721b42698eb0f51\\transformed\\material-1.10.0\\res\\values-ldrtl-v17\\values-ldrtl-v17.xml",
+                    "source": "C:\\Users\\lutas\\.gradle\\caches\\transforms-3\\269d2ce01f50ef0a660da19c5a3b461b\\transformed\\material-1.11.0\\res\\values-ldrtl-v17\\values-ldrtl-v17.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",

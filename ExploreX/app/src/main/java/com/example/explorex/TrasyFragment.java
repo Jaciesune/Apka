@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,6 +28,7 @@ public class TrasyFragment extends Fragment {
     private RecyclerView recyclerView;
     private TrasyAdapter trasyAdapter;
     private ArrayList<String> savedRouteFilePaths = new ArrayList<>(); // Change to ArrayList
+    private OnShowRouteClickListener onShowRouteClickListener;
 
     public TrasyFragment() {
         // Required empty public constructor
@@ -35,45 +37,39 @@ public class TrasyFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_trasy, container, false);
-
         recyclerView = rootView.findViewById(R.id.recyclerViewRoutes);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
-
         trasyAdapter = new TrasyAdapter(savedRouteFilePaths, new TrasyAdapter.OnItemClickListener() {
             @Override
             public void onDeleteClick(int position) {
                 deleteFile(position);
             }
-
             @Override
             public void onItemClick(int position) {
-                String selectedFilePath = savedRouteFilePaths.get(position);
-                // Implement your logic for opening or displaying the route
             }
-
+            @Override
             public void onShowRouteClick(int position) {
-                String selectedFilePath = savedRouteFilePaths.get(position);
-                showRouteOnMap(selectedFilePath);
+                String selectedFileName = savedRouteFilePaths.get(position);
+                if (onShowRouteClickListener != null) {
+                    onShowRouteClickListener.onShowRouteClick(selectedFileName);
+                }
             }
         });
 
         recyclerView.setAdapter(trasyAdapter);
-
         // Ustaw słuchacza dla przycisku "Pokaż trasę"
         trasyAdapter.setOnShowRouteClickListener(new TrasyAdapter.OnItemClickListener() {
             @Override
             public void onDeleteClick(int position) {
-
+            }
+            @Override
+            public void onItemClick(int position) {
             }
 
             @Override
-            public void onItemClick(int position) {
-
-            }
-
             public void onShowRouteClick(int position) {
-                String selectedFilePath = savedRouteFilePaths.get(position);
-                showRouteOnMap(selectedFilePath);
+                String selectedFileName = savedRouteFilePaths.get(position);
+                showRouteOnMap(selectedFileName);
             }
         });
 
@@ -83,24 +79,48 @@ public class TrasyFragment extends Fragment {
         return rootView;
     }
 
+    private void openMapFragment(String filePath) {
+        MapaFragment mapaFragment = new MapaFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("routeFilePath", filePath);
+        mapaFragment.setArguments(bundle);
+
+        // Uzyskujemy menedżera fragmentów dla fragmentu nadrzędnego (this) za pomocą getChildFragmentManager()
+        FragmentManager fragmentManager = getChildFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        // Zamieniamy aktualny MapaFragment w kontenerze na nowy MapaFragment z argumentami
+        fragmentTransaction.replace(R.id.mapContainer, mapaFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
+    }
+
     private void showRouteOnMap(String filePath) {
-        // Implementuj logikę do wczytywania punktów trasy z pliku
-        List<LatLng> routePoints = loadRoutePointsFromFile(filePath);
-
-        // Sprawdź, czy istnieje MapaFragment
         MapaFragment mapaFragment = getMapaFragment();
-
         if (mapaFragment != null) {
-            // Wywołaj metodę drawRouteOnMap z MapaFragment
-            mapaFragment.drawRouteOnMap(routePoints);
+            // Sprawdź, czy mapaFragment jest dodany do hierarchii fragmentów
+            if (mapaFragment.isAdded()) {
+                mapaFragment.loadAndDrawRoute(filePath);
+            } else {
+                // Dodaj kod obsługi, gdy MapaFragment nie jest jeszcze dodany
+                Toast.makeText(requireContext(), "MapaFragment nie jest jeszcze dodany", Toast.LENGTH_SHORT).show();
+            }
         } else {
-            // MapaFragment nie istnieje lub nie jest dostępny
-            // Możesz obsłużyć to odpowiednio
-            Toast.makeText(requireContext(), "Map is not available", Toast.LENGTH_SHORT).show();
+            // Jeżeli mapaFragment jest nullem, utwórz nową instancję i dodaj do widoku
+            mapaFragment = new MapaFragment();
+            getChildFragmentManager().beginTransaction()
+                    .replace(R.id.mapContainer, mapaFragment, "mapFragmentTag")
+                    .addToBackStack(null)
+                    .commit();
+            // Oczekaj na dodanie fragmentu do hierarchii fragmentów, a następnie wczytaj trasę
+            getChildFragmentManager().executePendingTransactions();
+            mapaFragment.loadAndDrawRoute(filePath);
         }
     }
 
-    // Metoda do uzyskania dostępu do MapaFragment (przykładowa implementacja)
+
+
+    // Metoda do uzyskania dostępu do MapaFragment
     private MapaFragment getMapaFragment() {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         return (MapaFragment) fragmentManager.findFragmentById(R.id.mapContainer);
@@ -129,7 +149,7 @@ public class TrasyFragment extends Fragment {
             e.printStackTrace();
         }
 
-        return routePoints;
+        return new ArrayList<>();
     }
 
     private void deleteFile(int position) {
@@ -163,5 +183,13 @@ public class TrasyFragment extends Fragment {
 
         // Notify the adapter that the data has changed
         trasyAdapter.updateRoutePaths(savedRouteFilePaths);
+    }
+
+    public void setOnShowRouteClickListener(OnShowRouteClickListener listener) {
+        this.onShowRouteClickListener = listener;
+    }
+
+    public interface OnShowRouteClickListener {
+        void onShowRouteClick(String routeFilePath);
     }
 }
