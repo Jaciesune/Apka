@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,16 +21,20 @@ import java.util.List;
 public class TrasyAdapter extends RecyclerView.Adapter<TrasyAdapter.ViewHolder> {
 
     private ArrayList<String> savedRouteFilePaths;
-    private OnItemClickListener listener;
-    private OnItemClickListener showRouteListener;
-
+    private static OnItemClickListener listener;
+    private OnShowRouteClickListener showRouteListener;
 
     public interface OnItemClickListener {
         void onDeleteClick(int position);
 
         void onItemClick(int position);
 
-        void onShowRouteClick(int position);
+        void onShowRouteClick(int position, View rootView);
+
+        void onShowButtonClick(int position, View rootView);
+    }
+    public interface OnShowRouteClickListener { // Add this interface
+        void onShowRouteClick(int position, View rootView);
     }
 
     public TrasyAdapter(ArrayList<String> savedRouteFilePaths, OnItemClickListener listener) {
@@ -49,51 +54,35 @@ public class TrasyAdapter extends RecyclerView.Adapter<TrasyAdapter.ViewHolder> 
         return new ViewHolder(view);
     }
 
-    public void setOnShowRouteClickListener(OnItemClickListener listener) {
-        this.showRouteListener = listener;
-    }
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         String filePath = savedRouteFilePaths.get(position);
         File file = new File(filePath);
 
-        // usuwanie rozszerzenia pliku
+        // Remove file extension
         String fileName = removeFileExtension(file.getName());
 
         holder.tvFileName.setText(fileName);
 
-        holder.btnDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showDeleteConfirmationDialog(holder.getAdapterPosition(), v);
+        holder.btnDelete.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onDeleteClick(position);
             }
         });
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (listener != null) {
-                    int adapterPosition = holder.getAdapterPosition();
-                    if (adapterPosition != RecyclerView.NO_POSITION) {
-                        listener.onItemClick(adapterPosition);
-                    }
-                }
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onItemClick(position);
             }
         });
 
-        holder.btnShowRoute.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (showRouteListener != null) {
-                    int adapterPosition = holder.getAdapterPosition();
-                    if (adapterPosition != RecyclerView.NO_POSITION) {
-                        showRouteListener.onShowRouteClick(adapterPosition);
-                    }
-                }
+        holder.btnShowRoute.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onShowRouteClick(position, holder.rootLayout);
             }
         });
     }
+
 
     // Metoda do usuwania rozszerzenia z nazwy pliku
     private String removeFileExtension(String fileName) {
@@ -139,12 +128,21 @@ public class TrasyAdapter extends RecyclerView.Adapter<TrasyAdapter.ViewHolder> 
         public ImageButton btnDelete;
         public ImageButton btnShowRoute;
         public TextView tvFileName;
+        public RelativeLayout rootLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvFileName = itemView.findViewById(R.id.tvFileName);
             btnDelete = itemView.findViewById(R.id.btnDelete);
             btnShowRoute = itemView.findViewById(R.id.btnShowRoute);
+            rootLayout = itemView.findViewById(R.id.rootLayout);
+
+            // Set a click listener for btnShowRoute
+            btnShowRoute.setOnClickListener(v -> {
+                if (listener != null) {
+                    listener.onShowButtonClick(getAdapterPosition(), rootLayout);
+                }
+            });
         }
     }
 }

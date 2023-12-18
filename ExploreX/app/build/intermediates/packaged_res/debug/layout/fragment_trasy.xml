@@ -1,4 +1,4 @@
-<!-- fragment_trasy.xml -->
+<!-- res/layout/fragment_trasy.xml -->
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -15,11 +15,12 @@
         android:layout_weight="1"
         android:scrollbars="vertical" />
 
-    <FrameLayout
-        android:id="@+id/mapContainer"
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        android:visibility="gone" />
 
 </LinearLayout>

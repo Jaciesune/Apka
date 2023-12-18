@@ -4,7 +4,6 @@ package com.example.explorex.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.example.explorex.R;
+import com.google.android.gms.maps.MapView;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -21,15 +21,15 @@ public final class FragmentTrasyBinding implements ViewBinding {
   private final LinearLayout rootView;
 
   @NonNull
-  public final FrameLayout mapContainer;
+  public final MapView mapView;
 
   @NonNull
   public final RecyclerView recyclerViewRoutes;
 
-  private FragmentTrasyBinding(@NonNull LinearLayout rootView, @NonNull FrameLayout mapContainer,
+  private FragmentTrasyBinding(@NonNull LinearLayout rootView, @NonNull MapView mapView,
       @NonNull RecyclerView recyclerViewRoutes) {
     this.rootView = rootView;
-    this.mapContainer = mapContainer;
+    this.mapView = mapView;
     this.recyclerViewRoutes = recyclerViewRoutes;
   }
 
@@ -60,9 +60,9 @@ public final class FragmentTrasyBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.mapContainer;
-      FrameLayout mapContainer = ViewBindings.findChildViewById(rootView, id);
-      if (mapContainer == null) {
+      id = R.id.mapView;
+      MapView mapView = ViewBindings.findChildViewById(rootView, id);
+      if (mapView == null) {
         break missingId;
       }
 
@@ -72,7 +72,7 @@ public final class FragmentTrasyBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentTrasyBinding((LinearLayout) rootView, mapContainer, recyclerViewRoutes);
+      return new FragmentTrasyBinding((LinearLayout) rootView, mapView, recyclerViewRoutes);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

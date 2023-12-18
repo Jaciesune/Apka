@@ -30,6 +30,7 @@ id login_button
 id login_now
 id logout_button
 id mapContainer
+id mapView
 id password
 id recyclerViewRoutes
 id reg_button
@@ -37,6 +38,7 @@ id reg_email
 id reg_password_1
 id reg_password_2
 id register_now
+id rootLayout
 id textViewLoggedUser
 id textViewUzytkownik
 id tvFileName

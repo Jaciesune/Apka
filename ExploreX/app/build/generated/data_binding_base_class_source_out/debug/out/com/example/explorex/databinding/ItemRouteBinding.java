@@ -27,13 +27,18 @@ public final class ItemRouteBinding implements ViewBinding {
   public final ImageButton btnShowRoute;
 
   @NonNull
+  public final RelativeLayout rootLayout;
+
+  @NonNull
   public final TextView tvFileName;
 
   private ItemRouteBinding(@NonNull RelativeLayout rootView, @NonNull ImageButton btnDelete,
-      @NonNull ImageButton btnShowRoute, @NonNull TextView tvFileName) {
+      @NonNull ImageButton btnShowRoute, @NonNull RelativeLayout rootLayout,
+      @NonNull TextView tvFileName) {
     this.rootView = rootView;
     this.btnDelete = btnDelete;
     this.btnShowRoute = btnShowRoute;
+    this.rootLayout = rootLayout;
     this.tvFileName = tvFileName;
   }
 
@@ -76,13 +81,16 @@ public final class ItemRouteBinding implements ViewBinding {
         break missingId;
       }
 
+      RelativeLayout rootLayout = (RelativeLayout) rootView;
+
       id = R.id.tvFileName;
       TextView tvFileName = ViewBindings.findChildViewById(rootView, id);
       if (tvFileName == null) {
         break missingId;
       }
 
-      return new ItemRouteBinding((RelativeLayout) rootView, btnDelete, btnShowRoute, tvFileName);
+      return new ItemRouteBinding((RelativeLayout) rootView, btnDelete, btnShowRoute, rootLayout,
+          tvFileName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

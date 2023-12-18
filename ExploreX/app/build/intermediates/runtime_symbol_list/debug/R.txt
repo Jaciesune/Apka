@@ -3414,6 +3414,7 @@ int id login_now 0x7f080104
 int id logout_button 0x7f080105
 int id m3_side_sheet 0x7f080106
 int id mapContainer 0x7f080107
+int id mapView 0x7f080217
 int id marquee 0x7f080108
 int id masked 0x7f080109
 int id match_constraint 0x7f08010a
@@ -3545,6 +3546,7 @@ int id right 0x7f080187
 int id rightToLeft 0x7f080188
 int id right_icon 0x7f080189
 int id right_side 0x7f08018a
+int id rootLayout 0x7f080218
 int id rounded 0x7f08018b
 int id row_index_key 0x7f08018c
 int id satellite 0x7f08018d
