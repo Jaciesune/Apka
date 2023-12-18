@@ -25,6 +25,9 @@ id bottomNavigationView
 id btnDelete
 id btnSetStartPoint
 id btnShowRoute
+id checkbox_automatic
+id checkbox_light
+id checkbox_night
 id email
 id finish_button
 id frameLayout
@@ -33,6 +36,7 @@ id login_now
 id logout_button
 id mapContainer
 id password
+id radio_group
 id recyclerViewRoutes
 id reg_button
 id reg_email
@@ -40,6 +44,7 @@ id reg_password_1
 id reg_password_2
 id register_now
 id settingsButton
+id settings_text
 id textViewLoggedUser
 id textViewUzytkownik
 id tvFileName

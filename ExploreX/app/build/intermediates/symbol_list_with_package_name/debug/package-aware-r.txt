@@ -3250,6 +3250,9 @@ id chain
 id chain2
 id chains
 id checkbox
+id checkbox_automatic
+id checkbox_light
+id checkbox_night
 id checked
 id chronometer
 id circle_center
@@ -3506,6 +3509,7 @@ id pressed
 id progress_circular
 id progress_horizontal
 id radio
+id radio_group
 id ratio
 id rectangles
 id recyclerViewRoutes
@@ -3547,6 +3551,7 @@ id select_dialog_listview
 id selected
 id selection_type
 id settingsButton
+id settings_text
 id sharedValueSet
 id sharedValueUnset
 id shortcut

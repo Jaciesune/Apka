@@ -3249,6 +3249,9 @@ int id chain 0x7f08007a
 int id chain2 0x7f08007b
 int id chains 0x7f08007c
 int id checkbox 0x7f08007d
+int id checkbox_automatic 0x7f080222
+int id checkbox_light 0x7f08021a
+int id checkbox_night 0x7f08021b
 int id checked 0x7f08007e
 int id chronometer 0x7f08007f
 int id circle_center 0x7f080080
@@ -3505,6 +3508,7 @@ int id pressed 0x7f080179
 int id progress_circular 0x7f08017a
 int id progress_horizontal 0x7f08017b
 int id radio 0x7f08017c
+int id radio_group 0x7f080221
 int id ratio 0x7f08017d
 int id rectangles 0x7f08017e
 int id recyclerViewRoutes 0x7f08017f
@@ -3546,6 +3550,7 @@ int id select_dialog_listview 0x7f0801a2
 int id selected 0x7f0801a3
 int id selection_type 0x7f0801a4
 int id settingsButton 0x7f080218
+int id settings_text 0x7f080220
 int id sharedValueSet 0x7f0801a6
 int id sharedValueUnset 0x7f0801a7
 int id shortcut 0x7f0801a8

@@ -1,6 +1,7 @@
 package com.example.explorex;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -145,7 +146,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 .commit();
     }
 
-
     private void setupLightSensor() {
         sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
@@ -156,12 +156,23 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if (event.sensor.getType() == Sensor.TYPE_LIGHT) {
+        SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+        boolean isCheckboxNightChecked = preferences.getBoolean("CheckboxNight", false);
+        boolean isCheckboxLightChecked = preferences.getBoolean("CheckboxLight", false);
+        boolean isCheckboxAutomaticChecked = preferences.getBoolean("checkbox_automatic", false);
+
+        // If checkbox_automatic is checked, use automatic mode based on light level
+        if (isCheckboxAutomaticChecked && event.sensor.getType() == Sensor.TYPE_LIGHT) {
             float lightLevel = event.values[0];
+            float threshold = 25.0f; // Default threshold value
 
-            // Adjust the threshold based on your preference
-            float threshold = 25.0f;
-
+            if (isCheckboxLightChecked) {
+                // Set a lower threshold for LightMode
+                threshold = 1.0f;
+            } else if (isCheckboxNightChecked) {
+                // Set a higher threshold for NightMode
+                threshold = 9999.9f;
+            }
             if (lightLevel < threshold && !isNightMode) {
                 // Enable NightMode
                 if (!isNightModePending) {
@@ -268,19 +279,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     }
                 });
     }
-
-    // Custom easing function using PathInterpolator
-    private float calculateFraction(float x, float start, float end) {
-        // Map x to the range [0, 1]
-        float fraction = Math.max(0, Math.min(1, (x - start) / (end - start)));
-
-        // Use a PathInterpolator with custom control points
-        Interpolator interpolator = new PathInterpolator(0.4f, 0f, 0.2f, 1f);
-
-        // Apply the easing function
-        return interpolator.getInterpolation(fraction);
-    }
-
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
