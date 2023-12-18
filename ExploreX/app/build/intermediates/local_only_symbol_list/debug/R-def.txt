@@ -15,6 +15,7 @@ drawable baseline_lock_24
 drawable baseline_map_24
 drawable baseline_person_24
 drawable baseline_route_24
+drawable baseline_settings_24
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 id Mapa_navbar
@@ -25,6 +26,7 @@ id btnDelete
 id btnSetStartPoint
 id btnShowRoute
 id email
+id finish_button
 id frameLayout
 id login_button
 id login_now
@@ -37,6 +39,7 @@ id reg_email
 id reg_password_1
 id reg_password_2
 id register_now
+id settingsButton
 id textViewLoggedUser
 id textViewUzytkownik
 id tvFileName
@@ -50,6 +53,7 @@ layout fragment_mapa
 layout fragment_trasy
 layout fragment_uzytkownik
 layout item_route
+layout settings
 menu bottom_nav_menu
 mipmap ic_launcher
 mipmap ic_launcher_foreground

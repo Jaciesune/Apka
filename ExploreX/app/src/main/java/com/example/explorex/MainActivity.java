@@ -9,6 +9,8 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.StateListDrawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,6 +40,7 @@ import android.hardware.SensorManager;
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.view.animation.DecelerateInterpolator;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.Arrays;
@@ -105,7 +108,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         // Inicjalizacja globalnych zmiennych kolorów
         currentColor = getResources().getColor(R.color.lightModeColorPrimary);
         targetColor = getResources().getColor(R.color.lightModeColorPrimary);
+
     }
+
 
     // Menu
     private void replaceFragment(Fragment fragment) {
@@ -196,9 +201,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
-
-
-
     private void applyNightMode(boolean isNightMode) {
         // Determine background, button, and text colors based on day/night mode
         int backgroundColor = isNightMode
@@ -248,7 +250,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         );
         binding.bottomNavigationView.setItemIconTintList(itemIconColorStateList);
 
-        Arrays.asList(R.id.logout_button, R.id.btnSetStartPoint, R.id.textViewLoggedUser, R.id.textViewUzytkownik)
+        Arrays.asList(R.id.logout_button, R.id.btnSetStartPoint, R.id.textViewLoggedUser, R.id.textViewUzytkownik, R.id.settingsButton)
                 .forEach(id -> {
                     View view = findViewById(id);
                     if (view != null) {

@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:2:1-47:12
-INJECTED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:2:1-47:12
-INJECTED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:2:1-47:12
-INJECTED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:2:1-47:12
+ADDED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:2:1-58:12
+INJECTED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:2:1-58:12
 MERGED from [androidx.databinding:viewbinding:8.1.3] C:\Users\Inylle\.gradle\caches\transforms-3\d4f297d183aad59c7a4b1ffe556ea8c3\transformed\viewbinding-8.1.3\AndroidManifest.xml:2:1-7:12
 MERGED from [com.github.dangiashish:Google-Direction-Api:1.6] C:\Users\Inylle\.gradle\caches\transforms-3\c2b4dbca2963cb6cde96339fb7e7d29b\transformed\Google-Direction-Api-1.6\AndroidManifest.xml:2:1-9:12
 MERGED from [com.google.android.material:material:1.10.0] C:\Users\Inylle\.gradle\caches\transforms-3\40edaa3566063b5bf721b42698eb0f51\transformed\material-1.10.0\AndroidManifest.xml:17:1-24:12
@@ -128,8 +128,8 @@ ADDED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\Explore
 	android:name
 		ADDED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:10:19-63
 application
-ADDED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:13:5-45:19
-INJECTED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:13:5-45:19
+ADDED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:13:5-56:19
+INJECTED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:13:5-56:19
 MERGED from [com.google.android.material:material:1.10.0] C:\Users\Inylle\.gradle\caches\transforms-3\40edaa3566063b5bf721b42698eb0f51\transformed\material-1.10.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.10.0] C:\Users\Inylle\.gradle\caches\transforms-3\40edaa3566063b5bf721b42698eb0f51\transformed\material-1.10.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\Inylle\.gradle\caches\transforms-3\7c11b619ed0b1cc8ca2186c050650596\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -232,20 +232,26 @@ category#android.intent.category.LAUNCHER
 ADDED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:33:17-77
 	android:name
 		ADDED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:33:27-74
-activity#com.example.explorex.MainActivity
-ADDED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:36:9-40:20
-	android:screenOrientation
-		ADDED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:39:13-52
+activity#com.example.explorex.Settings
+ADDED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:37:9-44:20
 	android:exported
 		ADDED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:38:13-36
 	android:name
-		ADDED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:37:13-41
-meta-data#com.google.android.geo.API_KEY
-ADDED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:42:9-44:51
-	android:value
-		ADDED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:44:13-48
+		ADDED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:37:19-43
+activity#com.example.explorex.MainActivity
+ADDED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:47:9-51:20
+	android:screenOrientation
+		ADDED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:50:13-52
+	android:exported
+		ADDED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:49:13-36
 	android:name
-		ADDED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:43:13-58
+		ADDED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:48:13-41
+meta-data#com.google.android.geo.API_KEY
+ADDED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:53:9-55:51
+	android:value
+		ADDED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:55:13-48
+	android:name
+		ADDED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml:54:13-58
 uses-sdk
 INJECTED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Inylle\Desktop\Homework\STUDIA\ROK 2\MOBILNE\PROJEKT\ExploreX\app\src\main\AndroidManifest.xml
