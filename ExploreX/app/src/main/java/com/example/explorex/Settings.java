@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -33,7 +35,6 @@ public class Settings extends AppCompatActivity {
         lightRadioButton = findViewById(R.id.checkbox_light);
         automaticRadioButton = findViewById(R.id.checkbox_automatic);
 
-
         // Set OnClickListener for the "Zakończ" button
         finishButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,15 +44,16 @@ public class Settings extends AppCompatActivity {
                 boolean isLightChecked = lightRadioButton.isChecked();
                 boolean isAutomaticChecked = automaticRadioButton.isChecked();
 
-                // Show a toast message if Night Mode is enabled
-                if (nightRadioButton.isChecked()) {
+                // Show a toast message based on the checked state
+                if (isNightChecked) {
                     Toast.makeText(getApplicationContext(), "Ciemny Motyw Włączony", Toast.LENGTH_SHORT).show();
-                }
-                if (lightRadioButton.isChecked()) {
+                    // Set Night Mode in SharedPreferences or perform any related actions
+                } else if (isLightChecked) {
                     Toast.makeText(getApplicationContext(), "Jasny Motyw Włączony", Toast.LENGTH_SHORT).show();
-                }
-                if (automaticRadioButton.isChecked()) {
+                    // Set Light Mode in SharedPreferences or perform any related actions
+                } else if (isAutomaticChecked) {
                     Toast.makeText(getApplicationContext(), "Automatyczny Motyw Włączony", Toast.LENGTH_SHORT).show();
+                    // Set Automatic Mode in SharedPreferences or perform any related actions
                 }
 
                 // Navigate to UzytkownikFragment
@@ -81,6 +83,4 @@ public class Settings extends AppCompatActivity {
         // Finish the Settings activity
         finish();
     }
-
-
 }
