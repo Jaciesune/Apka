@@ -6,7 +6,7 @@ INJECTED from D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.
 INJECTED from D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:2:1-47:12
 MERGED from [androidx.databinding:viewbinding:8.1.3] C:\Users\lutas\.gradle\caches\transforms-3\d4f297d183aad59c7a4b1ffe556ea8c3\transformed\viewbinding-8.1.3\AndroidManifest.xml:2:1-7:12
 MERGED from [com.github.dangiashish:Google-Direction-Api:1.6] C:\Users\lutas\.gradle\caches\transforms-3\c2b4dbca2963cb6cde96339fb7e7d29b\transformed\Google-Direction-Api-1.6\AndroidManifest.xml:2:1-9:12
-MERGED from [com.google.android.material:material:1.10.0] C:\Users\lutas\.gradle\caches\transforms-3\40edaa3566063b5bf721b42698eb0f51\transformed\material-1.10.0\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.material:material:1.11.0] C:\Users\lutas\.gradle\caches\transforms-3\269d2ce01f50ef0a660da19c5a3b461b\transformed\material-1.11.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\lutas\.gradle\caches\transforms-3\7c11b619ed0b1cc8ca2186c050650596\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\lutas\.gradle\caches\transforms-3\cd253dbd22b30a7a6e2669f74b436c71\transformed\appcompat-resources-1.6.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.appcompat:appcompat:1.6.1] C:\Users\lutas\.gradle\caches\transforms-3\e3f6bfab50c8163db78f3c6ec02c64e8\transformed\appcompat-1.6.1\AndroidManifest.xml:17:1-22:12
@@ -130,8 +130,8 @@ ADDED from D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml
 application
 ADDED from D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:13:5-45:19
 INJECTED from D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:13:5-45:19
-MERGED from [com.google.android.material:material:1.10.0] C:\Users\lutas\.gradle\caches\transforms-3\40edaa3566063b5bf721b42698eb0f51\transformed\material-1.10.0\AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.material:material:1.10.0] C:\Users\lutas\.gradle\caches\transforms-3\40edaa3566063b5bf721b42698eb0f51\transformed\material-1.10.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.11.0] C:\Users\lutas\.gradle\caches\transforms-3\269d2ce01f50ef0a660da19c5a3b461b\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.material:material:1.11.0] C:\Users\lutas\.gradle\caches\transforms-3\269d2ce01f50ef0a660da19c5a3b461b\transformed\material-1.11.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\lutas\.gradle\caches\transforms-3\7c11b619ed0b1cc8ca2186c050650596\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\lutas\.gradle\caches\transforms-3\7c11b619ed0b1cc8ca2186c050650596\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
 MERGED from [com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:28:5-73:19
@@ -254,8 +254,8 @@ MERGED from [androidx.databinding:viewbinding:8.1.3] C:\Users\lutas\.gradle\cach
 MERGED from [androidx.databinding:viewbinding:8.1.3] C:\Users\lutas\.gradle\caches\transforms-3\d4f297d183aad59c7a4b1ffe556ea8c3\transformed\viewbinding-8.1.3\AndroidManifest.xml:5:5-44
 MERGED from [com.github.dangiashish:Google-Direction-Api:1.6] C:\Users\lutas\.gradle\caches\transforms-3\c2b4dbca2963cb6cde96339fb7e7d29b\transformed\Google-Direction-Api-1.6\AndroidManifest.xml:5:5-7:41
 MERGED from [com.github.dangiashish:Google-Direction-Api:1.6] C:\Users\lutas\.gradle\caches\transforms-3\c2b4dbca2963cb6cde96339fb7e7d29b\transformed\Google-Direction-Api-1.6\AndroidManifest.xml:5:5-7:41
-MERGED from [com.google.android.material:material:1.10.0] C:\Users\lutas\.gradle\caches\transforms-3\40edaa3566063b5bf721b42698eb0f51\transformed\material-1.10.0\AndroidManifest.xml:20:5-44
-MERGED from [com.google.android.material:material:1.10.0] C:\Users\lutas\.gradle\caches\transforms-3\40edaa3566063b5bf721b42698eb0f51\transformed\material-1.10.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.11.0] C:\Users\lutas\.gradle\caches\transforms-3\269d2ce01f50ef0a660da19c5a3b461b\transformed\material-1.11.0\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.material:material:1.11.0] C:\Users\lutas\.gradle\caches\transforms-3\269d2ce01f50ef0a660da19c5a3b461b\transformed\material-1.11.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\lutas\.gradle\caches\transforms-3\7c11b619ed0b1cc8ca2186c050650596\transformed\constraintlayout-2.1.4\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\lutas\.gradle\caches\transforms-3\7c11b619ed0b1cc8ca2186c050650596\transformed\constraintlayout-2.1.4\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\lutas\.gradle\caches\transforms-3\cd253dbd22b30a7a6e2669f74b436c71\transformed\appcompat-resources-1.6.1\AndroidManifest.xml:20:5-44

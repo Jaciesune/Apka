@@ -3,6 +3,7 @@ package com.example.explorex;
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.location.Criteria;
@@ -24,6 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
@@ -53,16 +55,22 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
     private PolylineOptions routePolyline;
     private List<LatLng> routePoints;
     private List<String> savedRouteFiles;
-
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private Handler locationUpdateHandler;
     private static final int LOCATION_UPDATE_INTERVAL = 1000;
     private String enteredFileName;
-
     public MapaFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // Sprawdzanie i pytanie o pozwolenie na dostęp do lokalizacji przy pierwszym uruchomieniu
+        if (!checkLocationPermission()) {
+            requestLocationPermissions();
+        }
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_mapa, container, false);
@@ -331,23 +339,46 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
     public void onMapReady(GoogleMap googleMap) {
         myMap = googleMap;
 
-        if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-                || ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        // Sprawdzenie pozwolenia na lokalizację
+        if (checkLocationPermission()) {
+            // Lokalizacja użytkownika
             myMap.setMyLocationEnabled(true);
+
+            LocationManager locationManager = (LocationManager) requireContext().getSystemService(Context.LOCATION_SERVICE);
+            Criteria criteria = new Criteria();
+            String provider = locationManager.getBestProvider(criteria, true);
+            Location location = locationManager.getLastKnownLocation(provider);
+
+            if (getArguments() != null && getArguments().containsKey("routeFilePath")) {
+                String routeFilePath = getArguments().getString("routeFilePath");
+                showRouteOnMap(routeFilePath);
+            }
+
+            if (location != null) {
+                LatLng currentLatLng = new LatLng(location.getLatitude(), location.getLongitude());
+                myMap.addMarker(new MarkerOptions().position(currentLatLng).title("Aktualna lokalizacja").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
+                myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15));
+            }
+        } else {
+            // Brak zezwolenia na lokalizację, wyświetl komunikat i poproś użytkownika o uprawnienia
+            requestLocationPermissions();
         }
-        LocationManager locationManager = (LocationManager) requireContext().getSystemService(Context.LOCATION_SERVICE);
-        Criteria criteria = new Criteria();
-        String provider = locationManager.getBestProvider(criteria, true);
-        Location location = locationManager.getLastKnownLocation(provider);
-        if (getArguments() != null && getArguments().containsKey("routeFilePath")) {
-            String routeFilePath = getArguments().getString("routeFilePath");
-            showRouteOnMap(routeFilePath);
-        }
-        if (location != null) {
-            LatLng currentLatLng = new LatLng(location.getLatitude(), location.getLongitude());
-            myMap.addMarker(new MarkerOptions().position(currentLatLng).title("Aktualna lokalizacja").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
-            myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15));
-        }
+    }
+
+    private void showLocationPermissionErrorMessage() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
+        builder.setTitle("Brak zezwolenia na dostęp do lokalizacji");
+        builder.setMessage("Aplikacja nie działa bez zezwolenia na dostęp do lokalizacji. Uruchom aplikację ponownie po nadaniu dostępu.");
+
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Zamknięcie aplikacji, możesz również użyć System.exit(0);
+                requireActivity().finish();
+            }
+        });
+
+        builder.show();
     }
     private void createFile(String fileName) {
         try {

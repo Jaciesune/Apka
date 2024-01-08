@@ -130,7 +130,6 @@ public class TrasyFragment extends Fragment implements OnMapReadyCallback {
 
     // Metoda do wczytywania punktów trasy z pliku (przykładowa implementacja)
     private List<LatLng> loadRoutePointsFromFile(String filePath) {
-
         List<LatLng> routePoints = new ArrayList<>();
 
         try {
@@ -151,7 +150,7 @@ public class TrasyFragment extends Fragment implements OnMapReadyCallback {
             e.printStackTrace();
         }
 
-        return new ArrayList<>();
+        return routePoints;
     }
 
     private void deleteFile(int position) {

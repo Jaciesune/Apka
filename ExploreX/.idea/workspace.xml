@@ -16,61 +16,14 @@
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/fileHashes.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/8.0/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/8.0/fileHashes/resourceHashesCache.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/file-system.probe" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/file-system.probe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/data_binding_base_class_source_out/debug/out/com/example/explorex/databinding/FragmentTrasyBinding.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/data_binding_base_class_source_out/debug/out/com/example/explorex/databinding/FragmentTrasyBinding.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/data_binding_base_class_source_out/debug/out/com/example/explorex/databinding/ItemRouteBinding.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/data_binding_base_class_source_out/debug/out/com/example/explorex/databinding/ItemRouteBinding.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/apk/debug/app-debug.apk" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/apk/debug/app-debug.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/R.jar" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/compile_and_runtime_not_namespaced_r_class_jar/debug/R.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/data_binding_base_class_log_artifact/debug/out/com.example.explorex-binding_classes.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/data_binding_base_class_log_artifact/debug/out/com.example.explorex-binding_classes.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/data_binding_layout_info_type_merge/debug/out/fragment_trasy-layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/data_binding_layout_info_type_merge/debug/out/fragment_trasy-layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/data_binding_layout_info_type_merge/debug/out/item_route-layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/data_binding_layout_info_type_merge/debug/out/item_route-layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/data_binding_layout_info_type_package/debug/out/fragment_trasy-layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/data_binding_layout_info_type_package/debug/out/fragment_trasy-layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/data_binding_layout_info_type_package/debug/out/item_route-layout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/data_binding_layout_info_type_package/debug/out/item_route-layout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/4/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/4/classes.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/7/classes.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex/debug/mergeProjectDexDebug/7/classes.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/dex_archive_input_jar_hashes/debug/out" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/dex_archive_input_jar_hashes/debug/out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/dataBindingGenBaseClassesDebug/base_builder_log.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/dataBindingGenBaseClassesDebug/base_builder_log.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/mergeDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/mergeDebugResources/compile-file-map.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/debug/packageDebugResources/compile-file-map.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/dex-renamer-state.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/androidResources" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/incremental/packageDebug/tmp/debug/zip-cache/androidResources" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/explorex/GroupedLatLng.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/explorex/TrasyAdapter$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/explorex/TrasyAdapter$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/explorex/TrasyAdapter$OnItemClickListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/explorex/TrasyAdapter$OnItemClickListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/explorex/TrasyAdapter$ViewHolder.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/explorex/TrasyAdapter$ViewHolder.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/explorex/TrasyAdapter.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/explorex/TrasyAdapter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/explorex/TrasyFragment$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/explorex/TrasyFragment$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/explorex/TrasyFragment.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/explorex/TrasyFragment.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/explorex/databinding/FragmentTrasyBinding.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/explorex/databinding/FragmentTrasyBinding.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/explorex/databinding/ItemRouteBinding.class" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/javac/debug/classes/com/example/explorex/databinding/ItemRouteBinding.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/local_only_symbol_list/debug/R-def.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/local_only_symbol_list/debug/R-def.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_res/debug/layout_fragment_trasy.xml.flat" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res/debug/layout_fragment_trasy.xml.flat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_res/debug/layout_item_route.xml.flat" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res/debug/layout_item_route.xml.flat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/single/debug.json" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/merged_res_blame_folder/debug/out/single/debug.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/packaged_res/debug/layout/fragment_trasy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/packaged_res/debug/layout/fragment_trasy.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/packaged_res/debug/layout/item_route.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/packaged_res/debug/layout/item_route.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/out/resources-debug.ap_" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/processed_res/debug/out/resources-debug.ap_" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/example/explorex/GroupedLatLng.dex" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/example/explorex/TrasyAdapter$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/example/explorex/TrasyAdapter$1.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/example/explorex/TrasyAdapter$OnItemClickListener.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/example/explorex/TrasyAdapter$OnItemClickListener.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/example/explorex/TrasyAdapter$ViewHolder.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/example/explorex/TrasyAdapter$ViewHolder.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/example/explorex/TrasyAdapter.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/example/explorex/TrasyAdapter.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/example/explorex/TrasyFragment$1.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/example/explorex/TrasyFragment$1.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/example/explorex/TrasyFragment.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/example/explorex/TrasyFragment.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/example/explorex/databinding/FragmentTrasyBinding.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/example/explorex/databinding/FragmentTrasyBinding.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/example/explorex/databinding/ItemRouteBinding.dex" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/project_dex_archive/debug/out/com/example/explorex/databinding/ItemRouteBinding.dex" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/runtime_symbol_list/debug/R.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/runtime_symbol_list/debug/R.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/stable_resource_ids_file/debug/stableIds.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/stable_resource_ids_file/debug/stableIds.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/intermediates/symbol_list_with_package_name/debug/package-aware-r.txt" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/intermediates/symbol_list_with_package_name/debug/package-aware-r.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/tmp/compileDebugJavaWithJavac/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/explorex/GroupedLatLng.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/explorex/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/explorex/MainActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/explorex/MapaFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/explorex/MapaFragment.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/explorex/TrasyAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/explorex/TrasyAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/explorex/TrasyFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/explorex/TrasyFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_trasy.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_trasy.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/item_route.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/item_route.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,6 +79,7 @@
       <list>
         <option value="valueResourceFile" />
         <option value="resourceFile" />
+        <option value="Class" />
         <option value="Interface" />
       </list>
     </option>
@@ -156,7 +110,8 @@
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Inylle/Desktop/Zrzuty&quot;,
     &quot;project.structure.last.edited&quot;: &quot;SDK Location&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Mappings&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -233,9 +188,16 @@
     </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="StandaloneScriptsStorage">
+    <option name="files">
+      <set>
+        <option value="$PROJECT_DIR$/app/build.gradle.kts" />
+      </set>
+    </option>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e7200a9d-9923-459c-bdd5-724a55571d12" name="Changes" comment="" />
+      <changelist id="f7ce1ab1-a8c7-4261-8e97-c48a1f9ac6ef" name="Changes" comment="" />
       <created>1700520453704</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />

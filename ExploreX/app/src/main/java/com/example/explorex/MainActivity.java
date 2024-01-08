@@ -279,6 +279,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         return interpolator.getInterpolation(fraction);
     }
 
+    public interface OnLocationPermissionGrantedListener {
+        void onLocationPermissionGranted();
+    }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
@@ -306,4 +309,5 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         // Save the current color for the next iteration
         currentColor = newColor;
     }
+
 }
