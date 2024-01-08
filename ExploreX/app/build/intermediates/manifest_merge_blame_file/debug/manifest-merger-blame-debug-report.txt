@@ -17,440 +17,446 @@
 13    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 13-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:7:5-79
 13-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:7:22-76
-14    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-14-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:8:5-81
-14-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:8:22-78
-15    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-15-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:9:5-80
-15-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:9:22-77
-16
-17    <uses-feature
-17-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:10:5-91
-18        android:name="android.hardware.sensor.light"
-18-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:10:19-63
-19        android:required="false" />
-19-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:10:64-88
+14    <uses-permission
+14-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:8:5-9:38
+15        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+15-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:8:22-78
+16        android:maxSdkVersion="32" />
+16-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:9:9-35
+17    <uses-permission
+17-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:10:5-11:38
+18        android:name="android.permission.READ_EXTERNAL_STORAGE"
+18-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:10:22-77
+19        android:maxSdkVersion="32" />
+19-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:11:9-35
 20
-21    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-21-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:26:5-79
-21-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:26:22-76
-22
-23    <uses-feature
-23-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\lutas\.gradle\caches\transforms-3\0486d2bcfdf214e9d8712f3589ea9087\transformed\play-services-maps-18.2.0\AndroidManifest.xml:26:5-28:35
-24        android:glEsVersion="0x00020000"
-24-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\lutas\.gradle\caches\transforms-3\0486d2bcfdf214e9d8712f3589ea9087\transformed\play-services-maps-18.2.0\AndroidManifest.xml:27:9-41
-25        android:required="true" />
-25-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\lutas\.gradle\caches\transforms-3\0486d2bcfdf214e9d8712f3589ea9087\transformed\play-services-maps-18.2.0\AndroidManifest.xml:28:9-32
+21    <uses-feature
+21-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:12:5-91
+22        android:name="android.hardware.sensor.light"
+22-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:12:19-63
+23        android:required="false" />
+23-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:12:64-88
+24
+25    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+25-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:26:5-79
+25-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:26:22-76
 26
-27    <queries>
-27-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\lutas\.gradle\caches\transforms-3\0486d2bcfdf214e9d8712f3589ea9087\transformed\play-services-maps-18.2.0\AndroidManifest.xml:30:5-34:15
-28
-29        <!-- Needs to be explicitly declared on Android R+ -->
-30        <package android:name="com.google.android.apps.maps" />
-30-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\lutas\.gradle\caches\transforms-3\0486d2bcfdf214e9d8712f3589ea9087\transformed\play-services-maps-18.2.0\AndroidManifest.xml:33:9-64
-30-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\lutas\.gradle\caches\transforms-3\0486d2bcfdf214e9d8712f3589ea9087\transformed\play-services-maps-18.2.0\AndroidManifest.xml:33:18-61
-31    </queries>
+27    <uses-feature
+27-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\lutas\.gradle\caches\transforms-3\0486d2bcfdf214e9d8712f3589ea9087\transformed\play-services-maps-18.2.0\AndroidManifest.xml:26:5-28:35
+28        android:glEsVersion="0x00020000"
+28-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\lutas\.gradle\caches\transforms-3\0486d2bcfdf214e9d8712f3589ea9087\transformed\play-services-maps-18.2.0\AndroidManifest.xml:27:9-41
+29        android:required="true" />
+29-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\lutas\.gradle\caches\transforms-3\0486d2bcfdf214e9d8712f3589ea9087\transformed\play-services-maps-18.2.0\AndroidManifest.xml:28:9-32
+30
+31    <queries>
+31-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\lutas\.gradle\caches\transforms-3\0486d2bcfdf214e9d8712f3589ea9087\transformed\play-services-maps-18.2.0\AndroidManifest.xml:30:5-34:15
 32
-33    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-33-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:23:5-77
-33-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:23:22-74
-34    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
-34-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:24:5-68
-34-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:24:22-65
-35    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-35-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:26:5-82
-35-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:26:22-79
+33        <!-- Needs to be explicitly declared on Android R+ -->
+34        <package android:name="com.google.android.apps.maps" />
+34-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\lutas\.gradle\caches\transforms-3\0486d2bcfdf214e9d8712f3589ea9087\transformed\play-services-maps-18.2.0\AndroidManifest.xml:33:9-64
+34-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\lutas\.gradle\caches\transforms-3\0486d2bcfdf214e9d8712f3589ea9087\transformed\play-services-maps-18.2.0\AndroidManifest.xml:33:18-61
+35    </queries>
 36
-37    <permission
-37-->[androidx.core:core:1.9.0] C:\Users\lutas\.gradle\caches\transforms-3\4ef38977c2e5999f75059a452f3f5df9\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
-38        android:name="com.example.explorex.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-38-->[androidx.core:core:1.9.0] C:\Users\lutas\.gradle\caches\transforms-3\4ef38977c2e5999f75059a452f3f5df9\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
-39        android:protectionLevel="signature" />
-39-->[androidx.core:core:1.9.0] C:\Users\lutas\.gradle\caches\transforms-3\4ef38977c2e5999f75059a452f3f5df9\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+37    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+37-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:23:5-77
+37-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:23:22-74
+38    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- Required by older versions of Google Play services to create IID tokens -->
+38-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:24:5-68
+38-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:24:22-65
+39    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+39-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:26:5-82
+39-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:26:22-79
 40
-41    <uses-permission android:name="com.example.explorex.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-41-->[androidx.core:core:1.9.0] C:\Users\lutas\.gradle\caches\transforms-3\4ef38977c2e5999f75059a452f3f5df9\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
-41-->[androidx.core:core:1.9.0] C:\Users\lutas\.gradle\caches\transforms-3\4ef38977c2e5999f75059a452f3f5df9\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
-42
-43    <application
-43-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:13:5-45:19
-44        android:allowBackup="true"
-44-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:14:9-35
-45        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-45-->[androidx.core:core:1.9.0] C:\Users\lutas\.gradle\caches\transforms-3\4ef38977c2e5999f75059a452f3f5df9\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
-46        android:dataExtractionRules="@xml/data_extraction_rules"
-46-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:15:9-65
-47        android:debuggable="true"
-48        android:enableOnBackInvokedCallback="true"
-48-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:16:9-51
-49        android:extractNativeLibs="false"
-50        android:fullBackupContent="@xml/backup_rules"
-50-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:17:9-54
-51        android:icon="@mipmap/ic_launcher"
-51-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:18:9-43
-52        android:label="@string/app_name"
-52-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:19:9-41
-53        android:roundIcon="@mipmap/ic_launcher_round"
-53-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:20:9-54
-54        android:supportsRtl="true"
-54-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:21:9-35
-55        android:testOnly="true"
-56        android:theme="@style/Theme.ExploreX" >
-56-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:22:9-46
-57        <activity
-57-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:24:9-26:40
-58            android:name="com.example.explorex.Register"
-58-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:25:13-37
-59            android:exported="false" />
-59-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:26:13-37
-60        <activity
-60-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:27:9-35:20
-61            android:name="com.example.explorex.Login"
-61-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:28:13-34
-62            android:exported="true" >
-62-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:29:13-36
-63            <intent-filter>
-63-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:30:13-34:29
-64                <action android:name="android.intent.action.MAIN" />
-64-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:31:17-69
-64-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:31:25-66
-65
-66                <category android:name="android.intent.category.LAUNCHER" />
-66-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:33:17-77
-66-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:33:27-74
-67            </intent-filter>
-68        </activity>
-69        <activity
-69-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:36:9-40:20
-70            android:name="com.example.explorex.MainActivity"
-70-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:37:13-41
-71            android:exported="true"
-71-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:38:13-36
-72            android:screenOrientation="unspecified" >
-72-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:39:13-52
-73        </activity>
-74
-75        <meta-data
-75-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:42:9-44:51
-76            android:name="com.google.android.geo.API_KEY"
-76-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:43:13-58
-77            android:value="@string/map_api_key" />
-77-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:44:13-48
+41    <permission
+41-->[androidx.core:core:1.9.0] C:\Users\lutas\.gradle\caches\transforms-3\4ef38977c2e5999f75059a452f3f5df9\transformed\core-1.9.0\AndroidManifest.xml:22:5-24:47
+42        android:name="com.example.explorex.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+42-->[androidx.core:core:1.9.0] C:\Users\lutas\.gradle\caches\transforms-3\4ef38977c2e5999f75059a452f3f5df9\transformed\core-1.9.0\AndroidManifest.xml:23:9-81
+43        android:protectionLevel="signature" />
+43-->[androidx.core:core:1.9.0] C:\Users\lutas\.gradle\caches\transforms-3\4ef38977c2e5999f75059a452f3f5df9\transformed\core-1.9.0\AndroidManifest.xml:24:9-44
+44
+45    <uses-permission android:name="com.example.explorex.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+45-->[androidx.core:core:1.9.0] C:\Users\lutas\.gradle\caches\transforms-3\4ef38977c2e5999f75059a452f3f5df9\transformed\core-1.9.0\AndroidManifest.xml:26:5-97
+45-->[androidx.core:core:1.9.0] C:\Users\lutas\.gradle\caches\transforms-3\4ef38977c2e5999f75059a452f3f5df9\transformed\core-1.9.0\AndroidManifest.xml:26:22-94
+46
+47    <application
+47-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:15:5-47:19
+48        android:allowBackup="true"
+48-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:16:9-35
+49        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+49-->[androidx.core:core:1.9.0] C:\Users\lutas\.gradle\caches\transforms-3\4ef38977c2e5999f75059a452f3f5df9\transformed\core-1.9.0\AndroidManifest.xml:28:18-86
+50        android:dataExtractionRules="@xml/data_extraction_rules"
+50-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:17:9-65
+51        android:debuggable="true"
+52        android:enableOnBackInvokedCallback="true"
+52-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:18:9-51
+53        android:extractNativeLibs="false"
+54        android:fullBackupContent="@xml/backup_rules"
+54-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:19:9-54
+55        android:icon="@mipmap/ic_launcher"
+55-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:20:9-43
+56        android:label="@string/app_name"
+56-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:21:9-41
+57        android:roundIcon="@mipmap/ic_launcher_round"
+57-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:22:9-54
+58        android:supportsRtl="true"
+58-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:23:9-35
+59        android:testOnly="true"
+60        android:theme="@style/Theme.ExploreX" >
+60-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:24:9-46
+61        <activity
+61-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:26:9-28:40
+62            android:name="com.example.explorex.Register"
+62-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:27:13-37
+63            android:exported="false" />
+63-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:28:13-37
+64        <activity
+64-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:29:9-37:20
+65            android:name="com.example.explorex.Login"
+65-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:30:13-34
+66            android:exported="true" >
+66-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:31:13-36
+67            <intent-filter>
+67-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:32:13-36:29
+68                <action android:name="android.intent.action.MAIN" />
+68-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:33:17-69
+68-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:33:25-66
+69
+70                <category android:name="android.intent.category.LAUNCHER" />
+70-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:35:17-77
+70-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:35:27-74
+71            </intent-filter>
+72        </activity>
+73        <activity
+73-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:38:9-42:20
+74            android:name="com.example.explorex.MainActivity"
+74-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:39:13-41
+75            android:exported="true"
+75-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:40:13-36
+76            android:screenOrientation="unspecified" >
+76-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:41:13-52
+77        </activity>
 78
-79        <activity
-79-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:29:9-46:20
-80            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
-80-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:30:13-80
-81            android:excludeFromRecents="true"
-81-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:31:13-46
-82            android:exported="true"
-82-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:32:13-36
-83            android:launchMode="singleTask"
-83-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:33:13-44
-84            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-84-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:34:13-72
-85            <intent-filter>
-85-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:35:13-45:29
-86                <action android:name="android.intent.action.VIEW" />
-86-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:36:17-69
-86-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:36:25-66
-87
-88                <category android:name="android.intent.category.DEFAULT" />
-88-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:38:17-76
-88-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:38:27-73
-89                <category android:name="android.intent.category.BROWSABLE" />
-89-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:39:17-78
-89-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:39:27-75
-90
-91                <data
-91-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:41:17-44:51
-92                    android:host="firebase.auth"
-92-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:42:21-49
-93                    android:path="/"
-93-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:43:21-37
-94                    android:scheme="genericidp" />
-94-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:44:21-48
-95            </intent-filter>
-96        </activity>
-97        <activity
-97-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:47:9-64:20
-98            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
-98-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:48:13-79
-99            android:excludeFromRecents="true"
-99-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:49:13-46
-100            android:exported="true"
-100-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:50:13-36
-101            android:launchMode="singleTask"
-101-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:51:13-44
-102            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
-102-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:52:13-72
-103            <intent-filter>
-103-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:53:13-63:29
-104                <action android:name="android.intent.action.VIEW" />
-104-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:36:17-69
-104-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:36:25-66
-105
-106                <category android:name="android.intent.category.DEFAULT" />
-106-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:38:17-76
-106-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:38:27-73
-107                <category android:name="android.intent.category.BROWSABLE" />
-107-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:39:17-78
-107-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:39:27-75
-108
-109                <data
-109-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:41:17-44:51
-110                    android:host="firebase.auth"
-110-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:42:21-49
-111                    android:path="/"
-111-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:43:21-37
-112                    android:scheme="recaptcha" />
-112-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:44:21-48
-113            </intent-filter>
-114        </activity>
-115
-116        <service
-116-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:66:9-72:19
-117            android:name="com.google.firebase.components.ComponentDiscoveryService"
-117-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:67:13-84
-118            android:directBootAware="true"
-118-->[com.google.firebase:firebase-common:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\2710805c419e8cbaf939421bbbc993aa\transformed\firebase-common-20.4.2\AndroidManifest.xml:32:13-43
-119            android:exported="false" >
-119-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:68:13-37
-120            <meta-data
-120-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:69:13-71:85
-121                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
-121-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:70:17-109
-122                android:value="com.google.firebase.components.ComponentRegistrar" />
-122-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:71:17-82
-123            <meta-data
-123-->[com.google.firebase:firebase-database:20.3.0] C:\Users\lutas\.gradle\caches\transforms-3\5c9ca5e2a84ccb30a4c208e94088b5b7\transformed\firebase-database-20.3.0\AndroidManifest.xml:29:13-31:85
-124                android:name="com.google.firebase.components:com.google.firebase.database.FirebaseDatabaseKtxRegistrar"
-124-->[com.google.firebase:firebase-database:20.3.0] C:\Users\lutas\.gradle\caches\transforms-3\5c9ca5e2a84ccb30a4c208e94088b5b7\transformed\firebase-database-20.3.0\AndroidManifest.xml:30:17-120
-125                android:value="com.google.firebase.components.ComponentRegistrar" />
-125-->[com.google.firebase:firebase-database:20.3.0] C:\Users\lutas\.gradle\caches\transforms-3\5c9ca5e2a84ccb30a4c208e94088b5b7\transformed\firebase-database-20.3.0\AndroidManifest.xml:31:17-82
-126            <meta-data
-126-->[com.google.firebase:firebase-database:20.3.0] C:\Users\lutas\.gradle\caches\transforms-3\5c9ca5e2a84ccb30a4c208e94088b5b7\transformed\firebase-database-20.3.0\AndroidManifest.xml:32:13-34:85
-127                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
-127-->[com.google.firebase:firebase-database:20.3.0] C:\Users\lutas\.gradle\caches\transforms-3\5c9ca5e2a84ccb30a4c208e94088b5b7\transformed\firebase-database-20.3.0\AndroidManifest.xml:33:17-109
-128                android:value="com.google.firebase.components.ComponentRegistrar" />
-128-->[com.google.firebase:firebase-database:20.3.0] C:\Users\lutas\.gradle\caches\transforms-3\5c9ca5e2a84ccb30a4c208e94088b5b7\transformed\firebase-database-20.3.0\AndroidManifest.xml:34:17-82
-129            <meta-data
-129-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:57:13-59:85
-130                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
-130-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:58:17-122
-131                android:value="com.google.firebase.components.ComponentRegistrar" />
-131-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:59:17-82
-132            <meta-data
-132-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:60:13-62:85
-133                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
-133-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:61:17-119
-134                android:value="com.google.firebase.components.ComponentRegistrar" />
-134-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:62:17-82
-135            <meta-data
-135-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\lutas\.gradle\caches\transforms-3\a92d47dd8f271b0769c87efa046957d7\transformed\firebase-installations-17.2.0\AndroidManifest.xml:15:13-17:85
-136                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar"
-136-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\lutas\.gradle\caches\transforms-3\a92d47dd8f271b0769c87efa046957d7\transformed\firebase-installations-17.2.0\AndroidManifest.xml:16:17-130
-137                android:value="com.google.firebase.components.ComponentRegistrar" />
-137-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\lutas\.gradle\caches\transforms-3\a92d47dd8f271b0769c87efa046957d7\transformed\firebase-installations-17.2.0\AndroidManifest.xml:17:17-82
-138            <meta-data
-138-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\lutas\.gradle\caches\transforms-3\a92d47dd8f271b0769c87efa046957d7\transformed\firebase-installations-17.2.0\AndroidManifest.xml:18:13-20:85
-139                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
-139-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\lutas\.gradle\caches\transforms-3\a92d47dd8f271b0769c87efa046957d7\transformed\firebase-installations-17.2.0\AndroidManifest.xml:19:17-127
-140                android:value="com.google.firebase.components.ComponentRegistrar" />
-140-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\lutas\.gradle\caches\transforms-3\a92d47dd8f271b0769c87efa046957d7\transformed\firebase-installations-17.2.0\AndroidManifest.xml:20:17-82
-141            <meta-data
-141-->[com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\5a5143bbe865a69b357b06116ab8750e\transformed\firebase-common-ktx-20.4.2\AndroidManifest.xml:12:13-14:85
-142                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
-142-->[com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\5a5143bbe865a69b357b06116ab8750e\transformed\firebase-common-ktx-20.4.2\AndroidManifest.xml:13:17-116
-143                android:value="com.google.firebase.components.ComponentRegistrar" />
-143-->[com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\5a5143bbe865a69b357b06116ab8750e\transformed\firebase-common-ktx-20.4.2\AndroidManifest.xml:14:17-82
-144            <meta-data
-144-->[com.google.firebase:firebase-common:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\2710805c419e8cbaf939421bbbc993aa\transformed\firebase-common-20.4.2\AndroidManifest.xml:35:13-37:85
-145                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
-145-->[com.google.firebase:firebase-common:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\2710805c419e8cbaf939421bbbc993aa\transformed\firebase-common-20.4.2\AndroidManifest.xml:36:17-109
-146                android:value="com.google.firebase.components.ComponentRegistrar" />
-146-->[com.google.firebase:firebase-common:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\2710805c419e8cbaf939421bbbc993aa\transformed\firebase-common-20.4.2\AndroidManifest.xml:37:17-82
-147            <meta-data
-147-->[com.google.firebase:firebase-datatransport:18.1.7] C:\Users\lutas\.gradle\caches\transforms-3\f872aa727b124a6793d5da1351ed0c01\transformed\firebase-datatransport-18.1.7\AndroidManifest.xml:27:13-29:85
-148                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
-148-->[com.google.firebase:firebase-datatransport:18.1.7] C:\Users\lutas\.gradle\caches\transforms-3\f872aa727b124a6793d5da1351ed0c01\transformed\firebase-datatransport-18.1.7\AndroidManifest.xml:28:17-115
-149                android:value="com.google.firebase.components.ComponentRegistrar" />
-149-->[com.google.firebase:firebase-datatransport:18.1.7] C:\Users\lutas\.gradle\caches\transforms-3\f872aa727b124a6793d5da1351ed0c01\transformed\firebase-datatransport-18.1.7\AndroidManifest.xml:29:17-82
-150        </service> <!-- Needs to be explicitly declared on P+ -->
-151        <uses-library
-151-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\lutas\.gradle\caches\transforms-3\0486d2bcfdf214e9d8712f3589ea9087\transformed\play-services-maps-18.2.0\AndroidManifest.xml:39:9-41:40
-152            android:name="org.apache.http.legacy"
-152-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\lutas\.gradle\caches\transforms-3\0486d2bcfdf214e9d8712f3589ea9087\transformed\play-services-maps-18.2.0\AndroidManifest.xml:40:13-50
-153            android:required="false" />
-153-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\lutas\.gradle\caches\transforms-3\0486d2bcfdf214e9d8712f3589ea9087\transformed\play-services-maps-18.2.0\AndroidManifest.xml:41:13-37
-154
-155        <receiver
-155-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:29:9-40:20
-156            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
-156-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:30:13-78
-157            android:exported="true"
-157-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:31:13-36
-158            android:permission="com.google.android.c2dm.permission.SEND" >
-158-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:32:13-73
-159            <intent-filter>
-159-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:33:13-35:29
-160                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-160-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:34:17-81
-160-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:34:25-78
-161            </intent-filter>
-162
-163            <meta-data
-163-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:37:13-39:40
-164                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
-164-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:38:17-92
-165                android:value="true" />
-165-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:39:17-37
-166        </receiver>
-167        <!--
-168             FirebaseMessagingService performs security checks at runtime,
-169             but set to not exported to explicitly avoid allowing another app to call it.
-170        -->
-171        <service
-171-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:46:9-53:19
-172            android:name="com.google.firebase.messaging.FirebaseMessagingService"
-172-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:47:13-82
-173            android:directBootAware="true"
-173-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:48:13-43
-174            android:exported="false" >
-174-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:49:13-37
-175            <intent-filter android:priority="-500" >
-175-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:50:13-52:29
-175-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:50:28-51
-176                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-176-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:51:17-78
-176-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:51:25-75
-177            </intent-filter>
-178        </service>
-179
-180        <provider
-180-->[com.google.firebase:firebase-common:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\2710805c419e8cbaf939421bbbc993aa\transformed\firebase-common-20.4.2\AndroidManifest.xml:23:9-28:39
-181            android:name="com.google.firebase.provider.FirebaseInitProvider"
-181-->[com.google.firebase:firebase-common:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\2710805c419e8cbaf939421bbbc993aa\transformed\firebase-common-20.4.2\AndroidManifest.xml:24:13-77
-182            android:authorities="com.example.explorex.firebaseinitprovider"
-182-->[com.google.firebase:firebase-common:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\2710805c419e8cbaf939421bbbc993aa\transformed\firebase-common-20.4.2\AndroidManifest.xml:25:13-72
-183            android:directBootAware="true"
-183-->[com.google.firebase:firebase-common:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\2710805c419e8cbaf939421bbbc993aa\transformed\firebase-common-20.4.2\AndroidManifest.xml:26:13-43
-184            android:exported="false"
-184-->[com.google.firebase:firebase-common:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\2710805c419e8cbaf939421bbbc993aa\transformed\firebase-common-20.4.2\AndroidManifest.xml:27:13-37
-185            android:initOrder="100" />
-185-->[com.google.firebase:firebase-common:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\2710805c419e8cbaf939421bbbc993aa\transformed\firebase-common-20.4.2\AndroidManifest.xml:28:13-36
-186
-187        <activity
-187-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\lutas\.gradle\caches\transforms-3\bc1f30bcb410468b045fedb58b052fea\transformed\play-services-base-18.1.0\AndroidManifest.xml:20:9-22:45
-188            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-188-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\lutas\.gradle\caches\transforms-3\bc1f30bcb410468b045fedb58b052fea\transformed\play-services-base-18.1.0\AndroidManifest.xml:20:19-85
-189            android:exported="false"
-189-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\lutas\.gradle\caches\transforms-3\bc1f30bcb410468b045fedb58b052fea\transformed\play-services-base-18.1.0\AndroidManifest.xml:22:19-43
-190            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-190-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\lutas\.gradle\caches\transforms-3\bc1f30bcb410468b045fedb58b052fea\transformed\play-services-base-18.1.0\AndroidManifest.xml:21:19-78
-191
-192        <provider
-192-->[androidx.emoji2:emoji2:1.2.0] C:\Users\lutas\.gradle\caches\transforms-3\b1f6aa6794e70fa39718940c64fe0fc9\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
-193            android:name="androidx.startup.InitializationProvider"
-193-->[androidx.emoji2:emoji2:1.2.0] C:\Users\lutas\.gradle\caches\transforms-3\b1f6aa6794e70fa39718940c64fe0fc9\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
-194            android:authorities="com.example.explorex.androidx-startup"
-194-->[androidx.emoji2:emoji2:1.2.0] C:\Users\lutas\.gradle\caches\transforms-3\b1f6aa6794e70fa39718940c64fe0fc9\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
-195            android:exported="false" >
-195-->[androidx.emoji2:emoji2:1.2.0] C:\Users\lutas\.gradle\caches\transforms-3\b1f6aa6794e70fa39718940c64fe0fc9\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
-196            <meta-data
-196-->[androidx.emoji2:emoji2:1.2.0] C:\Users\lutas\.gradle\caches\transforms-3\b1f6aa6794e70fa39718940c64fe0fc9\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
-197                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-197-->[androidx.emoji2:emoji2:1.2.0] C:\Users\lutas\.gradle\caches\transforms-3\b1f6aa6794e70fa39718940c64fe0fc9\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
-198                android:value="androidx.startup" />
-198-->[androidx.emoji2:emoji2:1.2.0] C:\Users\lutas\.gradle\caches\transforms-3\b1f6aa6794e70fa39718940c64fe0fc9\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
-199            <meta-data
-199-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\lutas\.gradle\caches\transforms-3\c6836b87af8dc1b4fd7ba54a39a14198\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:29:13-31:52
-200                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-200-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\lutas\.gradle\caches\transforms-3\c6836b87af8dc1b4fd7ba54a39a14198\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:30:17-78
-201                android:value="androidx.startup" />
-201-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\lutas\.gradle\caches\transforms-3\c6836b87af8dc1b4fd7ba54a39a14198\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:31:17-49
-202            <meta-data
-202-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
-203                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-203-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
-204                android:value="androidx.startup" />
-204-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
-205        </provider>
-206
-207        <meta-data
-207-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\lutas\.gradle\caches\transforms-3\e992bcd92a6855b58da6c90f9b92b07e\transformed\play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
-208            android:name="com.google.android.gms.version"
-208-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\lutas\.gradle\caches\transforms-3\e992bcd92a6855b58da6c90f9b92b07e\transformed\play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
-209            android:value="@integer/google_play_services_version" />
-209-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\lutas\.gradle\caches\transforms-3\e992bcd92a6855b58da6c90f9b92b07e\transformed\play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
+79        <meta-data
+79-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:44:9-46:51
+80            android:name="com.google.android.geo.API_KEY"
+80-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:45:13-58
+81            android:value="@string/map_api_key" />
+81-->D:\School\2023-2024\Mobilne\ExploreX\app\src\main\AndroidManifest.xml:46:13-48
+82
+83        <activity
+83-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:29:9-46:20
+84            android:name="com.google.firebase.auth.internal.GenericIdpActivity"
+84-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:30:13-80
+85            android:excludeFromRecents="true"
+85-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:31:13-46
+86            android:exported="true"
+86-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:32:13-36
+87            android:launchMode="singleTask"
+87-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:33:13-44
+88            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+88-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:34:13-72
+89            <intent-filter>
+89-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:35:13-45:29
+90                <action android:name="android.intent.action.VIEW" />
+90-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:36:17-69
+90-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:36:25-66
+91
+92                <category android:name="android.intent.category.DEFAULT" />
+92-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:38:17-76
+92-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:38:27-73
+93                <category android:name="android.intent.category.BROWSABLE" />
+93-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:39:17-78
+93-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:39:27-75
+94
+95                <data
+95-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:41:17-44:51
+96                    android:host="firebase.auth"
+96-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:42:21-49
+97                    android:path="/"
+97-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:43:21-37
+98                    android:scheme="genericidp" />
+98-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:44:21-48
+99            </intent-filter>
+100        </activity>
+101        <activity
+101-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:47:9-64:20
+102            android:name="com.google.firebase.auth.internal.RecaptchaActivity"
+102-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:48:13-79
+103            android:excludeFromRecents="true"
+103-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:49:13-46
+104            android:exported="true"
+104-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:50:13-36
+105            android:launchMode="singleTask"
+105-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:51:13-44
+106            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+106-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:52:13-72
+107            <intent-filter>
+107-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:53:13-63:29
+108                <action android:name="android.intent.action.VIEW" />
+108-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:36:17-69
+108-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:36:25-66
+109
+110                <category android:name="android.intent.category.DEFAULT" />
+110-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:38:17-76
+110-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:38:27-73
+111                <category android:name="android.intent.category.BROWSABLE" />
+111-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:39:17-78
+111-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:39:27-75
+112
+113                <data
+113-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:41:17-44:51
+114                    android:host="firebase.auth"
+114-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:42:21-49
+115                    android:path="/"
+115-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:43:21-37
+116                    android:scheme="recaptcha" />
+116-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:44:21-48
+117            </intent-filter>
+118        </activity>
+119
+120        <service
+120-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:66:9-72:19
+121            android:name="com.google.firebase.components.ComponentDiscoveryService"
+121-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:67:13-84
+122            android:directBootAware="true"
+122-->[com.google.firebase:firebase-common:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\2710805c419e8cbaf939421bbbc993aa\transformed\firebase-common-20.4.2\AndroidManifest.xml:32:13-43
+123            android:exported="false" >
+123-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:68:13-37
+124            <meta-data
+124-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:69:13-71:85
+125                android:name="com.google.firebase.components:com.google.firebase.auth.FirebaseAuthRegistrar"
+125-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:70:17-109
+126                android:value="com.google.firebase.components.ComponentRegistrar" />
+126-->[com.google.firebase:firebase-auth:22.3.0] C:\Users\lutas\.gradle\caches\transforms-3\950922b4dd029669fd922f9d0f63d2d1\transformed\firebase-auth-22.3.0\AndroidManifest.xml:71:17-82
+127            <meta-data
+127-->[com.google.firebase:firebase-database:20.3.0] C:\Users\lutas\.gradle\caches\transforms-3\5c9ca5e2a84ccb30a4c208e94088b5b7\transformed\firebase-database-20.3.0\AndroidManifest.xml:29:13-31:85
+128                android:name="com.google.firebase.components:com.google.firebase.database.FirebaseDatabaseKtxRegistrar"
+128-->[com.google.firebase:firebase-database:20.3.0] C:\Users\lutas\.gradle\caches\transforms-3\5c9ca5e2a84ccb30a4c208e94088b5b7\transformed\firebase-database-20.3.0\AndroidManifest.xml:30:17-120
+129                android:value="com.google.firebase.components.ComponentRegistrar" />
+129-->[com.google.firebase:firebase-database:20.3.0] C:\Users\lutas\.gradle\caches\transforms-3\5c9ca5e2a84ccb30a4c208e94088b5b7\transformed\firebase-database-20.3.0\AndroidManifest.xml:31:17-82
+130            <meta-data
+130-->[com.google.firebase:firebase-database:20.3.0] C:\Users\lutas\.gradle\caches\transforms-3\5c9ca5e2a84ccb30a4c208e94088b5b7\transformed\firebase-database-20.3.0\AndroidManifest.xml:32:13-34:85
+131                android:name="com.google.firebase.components:com.google.firebase.database.DatabaseRegistrar"
+131-->[com.google.firebase:firebase-database:20.3.0] C:\Users\lutas\.gradle\caches\transforms-3\5c9ca5e2a84ccb30a4c208e94088b5b7\transformed\firebase-database-20.3.0\AndroidManifest.xml:33:17-109
+132                android:value="com.google.firebase.components.ComponentRegistrar" />
+132-->[com.google.firebase:firebase-database:20.3.0] C:\Users\lutas\.gradle\caches\transforms-3\5c9ca5e2a84ccb30a4c208e94088b5b7\transformed\firebase-database-20.3.0\AndroidManifest.xml:34:17-82
+133            <meta-data
+133-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:57:13-59:85
+134                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingKtxRegistrar"
+134-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:58:17-122
+135                android:value="com.google.firebase.components.ComponentRegistrar" />
+135-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:59:17-82
+136            <meta-data
+136-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:60:13-62:85
+137                android:name="com.google.firebase.components:com.google.firebase.messaging.FirebaseMessagingRegistrar"
+137-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:61:17-119
+138                android:value="com.google.firebase.components.ComponentRegistrar" />
+138-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:62:17-82
+139            <meta-data
+139-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\lutas\.gradle\caches\transforms-3\a92d47dd8f271b0769c87efa046957d7\transformed\firebase-installations-17.2.0\AndroidManifest.xml:15:13-17:85
+140                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsKtxRegistrar"
+140-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\lutas\.gradle\caches\transforms-3\a92d47dd8f271b0769c87efa046957d7\transformed\firebase-installations-17.2.0\AndroidManifest.xml:16:17-130
+141                android:value="com.google.firebase.components.ComponentRegistrar" />
+141-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\lutas\.gradle\caches\transforms-3\a92d47dd8f271b0769c87efa046957d7\transformed\firebase-installations-17.2.0\AndroidManifest.xml:17:17-82
+142            <meta-data
+142-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\lutas\.gradle\caches\transforms-3\a92d47dd8f271b0769c87efa046957d7\transformed\firebase-installations-17.2.0\AndroidManifest.xml:18:13-20:85
+143                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+143-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\lutas\.gradle\caches\transforms-3\a92d47dd8f271b0769c87efa046957d7\transformed\firebase-installations-17.2.0\AndroidManifest.xml:19:17-127
+144                android:value="com.google.firebase.components.ComponentRegistrar" />
+144-->[com.google.firebase:firebase-installations:17.2.0] C:\Users\lutas\.gradle\caches\transforms-3\a92d47dd8f271b0769c87efa046957d7\transformed\firebase-installations-17.2.0\AndroidManifest.xml:20:17-82
+145            <meta-data
+145-->[com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\5a5143bbe865a69b357b06116ab8750e\transformed\firebase-common-ktx-20.4.2\AndroidManifest.xml:12:13-14:85
+146                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonLegacyRegistrar"
+146-->[com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\5a5143bbe865a69b357b06116ab8750e\transformed\firebase-common-ktx-20.4.2\AndroidManifest.xml:13:17-116
+147                android:value="com.google.firebase.components.ComponentRegistrar" />
+147-->[com.google.firebase:firebase-common-ktx:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\5a5143bbe865a69b357b06116ab8750e\transformed\firebase-common-ktx-20.4.2\AndroidManifest.xml:14:17-82
+148            <meta-data
+148-->[com.google.firebase:firebase-common:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\2710805c419e8cbaf939421bbbc993aa\transformed\firebase-common-20.4.2\AndroidManifest.xml:35:13-37:85
+149                android:name="com.google.firebase.components:com.google.firebase.FirebaseCommonKtxRegistrar"
+149-->[com.google.firebase:firebase-common:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\2710805c419e8cbaf939421bbbc993aa\transformed\firebase-common-20.4.2\AndroidManifest.xml:36:17-109
+150                android:value="com.google.firebase.components.ComponentRegistrar" />
+150-->[com.google.firebase:firebase-common:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\2710805c419e8cbaf939421bbbc993aa\transformed\firebase-common-20.4.2\AndroidManifest.xml:37:17-82
+151            <meta-data
+151-->[com.google.firebase:firebase-datatransport:18.1.7] C:\Users\lutas\.gradle\caches\transforms-3\f872aa727b124a6793d5da1351ed0c01\transformed\firebase-datatransport-18.1.7\AndroidManifest.xml:27:13-29:85
+152                android:name="com.google.firebase.components:com.google.firebase.datatransport.TransportRegistrar"
+152-->[com.google.firebase:firebase-datatransport:18.1.7] C:\Users\lutas\.gradle\caches\transforms-3\f872aa727b124a6793d5da1351ed0c01\transformed\firebase-datatransport-18.1.7\AndroidManifest.xml:28:17-115
+153                android:value="com.google.firebase.components.ComponentRegistrar" />
+153-->[com.google.firebase:firebase-datatransport:18.1.7] C:\Users\lutas\.gradle\caches\transforms-3\f872aa727b124a6793d5da1351ed0c01\transformed\firebase-datatransport-18.1.7\AndroidManifest.xml:29:17-82
+154        </service> <!-- Needs to be explicitly declared on P+ -->
+155        <uses-library
+155-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\lutas\.gradle\caches\transforms-3\0486d2bcfdf214e9d8712f3589ea9087\transformed\play-services-maps-18.2.0\AndroidManifest.xml:39:9-41:40
+156            android:name="org.apache.http.legacy"
+156-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\lutas\.gradle\caches\transforms-3\0486d2bcfdf214e9d8712f3589ea9087\transformed\play-services-maps-18.2.0\AndroidManifest.xml:40:13-50
+157            android:required="false" />
+157-->[com.google.android.gms:play-services-maps:18.2.0] C:\Users\lutas\.gradle\caches\transforms-3\0486d2bcfdf214e9d8712f3589ea9087\transformed\play-services-maps-18.2.0\AndroidManifest.xml:41:13-37
+158
+159        <receiver
+159-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:29:9-40:20
+160            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+160-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:30:13-78
+161            android:exported="true"
+161-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:31:13-36
+162            android:permission="com.google.android.c2dm.permission.SEND" >
+162-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:32:13-73
+163            <intent-filter>
+163-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:33:13-35:29
+164                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+164-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:34:17-81
+164-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:34:25-78
+165            </intent-filter>
+166
+167            <meta-data
+167-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:37:13-39:40
+168                android:name="com.google.android.gms.cloudmessaging.FINISHED_AFTER_HANDLED"
+168-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:38:17-92
+169                android:value="true" />
+169-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:39:17-37
+170        </receiver>
+171        <!--
+172             FirebaseMessagingService performs security checks at runtime,
+173             but set to not exported to explicitly avoid allowing another app to call it.
+174        -->
+175        <service
+175-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:46:9-53:19
+176            android:name="com.google.firebase.messaging.FirebaseMessagingService"
+176-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:47:13-82
+177            android:directBootAware="true"
+177-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:48:13-43
+178            android:exported="false" >
+178-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:49:13-37
+179            <intent-filter android:priority="-500" >
+179-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:50:13-52:29
+179-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:50:28-51
+180                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+180-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:51:17-78
+180-->[com.google.firebase:firebase-messaging:23.4.0] C:\Users\lutas\.gradle\caches\transforms-3\d8d9081ecf566aab7857223e8050015c\transformed\firebase-messaging-23.4.0\AndroidManifest.xml:51:25-75
+181            </intent-filter>
+182        </service>
+183
+184        <provider
+184-->[com.google.firebase:firebase-common:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\2710805c419e8cbaf939421bbbc993aa\transformed\firebase-common-20.4.2\AndroidManifest.xml:23:9-28:39
+185            android:name="com.google.firebase.provider.FirebaseInitProvider"
+185-->[com.google.firebase:firebase-common:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\2710805c419e8cbaf939421bbbc993aa\transformed\firebase-common-20.4.2\AndroidManifest.xml:24:13-77
+186            android:authorities="com.example.explorex.firebaseinitprovider"
+186-->[com.google.firebase:firebase-common:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\2710805c419e8cbaf939421bbbc993aa\transformed\firebase-common-20.4.2\AndroidManifest.xml:25:13-72
+187            android:directBootAware="true"
+187-->[com.google.firebase:firebase-common:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\2710805c419e8cbaf939421bbbc993aa\transformed\firebase-common-20.4.2\AndroidManifest.xml:26:13-43
+188            android:exported="false"
+188-->[com.google.firebase:firebase-common:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\2710805c419e8cbaf939421bbbc993aa\transformed\firebase-common-20.4.2\AndroidManifest.xml:27:13-37
+189            android:initOrder="100" />
+189-->[com.google.firebase:firebase-common:20.4.2] C:\Users\lutas\.gradle\caches\transforms-3\2710805c419e8cbaf939421bbbc993aa\transformed\firebase-common-20.4.2\AndroidManifest.xml:28:13-36
+190
+191        <activity
+191-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\lutas\.gradle\caches\transforms-3\bc1f30bcb410468b045fedb58b052fea\transformed\play-services-base-18.1.0\AndroidManifest.xml:20:9-22:45
+192            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+192-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\lutas\.gradle\caches\transforms-3\bc1f30bcb410468b045fedb58b052fea\transformed\play-services-base-18.1.0\AndroidManifest.xml:20:19-85
+193            android:exported="false"
+193-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\lutas\.gradle\caches\transforms-3\bc1f30bcb410468b045fedb58b052fea\transformed\play-services-base-18.1.0\AndroidManifest.xml:22:19-43
+194            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+194-->[com.google.android.gms:play-services-base:18.1.0] C:\Users\lutas\.gradle\caches\transforms-3\bc1f30bcb410468b045fedb58b052fea\transformed\play-services-base-18.1.0\AndroidManifest.xml:21:19-78
+195
+196        <provider
+196-->[androidx.emoji2:emoji2:1.2.0] C:\Users\lutas\.gradle\caches\transforms-3\b1f6aa6794e70fa39718940c64fe0fc9\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+197            android:name="androidx.startup.InitializationProvider"
+197-->[androidx.emoji2:emoji2:1.2.0] C:\Users\lutas\.gradle\caches\transforms-3\b1f6aa6794e70fa39718940c64fe0fc9\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+198            android:authorities="com.example.explorex.androidx-startup"
+198-->[androidx.emoji2:emoji2:1.2.0] C:\Users\lutas\.gradle\caches\transforms-3\b1f6aa6794e70fa39718940c64fe0fc9\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+199            android:exported="false" >
+199-->[androidx.emoji2:emoji2:1.2.0] C:\Users\lutas\.gradle\caches\transforms-3\b1f6aa6794e70fa39718940c64fe0fc9\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
+200            <meta-data
+200-->[androidx.emoji2:emoji2:1.2.0] C:\Users\lutas\.gradle\caches\transforms-3\b1f6aa6794e70fa39718940c64fe0fc9\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+201                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+201-->[androidx.emoji2:emoji2:1.2.0] C:\Users\lutas\.gradle\caches\transforms-3\b1f6aa6794e70fa39718940c64fe0fc9\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
+202                android:value="androidx.startup" />
+202-->[androidx.emoji2:emoji2:1.2.0] C:\Users\lutas\.gradle\caches\transforms-3\b1f6aa6794e70fa39718940c64fe0fc9\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+203            <meta-data
+203-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\lutas\.gradle\caches\transforms-3\c6836b87af8dc1b4fd7ba54a39a14198\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:29:13-31:52
+204                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+204-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\lutas\.gradle\caches\transforms-3\c6836b87af8dc1b4fd7ba54a39a14198\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:30:17-78
+205                android:value="androidx.startup" />
+205-->[androidx.lifecycle:lifecycle-process:2.6.1] C:\Users\lutas\.gradle\caches\transforms-3\c6836b87af8dc1b4fd7ba54a39a14198\transformed\lifecycle-process-2.6.1\AndroidManifest.xml:31:17-49
+206            <meta-data
+206-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+207                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+207-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+208                android:value="androidx.startup" />
+208-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+209        </provider>
 210
-211        <receiver
-211-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
-212            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-212-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
-213            android:directBootAware="false"
-213-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
-214            android:enabled="true"
-214-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
-215            android:exported="true"
-215-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
-216            android:permission="android.permission.DUMP" >
-216-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
-217            <intent-filter>
-217-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
-218                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-218-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
-218-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
-219            </intent-filter>
-220            <intent-filter>
-220-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
-221                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-221-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
-221-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
-222            </intent-filter>
-223            <intent-filter>
-223-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
-224                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-224-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
-224-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
-225            </intent-filter>
-226            <intent-filter>
-226-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
-227                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-227-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
-227-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
-228            </intent-filter>
-229        </receiver>
-230
-231        <service
-231-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\7fce846475476f57fbac9de3cd1e9108\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:28:9-34:19
-232            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
-232-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\7fce846475476f57fbac9de3cd1e9108\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:29:13-103
-233            android:exported="false" >
-233-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\7fce846475476f57fbac9de3cd1e9108\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:30:13-37
-234            <meta-data
-234-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\7fce846475476f57fbac9de3cd1e9108\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:31:13-33:39
-235                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
-235-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\7fce846475476f57fbac9de3cd1e9108\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:32:17-94
-236                android:value="cct" />
-236-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\7fce846475476f57fbac9de3cd1e9108\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:33:17-36
-237        </service>
-238        <service
-238-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\def680878a37992d159d6b8be3dfac96\transformed\transport-runtime-3.1.8\AndroidManifest.xml:26:9-30:19
-239            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
-239-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\def680878a37992d159d6b8be3dfac96\transformed\transport-runtime-3.1.8\AndroidManifest.xml:27:13-117
-240            android:exported="false"
-240-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\def680878a37992d159d6b8be3dfac96\transformed\transport-runtime-3.1.8\AndroidManifest.xml:28:13-37
-241            android:permission="android.permission.BIND_JOB_SERVICE" >
-241-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\def680878a37992d159d6b8be3dfac96\transformed\transport-runtime-3.1.8\AndroidManifest.xml:29:13-69
-242        </service>
-243
-244        <receiver
-244-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\def680878a37992d159d6b8be3dfac96\transformed\transport-runtime-3.1.8\AndroidManifest.xml:32:9-34:40
-245            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
-245-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\def680878a37992d159d6b8be3dfac96\transformed\transport-runtime-3.1.8\AndroidManifest.xml:33:13-132
-246            android:exported="false" />
-246-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\def680878a37992d159d6b8be3dfac96\transformed\transport-runtime-3.1.8\AndroidManifest.xml:34:13-37
-247    </application>
-248
-249</manifest>
+211        <meta-data
+211-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\lutas\.gradle\caches\transforms-3\e992bcd92a6855b58da6c90f9b92b07e\transformed\play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
+212            android:name="com.google.android.gms.version"
+212-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\lutas\.gradle\caches\transforms-3\e992bcd92a6855b58da6c90f9b92b07e\transformed\play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
+213            android:value="@integer/google_play_services_version" />
+213-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\lutas\.gradle\caches\transforms-3\e992bcd92a6855b58da6c90f9b92b07e\transformed\play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
+214
+215        <receiver
+215-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+216            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+216-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+217            android:directBootAware="false"
+217-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+218            android:enabled="true"
+218-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+219            android:exported="true"
+219-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+220            android:permission="android.permission.DUMP" >
+220-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+221            <intent-filter>
+221-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+222                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+222-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+222-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+223            </intent-filter>
+224            <intent-filter>
+224-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+225                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+225-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+225-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+226            </intent-filter>
+227            <intent-filter>
+227-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+228                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+228-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+228-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+229            </intent-filter>
+230            <intent-filter>
+230-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+231                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+231-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+231-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\lutas\.gradle\caches\transforms-3\b6f6aec92ea4832bf8760cd07275e407\transformed\profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
+232            </intent-filter>
+233        </receiver>
+234
+235        <service
+235-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\7fce846475476f57fbac9de3cd1e9108\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:28:9-34:19
+236            android:name="com.google.android.datatransport.runtime.backends.TransportBackendDiscovery"
+236-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\7fce846475476f57fbac9de3cd1e9108\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:29:13-103
+237            android:exported="false" >
+237-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\7fce846475476f57fbac9de3cd1e9108\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:30:13-37
+238            <meta-data
+238-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\7fce846475476f57fbac9de3cd1e9108\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:31:13-33:39
+239                android:name="backend:com.google.android.datatransport.cct.CctBackendFactory"
+239-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\7fce846475476f57fbac9de3cd1e9108\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:32:17-94
+240                android:value="cct" />
+240-->[com.google.android.datatransport:transport-backend-cct:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\7fce846475476f57fbac9de3cd1e9108\transformed\transport-backend-cct-3.1.8\AndroidManifest.xml:33:17-36
+241        </service>
+242        <service
+242-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\def680878a37992d159d6b8be3dfac96\transformed\transport-runtime-3.1.8\AndroidManifest.xml:26:9-30:19
+243            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.JobInfoSchedulerService"
+243-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\def680878a37992d159d6b8be3dfac96\transformed\transport-runtime-3.1.8\AndroidManifest.xml:27:13-117
+244            android:exported="false"
+244-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\def680878a37992d159d6b8be3dfac96\transformed\transport-runtime-3.1.8\AndroidManifest.xml:28:13-37
+245            android:permission="android.permission.BIND_JOB_SERVICE" >
+245-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\def680878a37992d159d6b8be3dfac96\transformed\transport-runtime-3.1.8\AndroidManifest.xml:29:13-69
+246        </service>
+247
+248        <receiver
+248-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\def680878a37992d159d6b8be3dfac96\transformed\transport-runtime-3.1.8\AndroidManifest.xml:32:9-34:40
+249            android:name="com.google.android.datatransport.runtime.scheduling.jobscheduling.AlarmManagerSchedulerBroadcastReceiver"
+249-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\def680878a37992d159d6b8be3dfac96\transformed\transport-runtime-3.1.8\AndroidManifest.xml:33:13-132
+250            android:exported="false" />
+250-->[com.google.android.datatransport:transport-runtime:3.1.8] C:\Users\lutas\.gradle\caches\transforms-3\def680878a37992d159d6b8be3dfac96\transformed\transport-runtime-3.1.8\AndroidManifest.xml:34:13-37
+251    </application>
+252
+253</manifest>

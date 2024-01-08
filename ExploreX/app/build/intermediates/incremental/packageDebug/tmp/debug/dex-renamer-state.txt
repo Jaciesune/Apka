@@ -1,4 +1,4 @@
-#Mon Jan 08 16:29:53 CET 2024
+#Mon Jan 08 16:39:14 CET 2024
 base.0=D\:\\School\\2023-2024\\Mobilne\\ExploreX\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
 base.1=D\:\\School\\2023-2024\\Mobilne\\ExploreX\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\0\\classes.dex
 base.2=D\:\\School\\2023-2024\\Mobilne\\ExploreX\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\4\\classes.dex

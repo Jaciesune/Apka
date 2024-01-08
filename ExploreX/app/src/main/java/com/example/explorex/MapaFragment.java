@@ -265,7 +265,6 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
             e.printStackTrace();
         }
     }
-
     private String getExternalFilePath(String fileName) {
         // Get the public storage directory on the device
         File directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS + "/" + Constants.ROUTES_DIRECTORY);
@@ -289,7 +288,6 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
             Toast.makeText(requireContext(), "Trasa nie zawiera punktów", Toast.LENGTH_SHORT).show();
         }
     }
-
     private List<LatLng> loadRoutePointsFromFile(String filePath) {
         List<LatLng> routePoints = new ArrayList<>();
 
@@ -311,7 +309,6 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
         }
         return routePoints;
     }
-
     private void updateSavedRoutesList() {
         // Pobierz listę plików zapisanych tras z katalogu publicznego przechowywania
         File directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS + "/" + Constants.ROUTES_DIRECTORY);
@@ -338,7 +335,6 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         myMap = googleMap;
-
         // Sprawdzenie pozwolenia na lokalizację
         if (checkLocationPermission()) {
             // Lokalizacja użytkownika
@@ -353,7 +349,6 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
                 String routeFilePath = getArguments().getString("routeFilePath");
                 showRouteOnMap(routeFilePath);
             }
-
             if (location != null) {
                 LatLng currentLatLng = new LatLng(location.getLatitude(), location.getLongitude());
                 myMap.addMarker(new MarkerOptions().position(currentLatLng).title("Aktualna lokalizacja").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_VIOLET)));
@@ -364,12 +359,10 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
             requestLocationPermissions();
         }
     }
-
     private void showLocationPermissionErrorMessage() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("Brak zezwolenia na dostęp do lokalizacji");
         builder.setMessage("Aplikacja nie działa bez zezwolenia na dostęp do lokalizacji. Uruchom aplikację ponownie po nadaniu dostępu.");
-
         builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -377,7 +370,6 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
                 requireActivity().finish();
             }
         });
-
         builder.show();
     }
     private void createFile(String fileName) {
