@@ -203,7 +203,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 animateColorChange(newColor);
 
                 // Set background and button colors directly
-                setNightModeColors(isNightMode);
+                applyNightMode(isNightMode);
 
                 // Reset the timer and flag
                 isNightModePending = false;
@@ -212,68 +212,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
-    private void setNightModeColors(boolean isNightMode) {
-        int backgroundColor;
-        int buttonColor;
-        int textColor;
 
-        if (isNightMode) {
-            backgroundColor = ContextCompat.getColor(this, R.color.nightModeColorPrimary);
-            buttonColor = ContextCompat.getColor(this, R.color.nightModeColorPrimaryDark);
-            textColor = ContextCompat.getColor(this, R.color.white);
-        } else {
-            backgroundColor = ContextCompat.getColor(this, R.color.lightModeColorPrimary);
-            buttonColor = ContextCompat.getColor(this, R.color.lightModeColorPrimaryDark);
-            textColor = ContextCompat.getColor(this, R.color.black);
-        }
-
-        // Set background color of BottomNavigationView
-        binding.bottomNavigationView.setBackgroundColor(backgroundColor);
-
-        // Set button and text colors for specified views
-        List<Integer> viewIds = Arrays.asList(
-                R.id.logout_button, R.id.btnSetStartPoint, R.id.textViewLoggedUser,
-                R.id.textViewUzytkownik, R.id.settingsButton
-        );
-
-        for (int id : viewIds) {
-            View view = findViewById(id);
-            if (view != null) {
-                view.setBackgroundColor(buttonColor);
-                if (view instanceof TextView) {
-                    ((TextView) view).setTextColor(textColor);
-                }
-            }
-        }
-
-        // Set the background color for textViewUzytkownik
-        TextView textViewUzytkownik = findViewById(R.id.textViewUzytkownik);
-        if (textViewUzytkownik != null) {
-            textViewUzytkownik.setBackgroundColor(buttonColor);
-        }
-
-        // Set item text colors
-        for (int i = 0; i < binding.bottomNavigationView.getMenu().size(); i++) {
-            MenuItem menuItem = binding.bottomNavigationView.getMenu().getItem(i);
-            SpannableString spannableString = new SpannableString(menuItem.getTitle());
-            ForegroundColorSpan foregroundColorSpan = new ForegroundColorSpan(textColor);
-            spannableString.setSpan(foregroundColorSpan, 0, spannableString.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
-            menuItem.setTitle(spannableString);
-        }
-
-        // Set icon colors
-        ColorStateList itemIconColorStateList = new ColorStateList(
-                new int[][]{
-                        new int[]{android.R.attr.state_checked},
-                        new int[]{-android.R.attr.state_checked},
-                },
-                new int[]{
-                        buttonColor, // Color for selected state
-                        buttonColor, // Color for unselected state
-                }
-        );
-        binding.bottomNavigationView.setItemIconTintList(itemIconColorStateList);
-    }
 
 
     // Method to get the current light level
@@ -307,9 +246,22 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         // Retrieve preferences object
         SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
 
+        boolean isCheckboxNightChecked = preferences.getBoolean("CheckboxNight", false);
+        boolean isCheckboxLightChecked = preferences.getBoolean("CheckboxLight", false);
+        boolean isCheckboxAutomaticChecked = preferences.getBoolean("checkbox_automatic", false);
+
+        // Dodatkowy warunek dla checkbox_night
+        if (isCheckboxNightChecked) {
+            isNightMode = true;
+        }
+
+        // Ustaw kolor tła dla MainActivity
+        int mainActivityBackgroundColor = ContextCompat.getColor(this, isNightMode ? R.color.nightModeColorPrimary : R.color.lightModeColorPrimary);
+        getWindow().setBackgroundDrawable(new ColorDrawable(mainActivityBackgroundColor));
+
         // Set background color of BottomNavigationView
-        int backgroundColor = ContextCompat.getColor(this, isNightMode ? R.color.nightModeColorPrimary : R.color.lightModeColorPrimary);
-        binding.bottomNavigationView.setBackgroundColor(backgroundColor);
+        int bottomNavBackgroundColor = ContextCompat.getColor(this, isNightMode ? R.color.nightModeColorPrimary : R.color.lightModeColorPrimary);
+        binding.bottomNavigationView.setBackgroundColor(bottomNavBackgroundColor);
 
         // Set button and text colors for specified views
         int buttonColor = ContextCompat.getColor(this, isNightMode ? R.color.nightModeColorPrimaryDark : R.color.lightModeColorPrimaryDark);
@@ -332,8 +284,13 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         // Set the background color for textViewUzytkownik
         TextView textViewUzytkownik = findViewById(R.id.textViewUzytkownik);
         if (textViewUzytkownik != null) {
-            textViewUzytkownik.setBackgroundColor(buttonColor);
-            textViewUzytkownik.setTextColor(textColor);
+            // Dodatkowy warunek dla checkbox_night
+            if (isCheckboxNightChecked) {
+                textViewUzytkownik.setBackgroundColor(buttonColor);
+            } else {
+                textViewUzytkownik.setBackgroundColor(buttonColor);
+                textViewUzytkownik.setTextColor(textColor);
+            }
         }
 
         // Set item text colors
@@ -381,16 +338,27 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         colorAnimation.addUpdateListener(animator -> {
             int animatedValue = (int) animator.getAnimatedValue();
-            getWindow().setBackgroundDrawable(new ColorDrawable(animatedValue));
 
             // Set background and button colors directly
-            setNightModeColors(animatedValue == ContextCompat.getColor(this, R.color.nightModeColorPrimary));
-        });
+            applyNightMode(animatedValue == ContextCompat.getColor(this, R.color.nightModeColorPrimary));
 
-        colorAnimation.start();
+            // Dodaj animację zmiany kolorów dla trybu automatycznego
+            SharedPreferences preferences = getSharedPreferences("MyPrefs", MODE_PRIVATE);
+            boolean isCheckboxAutomaticChecked = preferences.getBoolean("checkbox_automatic", false);
+
+            if (isCheckboxAutomaticChecked) {
+                getWindow().setBackgroundDrawable(new ColorDrawable(animatedValue));
+            }
+        });
 
         // Save the current color for the next iteration
         currentColor = newColor;
+
+        // Rozpocznij animację
+        colorAnimation.start();
     }
+
+
+
 
 }
