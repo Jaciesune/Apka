@@ -21,14 +21,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
-
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -37,7 +33,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
-
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -331,6 +326,13 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
             // Tutaj możesz obsłużyć wybór zapisanego pliku
             Toast.makeText(requireContext(), "Wybrano trasę: " + selectedFileName, Toast.LENGTH_SHORT).show();
         });
+    }
+
+    public void onMapReadyCallback(OnMapReadyCallback callback) {
+        SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentByTag("mapFragmentTag");
+        if (mapFragment != null) {
+            mapFragment.getMapAsync(callback);
+        }
     }
     @Override
     public void onMapReady(GoogleMap googleMap) {

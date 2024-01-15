@@ -1,38 +1,34 @@
 package com.example.explorex;
 
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.example.explorex.TrasyAdapter.TrasyAdapterListener;
+import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+
+
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
-public class TrasyFragment extends Fragment implements OnMapReadyCallback {
+public class TrasyFragment extends Fragment implements TrasyAdapter.TrasyAdapterListener {
 
     private RecyclerView recyclerView;
     private TrasyAdapter trasyAdapter;
     private ArrayList<String> savedRouteFilePaths = new ArrayList<>();
-    private OnShowRouteClickListener onShowRouteClickListener;
     private MapView mapView;
-    private GoogleMap googleMap;
 
     public TrasyFragment() {
         // Required empty public constructor
@@ -44,132 +40,57 @@ public class TrasyFragment extends Fragment implements OnMapReadyCallback {
         recyclerView = rootView.findViewById(R.id.recyclerViewRoutes);
         mapView = rootView.findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
-        mapView.getMapAsync(this);
 
-        trasyAdapter = new TrasyAdapter(savedRouteFilePaths, new TrasyAdapter.OnItemClickListener() {
-            @Override
-            public void onDeleteClick(int position) {
-                deleteFile(position);
-            }
-
-            @Override
-            public void onItemClick(int position) {
-                // Handle item click if needed
-            }
-
-            @Override
-            public void onShowRouteClick(int position, View rootView) {
-                // Get the file path based on the position
-                String selectedFileName = savedRouteFilePaths.get(position);
-
-                // Show the route on the map using the file path
-                showRouteOnMap(selectedFileName);
-
-                // If you need to do something with the root layout of the item, use rootView
-            }
-
-            @Override
-            public void onShowButtonClick(int position, View rootView) {
-                // Handle btnShowRoute click here
-                // You can implement the logic to load the route or perform any other action
-                // For example, you can call showRouteOnMap(savedRouteFilePaths.get(position));
-            }
-        });
-
-        // Set layout manager and adapter for the RecyclerView
+        // Ustawianie na Recycler View
         LinearLayoutManager layoutManager = new LinearLayoutManager(requireContext());
         recyclerView.setLayoutManager(layoutManager);
+
+        // Wczytywanie trasy po utworzeniu widoku
+        loadSavedRoutes();
+
+        // Przekazywanie tego fragmentu jako TrasyAdapterListener
+        trasyAdapter = new TrasyAdapter(savedRouteFilePaths, this);
         recyclerView.setAdapter(trasyAdapter);
 
-        // Load saved routes when the fragment is created
-        loadSavedRoutes();
+        // Odświeżenie tras po załadowaniu
+        refreshRoutesList();
+
+        // Inicjalizacja mapy
+        initializeMap();
+
         return rootView;
     }
 
-    @Override
-    public void onMapReady(GoogleMap map) {
-        googleMap = map;
-    }
+    private void initializeMap() {
+        mapView.getMapAsync(googleMap -> {
 
-    private void showRouteOnMap(String filePath) {
-        // Wczytaj punkty trasy z pliku
-        List<LatLng> routePoints = loadRoutePointsFromFile(filePath);
+            // Sprawdzenie czy są jakieś punkty trasy na mapie
+            if (!savedRouteFilePaths.isEmpty()) {
+                // Pobranie pierwszego i ostatniego punktu z trasy
+                String firstRouteFilePath = savedRouteFilePaths.get(0);
+                String lastRouteFilePath = savedRouteFilePaths.get(savedRouteFilePaths.size() - 1);
 
-        // Wyczyszczenie aktualnych punktów na mapie
-        googleMap.clear();
+                ArrayList<LatLng> firstRoutePoints = readRoutePointsFromFile(firstRouteFilePath);
+                ArrayList<LatLng> lastRoutePoints = readRoutePointsFromFile(lastRouteFilePath);
 
-        // Dodanie nowych punktów trasy do mapy
-        for (int i = 0; i < routePoints.size(); i++) {
-            LatLng point = routePoints.get(i);
+                // Dodanie znaczników na początek i koniec
+                if (firstRoutePoints.size() > 0) {
+                    LatLng firstPoint = firstRoutePoints.get(0);
+                    googleMap.addMarker(new MarkerOptions()
+                            .position(firstPoint)
+                            .title("Start")
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                }
 
-            // Dodaj zielony marker na pierwszym punkcie
-            if (i == 0) {
-                googleMap.addMarker(new MarkerOptions()
-                        .position(point)
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN))
-                        .title("Początek trasy"));
-            } else {
-                // Dodaj standardowy marker dla pozostałych punktów trasy
-                googleMap.addMarker(new MarkerOptions().position(point).title("Punkt trasy"));
+                if (lastRoutePoints.size() > 0) {
+                    LatLng lastPoint = lastRoutePoints.get(lastRoutePoints.size() - 1);
+                    googleMap.addMarker(new MarkerOptions()
+                            .position(lastPoint)
+                            .title("Meta")
+                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+                }
             }
-        }
-
-        // Przybliżenie mapy do obszaru trasy
-        if (!routePoints.isEmpty()) {
-            LatLng firstPoint = routePoints.get(0);
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(firstPoint, 15f));
-        }
-        mapView.setVisibility(View.VISIBLE);
-    }
-
-    // Metoda do uzyskania dostępu do MapaFragment
-    private MapaFragment getMapaFragment() {
-        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-        return (MapaFragment) fragmentManager.findFragmentById(R.id.mapContainer);
-    }
-
-    // Metoda do wczytywania punktów trasy z pliku (przykładowa implementacja)
-    private List<LatLng> loadRoutePointsFromFile(String filePath) {
-        List<LatLng> routePoints = new ArrayList<>();
-
-        try {
-            File file = new File(filePath);
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            String line;
-
-            while ((line = br.readLine()) != null) {
-                String[] coordinates = line.split(",");
-                double latitude = Double.parseDouble(coordinates[0].trim());
-                double longitude = Double.parseDouble(coordinates[1].trim());
-                LatLng point = new LatLng(latitude, longitude);
-                routePoints.add(point);
-            }
-
-            br.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return routePoints;
-    }
-
-    private void deleteFile(int position) {
-        String filePath = savedRouteFilePaths.get(position);
-        File fileToDelete = new File(filePath);
-
-        if (fileToDelete.exists()) {
-            if (fileToDelete.delete()) {
-                // Usunięto plik
-                savedRouteFilePaths.remove(position);
-                trasyAdapter.notifyItemRemoved(position);
-            } else {
-                // Błąd podczas usuwania pliku
-                Toast.makeText(requireContext(), "Błąd podczas usuwania pliku", Toast.LENGTH_SHORT).show();
-            }
-        } else {
-            // Plik nie istnieje
-            Toast.makeText(requireContext(), "Plik nie istnieje", Toast.LENGTH_SHORT).show();
-        }
+        });
     }
 
     private void loadSavedRoutes() {
@@ -182,40 +103,63 @@ public class TrasyFragment extends Fragment implements OnMapReadyCallback {
                 savedRouteFilePaths.add(file.getAbsolutePath());
             }
         }
+    }
 
-        // Notify the adapter that the data has changed
+    // Metoda do odświeżania listy tras
+    private void refreshRoutesList() {
         trasyAdapter.updateRoutePaths(savedRouteFilePaths);
     }
 
-    public void setOnShowRouteClickListener(OnShowRouteClickListener listener) {
-        this.onShowRouteClickListener = listener;
-    }
-
-    public interface OnShowRouteClickListener {
-        void onShowRouteClick(String routeFilePath);
+    @Override
+    public void updateRoutePaths(ArrayList<String> updatedRoutePaths) {
+        // Zaktualizuj listę tras w adapterze
+        trasyAdapter.updateRoutePaths(updatedRoutePaths);
     }
 
     @Override
-    public void onResume() {
-        super.onResume();
-        mapView.onResume();
+    public void showRouteOnMap(String filePath) {
+        // Odczytaj punkty trasy z pliku
+        ArrayList<LatLng> routePoints = readRoutePointsFromFile(filePath);
+
+        if (routePoints != null && !routePoints.isEmpty()) {
+            // Wywołanie rysowania trasy bez przenoszenia do innego fragmentu
+            // drawRouteOnMap(routePoints); // Excluded drawing part
+        } else {
+            Toast.makeText(requireContext(), "Błąd odczytu trasy z pliku", Toast.LENGTH_SHORT).show();
+        }
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        mapView.onPause();
+    // Metoda do odczytu punktów trasy z pliku tekstowego
+    private ArrayList<LatLng> readRoutePointsFromFile(String filePath) {
+        ArrayList<LatLng> routePoints = new ArrayList<>();
+
+        try {
+            // Otwórz plik do odczytu
+            BufferedReader reader = new BufferedReader(new FileReader(filePath));
+
+            // Odczytaj linie z pliku
+            String line;
+            while ((line = reader.readLine()) != null) {
+                // Parsuj linie na współrzędne
+                String[] coordinates = line.split(",");
+                if (coordinates.length == 2) {
+                    double latitude = Double.parseDouble(coordinates[0]);
+                    double longitude = Double.parseDouble(coordinates[1]);
+                    LatLng point = new LatLng(latitude, longitude);
+                    routePoints.add(point);
+                }
+            }
+            reader.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return routePoints;
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        mapView.onDestroy();
-    }
+    public void onShowRouteClicked(String filePath) {
 
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        mapView.onLowMemory();
+        showRouteOnMap(filePath);
     }
 }

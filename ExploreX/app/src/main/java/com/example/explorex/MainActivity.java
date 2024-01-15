@@ -2,50 +2,37 @@ package com.example.explorex;
 
 import android.content.Intent;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.StateListDrawable;
 import android.graphics.drawable.TransitionDrawable;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Interpolator;
 import android.view.animation.PathInterpolator;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.explorex.databinding.ActivityMainBinding;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.button.MaterialButton;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.animation.ArgbEvaluator;
-import android.animation.ValueAnimator;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.TextView;
 
-import java.util.Arrays;
-import java.util.List;
-
-
 public class MainActivity extends AppCompatActivity implements SensorEventListener {
-
     ActivityMainBinding binding;
     FirebaseAuth auth;
     FirebaseUser user;
@@ -53,33 +40,22 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private SensorManager sensorManager;
     private Sensor lightSensor;
     private boolean isNightMode = false;
+    private MainActivityViewModel viewModel;
 
     // Globalne zmienne kolorów
     private int currentColor;
-    private int targetColor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         // Menu
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         // Find the logout button
         logoutButton = findViewById(R.id.logout_button);
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.Mapa_navbar) {
-                replaceFragment(new MapaFragment());
-                updateLogoutButtonVisibility(false);
-            } else if (item.getItemId() == R.id.Trasy_navbar) {
-                replaceFragment(new TrasyFragment());
-                updateLogoutButtonVisibility(false);
-            } else {
-                replaceFragment(new UzytkownikFragment());
-                updateLogoutButtonVisibility(true);
-            }
+            handleBottomNavigationItemSelected(item.getItemId());
             return true;
         });
 
@@ -91,10 +67,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             startActivity(intent);
             finish();
         }
-
         // Initially hide the logout button
         updateLogoutButtonVisibility(false);
-
         // Initialize light sensor
         sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         lightSensor = sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT);
@@ -102,25 +76,37 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             setupLightSensor();
         }
 
-        // Inicjalizacja globalnych zmiennych kolorów
-        currentColor = getResources().getColor(R.color.lightModeColorPrimary);
-        targetColor = getResources().getColor(R.color.lightModeColorPrimary);
+        viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
+        viewModel.isNightModeEnabled().observe(this, this::applyNightMode);
+    }
+
+    private void handleBottomNavigationItemSelected(int itemId) {
+        Fragment fragment;
+        boolean isLogoutButtonVisible = false;
+
+        if (itemId == R.id.Mapa_navbar) {
+            fragment = new MapaFragment();
+        } else if (itemId == R.id.Trasy_navbar) {
+            fragment = new TrasyFragment();
+        } else {
+            fragment = new UzytkownikFragment();
+            isLogoutButtonVisible = true;
+        }
+
+        replaceFragment(fragment);
+        updateLogoutButtonVisibility(isLogoutButtonVisible);
     }
 
     // Menu
     private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout, fragment);
-        fragmentTransaction.commit();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frameLayout, fragment)
+                .commit();
     }
 
     private void updateLogoutButtonVisibility(boolean isVisible) {
-        if (isVisible) {
-            logoutButton.setVisibility(View.VISIBLE);
-        } else {
-            logoutButton.setVisibility(View.GONE);
-        }
+        logoutButton.setVisibility(isVisible ? View.VISIBLE : View.GONE);
     }
 
     public Button getLogoutButton() {
@@ -139,7 +125,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 .addToBackStack(null)
                 .commit();
     }
-
 
     private void setupLightSensor() {
         sensorManager.registerListener(this, lightSensor, SensorManager.SENSOR_DELAY_NORMAL);
@@ -196,9 +181,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
-
-
-
     private void applyNightMode(boolean isNightMode) {
         // Determine background, button, and text colors based on day/night mode
         int backgroundColor = isNightMode
@@ -234,7 +216,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 ? ContextCompat.getColor(this, R.color.nightModeColorPrimaryDark)
                 : ContextCompat.getColor(this, R.color.lightModeColorPrimaryDark);
 
-
         // Explicitly set item icon tint for the checked state
         ColorStateList itemIconColorStateList = new ColorStateList(
                 new int[][]{
@@ -252,14 +233,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 .forEach(id -> {
                     View view = findViewById(id);
                     if (view != null) {
-                        if(id != R.id.textViewUzytkownik)
-                        {
+                        if (id != R.id.textViewUzytkownik) {
                             view.setBackgroundColor(buttonColor);
-                        }else
-                        if (view instanceof TextView) {
-                            if(id == R.id.textViewUzytkownik)
-                            {
-
+                        } else if (view instanceof TextView) {
+                            if (id == R.id.textViewUzytkownik) {
+                                // Handle any additional logic specific to textViewUzytkownik
                             }
                             ((TextView) view).setTextColor(textColor);
                         }
@@ -277,10 +255,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
         // Apply the easing function
         return interpolator.getInterpolation(fraction);
-    }
-
-    public interface OnLocationPermissionGrantedListener {
-        void onLocationPermissionGranted();
     }
 
     @Override
@@ -309,5 +283,4 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         // Save the current color for the next iteration
         currentColor = newColor;
     }
-
 }

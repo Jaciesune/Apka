@@ -1,11 +1,11 @@
 [
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\drawable_baseline_person_24.xml.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\drawable\\baseline_person_24.xml"
-    },
-    {
         "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
         "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\mipmap-xxxhdpi\\ic_launcher_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\drawable_baseline_person_24.xml.flat",
+        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\drawable\\baseline_person_24.xml"
     },
     {
         "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\layout_activity_main.xml.flat",
@@ -92,12 +92,12 @@
         "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\layout_item_route.xml.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\layout\\item_route.xml"
-    },
-    {
         "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\layout_fragment_mapa.xml.flat",
         "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\layout\\fragment_mapa.xml"
+    },
+    {
+        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\layout_item_route.xml.flat",
+        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\layout\\item_route.xml"
     },
     {
         "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\mipmap-mdpi_ic_launcher_round.webp.flat",

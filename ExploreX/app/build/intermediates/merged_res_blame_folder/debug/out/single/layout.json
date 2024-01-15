@@ -24,15 +24,15 @@
         "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\layout\\item_route.xml"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-mergeDebugResources-38:\\layout\\fragment_mapa.xml",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\layout\\fragment_mapa.xml"
-    },
-    {
         "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-mergeDebugResources-38:\\layout\\activity_login.xml",
         "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\layout\\activity_login.xml"
     },
     {
         "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-mergeDebugResources-38:\\layout\\activity_register.xml",
         "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\layout\\activity_register.xml"
+    },
+    {
+        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-mergeDebugResources-38:\\layout\\fragment_mapa.xml",
+        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\layout\\fragment_mapa.xml"
     }
 ]

@@ -2,49 +2,27 @@ package com.example.explorex;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
+import android.widget.Toast;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.gms.maps.model.LatLng;
+import androidx.annotation.NonNull;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 public class TrasyAdapter extends RecyclerView.Adapter<TrasyAdapter.ViewHolder> {
 
     private ArrayList<String> savedRouteFilePaths;
-    private static OnItemClickListener listener;
-    private OnShowRouteClickListener showRouteListener;
+    private TrasyAdapterListener listener;
 
-    public interface OnItemClickListener {
-        void onDeleteClick(int position);
-
-        void onItemClick(int position);
-
-        void onShowRouteClick(int position, View rootView);
-
-        void onShowButtonClick(int position, View rootView);
-    }
-    public interface OnShowRouteClickListener { // Add this interface
-        void onShowRouteClick(int position, View rootView);
-    }
-
-    public TrasyAdapter(ArrayList<String> savedRouteFilePaths, OnItemClickListener listener) {
+    public TrasyAdapter(ArrayList<String> savedRouteFilePaths, TrasyAdapterListener listener) {
         this.savedRouteFilePaths = savedRouteFilePaths;
         this.listener = listener;
-    }
-
-    public void updateRoutePaths(ArrayList<String> updatedRoutePaths) {
-        this.savedRouteFilePaths = updatedRoutePaths;
-        notifyDataSetChanged();
     }
 
     @NonNull
@@ -59,32 +37,33 @@ public class TrasyAdapter extends RecyclerView.Adapter<TrasyAdapter.ViewHolder> 
         String filePath = savedRouteFilePaths.get(position);
         File file = new File(filePath);
 
-        // Remove file extension
+        // Removing file extensions from file names
         String fileName = removeFileExtension(file.getName());
 
         holder.tvFileName.setText(fileName);
+        holder.setPosition(position);
 
-        holder.btnDelete.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onDeleteClick(position);
+        // Handling click on btnShowRoute
+        holder.btnShowRoute.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (holder.getCurrentPosition() != RecyclerView.NO_POSITION) {
+                    String filePath = savedRouteFilePaths.get(holder.getCurrentPosition());
+                    listener.showRouteOnMap(filePath);
+                }
             }
         });
 
-        holder.itemView.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onItemClick(position);
-            }
-        });
-
-        holder.btnShowRoute.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onShowRouteClick(position, holder.rootLayout);
+        // Handling click on btnDelete
+        holder.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showDeleteConfirmationDialog(filePath, holder.itemView);
             }
         });
     }
 
-
-    // Metoda do usuwania rozszerzenia z nazwy pliku
+    // Method to remove file extension from the file name
     private String removeFileExtension(String fileName) {
         int lastDotPosition = fileName.lastIndexOf(".");
         if (lastDotPosition != -1) {
@@ -94,55 +73,112 @@ public class TrasyAdapter extends RecyclerView.Adapter<TrasyAdapter.ViewHolder> 
         }
     }
 
-    private void showDeleteConfirmationDialog(final int position, View view) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
-        builder.setTitle("Potwierdź usunięcie");
-        builder.setMessage("Czy na pewno chcesz usunąć trasę?");
-
-        builder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (listener != null) {
-                    listener.onDeleteClick(position);
-                }
-            }
-        });
-
-        builder.setNegativeButton("Nie", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-
-        builder.show();
-    }
-
     @Override
     public int getItemCount() {
         return savedRouteFilePaths.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public ImageButton btnDelete;
-        public ImageButton btnShowRoute;
         public TextView tvFileName;
-        public RelativeLayout rootLayout;
+        public ImageButton btnShowRoute;
+        public ImageButton btnDelete;
+        private int position;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvFileName = itemView.findViewById(R.id.tvFileName);
-            btnDelete = itemView.findViewById(R.id.btnDelete);
             btnShowRoute = itemView.findViewById(R.id.btnShowRoute);
-            rootLayout = itemView.findViewById(R.id.rootLayout);
+            btnDelete = itemView.findViewById(R.id.btnDelete);
 
-            // Set a click listener for btnShowRoute
-            btnShowRoute.setOnClickListener(v -> {
-                if (listener != null) {
-                    listener.onShowButtonClick(getAdapterPosition(), rootLayout);
+            // Handling click on btnShowRoute
+            btnShowRoute.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    if (position != RecyclerView.NO_POSITION) {
+                        String filePath = savedRouteFilePaths.get(position);
+                        listener.showRouteOnMap(filePath);
+                    }
                 }
             });
         }
+
+        // Set the position when binding the data
+        public void setPosition(int position) {
+            this.position = position;
+        }
+
+        // Getter method for position
+        public int getCurrentPosition() {
+            return position;
+        }
+    }
+
+    // Method to display delete confirmation dialog
+    private void showDeleteConfirmationDialog(String filePath, View itemView) {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(itemView.getContext());
+        builder.setTitle("Potwierdź usunięcie");
+        builder.setMessage("Czy jesteś pewien że chcesz usunąć ten plik?");
+
+        // Add a button to confirm deletion
+        builder.setPositiveButton("Tak", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // Delete the file after confirmation
+                deleteFile(filePath, itemView);
+            }
+        });
+
+        // Add a button to cancel deletion
+        builder.setNegativeButton("Anuluj", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // Do nothing on cancellation
+            }
+        });
+
+        // Show the dialog
+        builder.show();
+    }
+
+    // Method to delete a file
+    private void deleteFile(String filePath, View itemView) {
+        File file = new File(filePath);
+        if (file.exists()) {
+            if (file.delete()) {
+                Toast.makeText(itemView.getContext(), "Plik został usunięty", Toast.LENGTH_SHORT).show();
+                // Refresh the list after deleting the file
+                listener.updateRoutePaths(getUpdatedRoutesList());
+            } else {
+                Toast.makeText(itemView.getContext(), "Błąd podczas usuwania pliku", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
+    // Method to refresh the list of routes after deleting a file
+    private ArrayList<String> getUpdatedRoutesList() {
+        ArrayList<String> updatedRoutePaths = new ArrayList<>();
+        File directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS + "/" + MapaFragment.Constants.ROUTES_DIRECTORY);
+        File[] files = directory.listFiles();
+
+        if (files != null) {
+            for (File file : files) {
+                updatedRoutePaths.add(file.getAbsolutePath());
+            }
+        }
+
+        return updatedRoutePaths;
+    }
+
+    // Method to update the list of routes in TrasyFragment
+    public void updateRoutePaths(ArrayList<String> updatedRoutePaths) {
+        this.savedRouteFilePaths = updatedRoutePaths;
+        notifyDataSetChanged();
+    }
+
+    public interface TrasyAdapterListener {
+        void updateRoutePaths(ArrayList<String> updatedRoutePaths);
+        void showRouteOnMap(String filePath);
     }
 }
