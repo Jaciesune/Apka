@@ -1,12 +1,21 @@
 package com.example.explorex;
 
 import com.example.explorex.TrasyAdapter.TrasyAdapterListener;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.CustomCap;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 
+import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.LayoutInflater;
@@ -122,13 +131,69 @@ public class TrasyFragment extends Fragment implements TrasyAdapter.TrasyAdapter
         ArrayList<LatLng> routePoints = readRoutePointsFromFile(filePath);
 
         if (routePoints != null && !routePoints.isEmpty()) {
-            // Wywołanie rysowania trasy bez przenoszenia do innego fragmentu
-            // drawRouteOnMap(routePoints); // Excluded drawing part
+            // Wywołanie rysowania trasy
+            drawRouteOnMap(routePoints);
         } else {
             Toast.makeText(requireContext(), "Błąd odczytu trasy z pliku", Toast.LENGTH_SHORT).show();
         }
     }
+    private void drawRouteOnMap(ArrayList<LatLng> routePoints) {
+        mapView.getMapAsync(googleMap -> {
+            // Ustaw styl linii trasy
+            PolylineOptions polylineOptions = new PolylineOptions()
+                    .addAll(routePoints)
+                    .color(Color.BLUE)
+                    .width(5)
+                    .geodesic(false);
 
+            // Dodaj linie trasy na mapę
+            Polyline polyline = googleMap.addPolyline(polylineOptions);
+
+            // Ustaw koniec trasy na przeźroczysty
+            int polylineSize = polyline.getPoints().size();
+            if (polylineSize > 0) {
+                LatLng lastPoint = polyline.getPoints().get(polylineSize - 1);
+
+                // Utwórz przezroczysty marker
+                Bitmap transparentMarkerBitmap = getTransparentMarkerBitmap(); // Zdefiniuj tę metodę zgodnie z Twoimi potrzebami
+                BitmapDescriptor transparentMarker = BitmapDescriptorFactory.fromBitmap(transparentMarkerBitmap);
+
+                googleMap.addMarker(new MarkerOptions()
+                        .position(lastPoint)
+                        .title("Meta")
+                        .icon(transparentMarker));
+            }
+
+            // Wyśrodkuj mapę na trasie
+            if (!routePoints.isEmpty()) {
+                LatLngBounds.Builder builder = new LatLngBounds.Builder();
+                for (LatLng point : routePoints) {
+                    builder.include(point);
+                }
+                LatLngBounds bounds = builder.build();
+
+                // Dodaj obsługę pustego obszaru, aby uniknąć problemu z "CameraUpdateFactory.newLatLngBounds"
+                int padding = 100; // Możesz dostosować padding według potrzeb
+                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, padding);
+
+                // Sprawdź, czy czas trwania animacji jest dodatni
+                int animationDurationMs = 1000; // Ustaw dowolny czas trwania animacji w milisekundach
+                if (animationDurationMs > 0) {
+                    googleMap.animateCamera(cameraUpdate, animationDurationMs, null);
+                } else {
+                    // Jeśli czas trwania animacji jest ujemny lub równy zero, użyj moveCamera
+                    googleMap.moveCamera(cameraUpdate);
+                }
+            }
+        });
+    }
+
+    private Bitmap getTransparentMarkerBitmap() {
+        // Utwórz Bitmap z przezroczystym tłem
+        Bitmap bitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
+        bitmap.eraseColor(Color.TRANSPARENT);
+        return bitmap;
+    }
     // Metoda do odczytu punktów trasy z pliku tekstowego
     private ArrayList<LatLng> readRoutePointsFromFile(String filePath) {
         ArrayList<LatLng> routePoints = new ArrayList<>();
