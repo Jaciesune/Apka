@@ -1,150 +1,146 @@
 [
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\mipmap-xxxhdpi\\ic_launcher_foreground.webp"
+        "merged": "com.example.explorex.app-merged_res-39:/mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.example.explorex.app-main-41:/mipmap-xxhdpi/ic_launcher_foreground.webp"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\drawable_baseline_person_24.xml.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\drawable\\baseline_person_24.xml"
+        "merged": "com.example.explorex.app-merged_res-39:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.explorex.app-main-41:/mipmap-xxxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\layout_activity_main.xml.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\layout\\activity_main.xml"
+        "merged": "com.example.explorex.app-merged_res-39:/xml_backup_rules.xml.flat",
+        "source": "com.example.explorex.app-main-41:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "com.example.explorex.app-merged_res-39:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.example.explorex.app-main-41:/drawable/ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.explorex.app-merged_res-39:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.explorex.app-main-41:/mipmap-xhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "com.example.explorex.app-merged_res-39:/drawable_baseline_map_24.xml.flat",
+        "source": "com.example.explorex.app-main-41:/drawable/baseline_map_24.xml"
     },
     {
         "merged": "com.example.explorex.app-merged_res-39:/layout_fragment_trasy.xml.flat",
         "source": "com.example.explorex.app-main-41:/layout/fragment_trasy.xml"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\layout_fragment_uzytkownik.xml.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\layout\\fragment_uzytkownik.xml"
+        "merged": "com.example.explorex.app-merged_res-39:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.example.explorex.app-main-41:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\drawable_baseline_alternate_email_24.xml.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\drawable\\baseline_alternate_email_24.xml"
+        "merged": "com.example.explorex.app-merged_res-39:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "com.example.explorex.app-main-41:/mipmap-xhdpi/ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\drawable_baseline_route_24.xml.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\drawable\\baseline_route_24.xml"
+        "merged": "com.example.explorex.app-merged_res-39:/layout_activity_login.xml.flat",
+        "source": "com.example.explorex.app-main-41:/layout/activity_login.xml"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\layout_fragment_trasy.xml.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\layout\\fragment_trasy.xml"
+        "merged": "com.example.explorex.app-merged_res-39:/mipmap-xhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.example.explorex.app-main-41:/mipmap-xhdpi/ic_launcher_foreground.webp"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\mipmap-hdpi\\ic_launcher.webp"
+        "merged": "com.example.explorex.app-merged_res-39:/drawable_baseline_architecture_24.xml.flat",
+        "source": "com.example.explorex.app-main-41:/drawable/baseline_architecture_24.xml"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\drawable_ic_launcher_foreground.xml.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\drawable\\ic_launcher_foreground.xml"
+        "merged": "com.example.explorex.app-merged_res-39:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.explorex.app-main-41:/mipmap-xxxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+        "merged": "com.example.explorex.app-merged_res-39:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.example.explorex.app-main-41:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\mipmap-xhdpi\\ic_launcher_round.webp"
+        "merged": "com.example.explorex.app-merged_res-39:/layout_item_route.xml.flat",
+        "source": "com.example.explorex.app-main-41:/layout/item_route.xml"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\drawable_ic_launcher_background.xml.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\drawable\\ic_launcher_background.xml"
+        "merged": "com.example.explorex.app-merged_res-39:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.explorex.app-main-41:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\mipmap-xxhdpi_ic_launcher_foreground.webp.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\mipmap-xxhdpi\\ic_launcher_foreground.webp"
+        "merged": "com.example.explorex.app-merged_res-39:/drawable_baseline_alternate_email_24.xml.flat",
+        "source": "com.example.explorex.app-main-41:/drawable/baseline_alternate_email_24.xml"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\mipmap-hdpi_ic_launcher_foreground.webp.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\mipmap-hdpi\\ic_launcher_foreground.webp"
+        "merged": "com.example.explorex.app-merged_res-39:/layout_activity_main.xml.flat",
+        "source": "com.example.explorex.app-main-41:/layout/activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\layout_activity_register.xml.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\layout\\activity_register.xml"
+        "merged": "com.example.explorex.app-merged_res-39:/mipmap-xxxhdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.example.explorex.app-main-41:/mipmap-xxxhdpi/ic_launcher_foreground.webp"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\mipmap-xxxhdpi\\ic_launcher.webp"
+        "merged": "com.example.explorex.app-merged_res-39:/layout_fragment_mapa.xml.flat",
+        "source": "com.example.explorex.app-main-41:/layout/fragment_mapa.xml"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\mipmap-mdpi\\ic_launcher.webp"
+        "merged": "com.example.explorex.app-merged_res-39:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "com.example.explorex.app-main-41:/mipmap-xxhdpi/ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\mipmap-mdpi_ic_launcher_foreground.webp.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\mipmap-mdpi\\ic_launcher_foreground.webp"
+        "merged": "com.example.explorex.app-merged_res-39:/mipmap-mdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.example.explorex.app-main-41:/mipmap-mdpi/ic_launcher_foreground.webp"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\layout_activity_google_map.xml.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\layout\\activity_google_map.xml"
+        "merged": "com.example.explorex.app-merged_res-39:/layout_fragment_uzytkownik.xml.flat",
+        "source": "com.example.explorex.app-main-41:/layout/fragment_uzytkownik.xml"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\mipmap-xxhdpi\\ic_launcher.webp"
+        "merged": "com.example.explorex.app-merged_res-39:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "com.example.explorex.app-main-41:/mipmap-mdpi/ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\mipmap-xhdpi_ic_launcher_foreground.webp.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\mipmap-xhdpi\\ic_launcher_foreground.webp"
+        "merged": "com.example.explorex.app-merged_res-39:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.explorex.app-main-41:/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\mipmap-hdpi\\ic_launcher_round.webp"
+        "merged": "com.example.explorex.app-merged_res-39:/layout_activity_google_map.xml.flat",
+        "source": "com.example.explorex.app-main-41:/layout/activity_google_map.xml"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\layout_fragment_mapa.xml.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\layout\\fragment_mapa.xml"
+        "merged": "com.example.explorex.app-merged_res-39:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.explorex.app-main-41:/mipmap-xxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\layout_item_route.xml.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\layout\\item_route.xml"
+        "merged": "com.example.explorex.app-merged_res-39:/drawable_baseline_lock_24.xml.flat",
+        "source": "com.example.explorex.app-main-41:/drawable/baseline_lock_24.xml"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\mipmap-mdpi\\ic_launcher_round.webp"
+        "merged": "com.example.explorex.app-merged_res-39:/mipmap-hdpi_ic_launcher_foreground.webp.flat",
+        "source": "com.example.explorex.app-main-41:/mipmap-hdpi/ic_launcher_foreground.webp"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\xml_data_extraction_rules.xml.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\xml\\data_extraction_rules.xml"
+        "merged": "com.example.explorex.app-merged_res-39:/layout_activity_register.xml.flat",
+        "source": "com.example.explorex.app-main-41:/layout/activity_register.xml"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\layout_activity_login.xml.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\layout\\activity_login.xml"
+        "merged": "com.example.explorex.app-merged_res-39:/drawable_baseline_person_24.xml.flat",
+        "source": "com.example.explorex.app-main-41:/drawable/baseline_person_24.xml"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+        "merged": "com.example.explorex.app-merged_res-39:/drawable_baseline_route_24.xml.flat",
+        "source": "com.example.explorex.app-main-41:/drawable/baseline_route_24.xml"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\drawable_baseline_lock_24.xml.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\drawable\\baseline_lock_24.xml"
+        "merged": "com.example.explorex.app-merged_res-39:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "com.example.explorex.app-main-41:/mipmap-hdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\mipmap-xhdpi\\ic_launcher.webp"
+        "merged": "com.example.explorex.app-merged_res-39:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "com.example.explorex.app-main-41:/mipmap-hdpi/ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\drawable_baseline_architecture_24.xml.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\drawable\\baseline_architecture_24.xml"
+        "merged": "com.example.explorex.app-merged_res-39:/xml_data_extraction_rules.xml.flat",
+        "source": "com.example.explorex.app-main-41:/xml/data_extraction_rules.xml"
     },
     {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\xml_backup_rules.xml.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\xml\\backup_rules.xml"
-    },
-    {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\mipmap-anydpi-v26\\ic_launcher.xml"
-    },
-    {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\mipmap-xxhdpi\\ic_launcher_round.webp"
-    },
-    {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\menu_bottom_nav_menu.xml.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\menu\\bottom_nav_menu.xml"
-    },
-    {
-        "merged": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\drawable_baseline_map_24.xml.flat",
-        "source": "C:\\Users\\lutas\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\drawable\\baseline_map_24.xml"
+        "merged": "com.example.explorex.app-merged_res-39:/menu_bottom_nav_menu.xml.flat",
+        "source": "com.example.explorex.app-main-41:/menu/bottom_nav_menu.xml"
     }
 ]
