@@ -72,6 +72,10 @@
         "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\xml\\backup_rules.xml"
     },
     {
+        "merged": "com.example.explorex.app-merged_res-39:/layout_fragment_mapa.xml.flat",
+        "source": "com.example.explorex.app-main-41:/layout/fragment_mapa.xml"
+    },
+    {
         "merged": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-merged_res-39:\\layout_fragment_trasy.xml.flat",
         "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\layout\\fragment_trasy.xml"
     },

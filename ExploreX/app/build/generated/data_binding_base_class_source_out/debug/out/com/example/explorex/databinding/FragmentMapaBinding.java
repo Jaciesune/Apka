@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.Switch;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.FragmentContainerView;
@@ -26,11 +27,15 @@ public final class FragmentMapaBinding implements ViewBinding {
   @NonNull
   public final FragmentContainerView mapContainer;
 
+  @NonNull
+  public final Switch switchGyroscope;
+
   private FragmentMapaBinding(@NonNull FrameLayout rootView, @NonNull Button btnSetStartPoint,
-      @NonNull FragmentContainerView mapContainer) {
+      @NonNull FragmentContainerView mapContainer, @NonNull Switch switchGyroscope) {
     this.rootView = rootView;
     this.btnSetStartPoint = btnSetStartPoint;
     this.mapContainer = mapContainer;
+    this.switchGyroscope = switchGyroscope;
   }
 
   @Override
@@ -72,7 +77,14 @@ public final class FragmentMapaBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentMapaBinding((FrameLayout) rootView, btnSetStartPoint, mapContainer);
+      id = R.id.switch_gyroscope;
+      Switch switchGyroscope = ViewBindings.findChildViewById(rootView, id);
+      if (switchGyroscope == null) {
+        break missingId;
+      }
+
+      return new FragmentMapaBinding((FrameLayout) rootView, btnSetStartPoint, mapContainer,
+          switchGyroscope);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

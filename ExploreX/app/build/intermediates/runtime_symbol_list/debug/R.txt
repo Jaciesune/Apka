@@ -3589,6 +3589,7 @@ int id stretch 0x7f0801c8
 int id submenuarrow 0x7f0801c9
 int id submit_area 0x7f0801ca
 int id supportScrollUp 0x7f0801cb
+int id switch_gyroscope 0x7f080224
 int id tabMode 0x7f0801cc
 int id tag_accessibility_actions 0x7f0801cd
 int id tag_accessibility_clickable_spans 0x7f0801ce

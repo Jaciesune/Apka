@@ -32,6 +32,10 @@
         "source": "C:\\Users\\Inylle\\.gradle\\daemon\\8.0\\com.example.explorex.app-main-41:\\layout\\activity_main.xml"
     },
     {
+        "merged": "com.example.explorex.app-mergeDebugResources-38:/layout/fragment_mapa.xml",
+        "source": "com.example.explorex.app-main-41:/layout/fragment_mapa.xml"
+    },
+    {
         "merged": "com.example.explorex.app-mergeDebugResources-38:/layout/settings.xml",
         "source": "com.example.explorex.app-main-41:/layout/settings.xml"
     },

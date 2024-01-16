@@ -45,6 +45,7 @@ id reg_password_2
 id register_now
 id settingsButton
 id settings_text
+id switch_gyroscope
 id textViewLoggedUser
 id textViewUzytkownik
 id tvFileName

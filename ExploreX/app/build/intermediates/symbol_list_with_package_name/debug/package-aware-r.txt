@@ -3590,6 +3590,7 @@ id stretch
 id submenuarrow
 id submit_area
 id supportScrollUp
+id switch_gyroscope
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
