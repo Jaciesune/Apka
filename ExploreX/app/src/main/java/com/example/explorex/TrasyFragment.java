@@ -1,5 +1,6 @@
 package com.example.explorex;
 
+import android.Manifest;
 import com.example.explorex.TrasyAdapter.TrasyAdapterListener;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -14,14 +15,21 @@ import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.maps.model.PolylineOptions;
 
 
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -38,6 +46,8 @@ public class TrasyFragment extends Fragment implements TrasyAdapter.TrasyAdapter
     private TrasyAdapter trasyAdapter;
     private ArrayList<String> savedRouteFilePaths = new ArrayList<>();
     private MapView mapView;
+    private static final int YOUR_PERMISSION_REQUEST_CODE = 1;
+
 
     public TrasyFragment() {
         // Required empty public constructor
@@ -72,34 +82,52 @@ public class TrasyFragment extends Fragment implements TrasyAdapter.TrasyAdapter
 
     private void initializeMap() {
         mapView.getMapAsync(googleMap -> {
+            if (googleMap != null) {
+                // Check if location permissions are granted
+                if (checkLocationPermission()) {
+                    // Get the location manager
+                    LocationManager locationManager = (LocationManager) requireActivity().getSystemService(Context.LOCATION_SERVICE);
 
-            // Sprawdzenie czy są jakieś punkty trasy na mapie
-            if (!savedRouteFilePaths.isEmpty()) {
-                // Pobranie pierwszego i ostatniego punktu z trasy
-                String firstRouteFilePath = savedRouteFilePaths.get(0);
-                String lastRouteFilePath = savedRouteFilePaths.get(savedRouteFilePaths.size() - 1);
+                    // Check if a location provider is available
+                    if (locationManager != null && locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
 
-                ArrayList<LatLng> firstRoutePoints = readRoutePointsFromFile(firstRouteFilePath);
-                ArrayList<LatLng> lastRoutePoints = readRoutePointsFromFile(lastRouteFilePath);
+                        // Rest of your code for adding markers and other map configurations
 
-                // Dodanie znaczników na początek i koniec
-                if (firstRoutePoints.size() > 0) {
-                    LatLng firstPoint = firstRoutePoints.get(0);
-                    googleMap.addMarker(new MarkerOptions()
-                            .position(firstPoint)
-                            .title("Start")
-                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
-                }
-
-                if (lastRoutePoints.size() > 0) {
-                    LatLng lastPoint = lastRoutePoints.get(lastRoutePoints.size() - 1);
-                    googleMap.addMarker(new MarkerOptions()
-                            .position(lastPoint)
-                            .title("Meta")
-                            .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+                    } else {
+                        // Prompt the user to enable location services
+                        Toast.makeText(requireContext(), "Please enable location services", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    // Request location permissions if not granted
+                    requestLocationPermission();
                 }
             }
         });
+    }
+
+    private boolean checkLocationPermission() {
+        // Check if the location permission is granted
+        return ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void requestLocationPermission() {
+        // Request the location permission if not granted
+        ActivityCompat.requestPermissions(requireActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, YOUR_PERMISSION_REQUEST_CODE);
+    }
+
+    // Add the onRequestPermissionsResult method to handle the result of the permission request
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == YOUR_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission granted, reinitialize the map
+                initializeMap();
+            } else {
+                // Permission denied, handle accordingly (e.g., show a message)
+                Toast.makeText(requireContext(), "Location permission denied", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     private void loadSavedRoutes() {
@@ -139,33 +167,32 @@ public class TrasyFragment extends Fragment implements TrasyAdapter.TrasyAdapter
     }
     private void drawRouteOnMap(ArrayList<LatLng> routePoints) {
         mapView.getMapAsync(googleMap -> {
-            // Ustaw styl linii trasy
-            PolylineOptions polylineOptions = new PolylineOptions()
-                    .addAll(routePoints)
-                    .color(Color.BLUE)
-                    .width(5)
-                    .geodesic(false);
+            if (routePoints != null && !routePoints.isEmpty()) {
+                // Ustaw styl linii trasy
+                PolylineOptions polylineOptions = new PolylineOptions()
+                        .addAll(routePoints)
+                        .color(Color.BLUE)
+                        .width(5)
+                        .geodesic(false);
 
-            // Dodaj linie trasy na mapę
-            Polyline polyline = googleMap.addPolyline(polylineOptions);
+                // Dodaj linie trasy na mapę
+                Polyline polyline = googleMap.addPolyline(polylineOptions);
 
-            // Ustaw koniec trasy na przeźroczysty
-            int polylineSize = polyline.getPoints().size();
-            if (polylineSize > 0) {
-                LatLng lastPoint = polyline.getPoints().get(polylineSize - 1);
+                // Dodaj marker na początku trasy
+                LatLng startPoint = routePoints.get(0);
+                googleMap.addMarker(new MarkerOptions()
+                        .position(startPoint)
+                        .title("Start")
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
 
-                // Utwórz przezroczysty marker
-                Bitmap transparentMarkerBitmap = getTransparentMarkerBitmap(); // Zdefiniuj tę metodę zgodnie z Twoimi potrzebami
-                BitmapDescriptor transparentMarker = BitmapDescriptorFactory.fromBitmap(transparentMarkerBitmap);
-
+                // Dodaj marker na końcu trasy
+                LatLng lastPoint = routePoints.get(routePoints.size() - 1);
                 googleMap.addMarker(new MarkerOptions()
                         .position(lastPoint)
                         .title("Meta")
-                        .icon(transparentMarker));
-            }
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
 
-            // Wyśrodkuj mapę na trasie
-            if (!routePoints.isEmpty()) {
+                // Wyśrodkuj mapę na trasie
                 LatLngBounds.Builder builder = new LatLngBounds.Builder();
                 for (LatLng point : routePoints) {
                     builder.include(point);
@@ -174,26 +201,19 @@ public class TrasyFragment extends Fragment implements TrasyAdapter.TrasyAdapter
 
                 // Dodaj obsługę pustego obszaru, aby uniknąć problemu z "CameraUpdateFactory.newLatLngBounds"
                 int padding = 100; // Możesz dostosować padding według potrzeb
-                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, padding);
 
                 // Sprawdź, czy czas trwania animacji jest dodatni
                 int animationDurationMs = 1000; // Ustaw dowolny czas trwania animacji w milisekundach
                 if (animationDurationMs > 0) {
-                    googleMap.animateCamera(cameraUpdate, animationDurationMs, null);
+                    googleMap.animateCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding), animationDurationMs, null);
                 } else {
                     // Jeśli czas trwania animacji jest ujemny lub równy zero, użyj moveCamera
-                    googleMap.moveCamera(cameraUpdate);
+                    googleMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, padding));
                 }
             }
         });
     }
 
-    private Bitmap getTransparentMarkerBitmap() {
-        // Utwórz Bitmap z przezroczystym tłem
-        Bitmap bitmap = Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
-        bitmap.eraseColor(Color.TRANSPARENT);
-        return bitmap;
-    }
     // Metoda do odczytu punktów trasy z pliku tekstowego
     private ArrayList<LatLng> readRoutePointsFromFile(String filePath) {
         ArrayList<LatLng> routePoints = new ArrayList<>();
