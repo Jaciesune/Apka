@@ -3029,6 +3029,7 @@ drawable baseline_lock_24
 drawable baseline_map_24
 drawable baseline_person_24
 drawable baseline_route_24
+drawable baseline_settings_24
 drawable btn_checkbox_checked_mtrl
 drawable btn_checkbox_checked_to_unchecked_mtrl_animation
 drawable btn_checkbox_unchecked_mtrl
@@ -3277,6 +3278,9 @@ id chain
 id chain2
 id chains
 id checkbox
+id checkbox_automatic
+id checkbox_light
+id checkbox_night
 id checked
 id chronometer
 id circle_center
@@ -3353,6 +3357,7 @@ id fill
 id fill_horizontal
 id fill_vertical
 id filled
+id finish_button
 id fitCenter
 id fitEnd
 id fitStart
@@ -3533,6 +3538,7 @@ id pressed
 id progress_circular
 id progress_horizontal
 id radio
+id radio_group
 id ratio
 id rectangles
 id recyclerViewRoutes
@@ -3574,6 +3580,8 @@ id search_voice_btn
 id select_dialog_listview
 id selected
 id selection_type
+id settingsButton
+id settings_text
 id sharedValueSet
 id sharedValueUnset
 id shortcut
@@ -3612,6 +3620,7 @@ id stretch
 id submenuarrow
 id submit_area
 id supportScrollUp
+id switch_gyroscope
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -3889,6 +3898,7 @@ layout notification_template_part_time
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
+layout settings
 layout support_simple_spinner_dropdown_item
 menu bottom_nav_menu
 mipmap ic_launcher

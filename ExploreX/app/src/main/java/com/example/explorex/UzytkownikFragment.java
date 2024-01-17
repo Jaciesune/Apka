@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
+import androidx.appcompat.widget.AppCompatImageButton; // Import the correct class
+
 import com.example.explorex.databinding.FragmentUzytkownikBinding;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,6 +33,21 @@ public class UzytkownikFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentUzytkownikBinding.inflate(inflater, container, false);
         View rootView = binding.getRoot();
+
+        // Find the settingsButton in the fragment
+        AppCompatImageButton settingsButton = rootView.findViewById(R.id.settingsButton);
+
+        // Set OnClickListener for settingsButton
+        if (settingsButton != null) {
+            settingsButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    // Handle button click, e.g., start new activity
+                    Intent intent = new Intent(requireContext(), Settings.class);
+                    startActivity(intent);
+                }
+            });
+        }
 
         // Update this line to get the logoutButton from MainActivity
         Button logoutButton = ((MainActivity) requireActivity()).getLogoutButton();

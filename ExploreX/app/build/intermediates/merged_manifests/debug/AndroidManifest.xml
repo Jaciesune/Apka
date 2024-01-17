@@ -21,6 +21,12 @@
     <uses-feature
         android:name="android.hardware.sensor.light"
         android:required="false" />
+    <uses-feature
+        android:name="android.hardware.sensor.gyroscope"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.sensor.compass"
+        android:required="true" />
 
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -63,6 +69,15 @@
             android:exported="false" />
         <activity
             android:name="com.example.explorex.Login"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.explorex.Settings"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -6,6 +6,10 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationManager;
@@ -14,6 +18,7 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.InputType;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +26,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Switch;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
@@ -30,6 +36,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -41,7 +48,9 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.List;
-public class MapaFragment extends Fragment implements OnMapReadyCallback {
+
+public class MapaFragment extends Fragment implements OnMapReadyCallback, SensorEventListener {
+
     private GoogleMap myMap;
     private Button btnSetStartPoint;
     private EditText editText;
@@ -54,6 +63,15 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
     private Handler locationUpdateHandler;
     private static final int LOCATION_UPDATE_INTERVAL = 1000;
     private String enteredFileName;
+
+    private SensorManager sensorManager;
+    private Sensor gyroscopeSensor;
+
+    private float[] rotationMatrix = new float[9];
+    private float[] orientationValues = new float[3];
+    private Switch gyroscopeSwitch;
+
+
     public MapaFragment() {
         // Required empty public constructor
     }
@@ -68,9 +86,14 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
     }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_mapa, container, false);
+        // Inflacja layoutu fragmentu
+        View view = inflater.inflate(R.layout.fragment_mapa, container, false);
 
-        btnSetStartPoint = rootView.findViewById(R.id.btnSetStartPoint);
+        // Inicjalizacja przełącznika z widoku fragmentu
+        gyroscopeSwitch = view.findViewById(R.id.switch_gyroscope);
+
+        btnSetStartPoint = view.findViewById(R.id.btnSetStartPoint);
+
         btnSetStartPoint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,6 +106,7 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
                     // jeśli nie nagrywa, rozpocznij i zapisz plik o podanej nazwie
                     showFileNameDialogAndStartRecording();
                 }
+                // ...
             }
         });
 
@@ -96,7 +120,25 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
             mapFragment.getMapAsync(this);
         }
 
-        return rootView;
+        sensorManager = (SensorManager) requireContext().getSystemService(Context.SENSOR_SERVICE);
+        gyroscopeSensor = sensorManager.getDefaultSensor(Sensor.TYPE_GYROSCOPE);
+
+        return view;
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Rejestracja listenera żyroskopu przy wznowieniu fragmentu
+        sensorManager.registerListener(this, gyroscopeSensor, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        // Zatrzymanie listenera żyroskopu przy pauzie fragmentu
+        sensorManager.unregisterListener(this);
     }
 
     private void showFileNameDialogAndStartRecording() {
@@ -152,14 +194,19 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
     private void stopRecordingRoute() {
         // Stop location updates
         stopLocationUpdates();
+
         recordingRoute = false;
         btnSetStartPoint.setText("Start");
+
         // Use the stored file name or generate a unique one
         String fileName = (enteredFileName != null && !enteredFileName.isEmpty()) ? enteredFileName : "route_" + System.currentTimeMillis();
+
         // Save route data to file
         saveRouteToFile(fileName);
+
         // Draw the recorded route on the map
         drawRouteOnMap(routePoints);
+
         // Display a toast indicating that the file is saved
         String toastMessage = "Trasa zapisana pod nazwą '" + fileName + "' w: " + getExternalFilePath(fileName);
         Toast.makeText(requireContext(), toastMessage, Toast.LENGTH_LONG).show();
@@ -187,6 +234,7 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
         if (checkLocationPermission()) {
             if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                     || ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+
                 LocationManager locationManager = (LocationManager) requireContext().getSystemService(Context.LOCATION_SERVICE);
                 Criteria criteria = new Criteria();
                 String provider = locationManager.getBestProvider(criteria, true);
@@ -218,6 +266,7 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
             routePoints.add(endPoint);
             routePolyline.add(endPoint);
         }
+
         recordingRoute = false;
         btnSetStartPoint.setText("Start");
         saveRouteToFile(fileName);
@@ -241,6 +290,7 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
     public class Constants {
         public static final String ROUTES_DIRECTORY = "Routes";
     }
+
     private void saveRouteToFile(String fileName) {
         StringBuilder routeData = new StringBuilder();
         for (LatLng point : routePoints) {
@@ -253,13 +303,16 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
             osw.write(routeData.toString());
             osw.close();
             fos.close();
+
             // Display a toast indicating that the file is saved
             String toastMessage = "Plik '" + fileName + "' zapisany w: " + getExternalFilePath(fileName);
             Toast.makeText(requireContext(), toastMessage, Toast.LENGTH_LONG).show();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
     private String getExternalFilePath(String fileName) {
         // Get the public storage directory on the device
         File directory = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS + "/" + Constants.ROUTES_DIRECTORY);
@@ -267,6 +320,7 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
         if (!directory.exists()) {
             directory.mkdirs();
         }
+
         // Create the file path with the directory name, file name, and extension
         return directory.getAbsolutePath() + "/" + fileName + ".txt";
     }
@@ -316,6 +370,7 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
                 savedRouteFiles.add(file.getName());
             }
         }
+
         // Utwórz adapter i ustaw go dla widoku listy
         ArrayAdapter<String> adapter = new ArrayAdapter<>(requireContext(), android.R.layout.simple_list_item_1, savedRouteFiles);
         savedRoutesListView.setAdapter(adapter);
@@ -361,6 +416,7 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
             requestLocationPermissions();
         }
     }
+
     private void showLocationPermissionErrorMessage() {
         AlertDialog.Builder builder = new AlertDialog.Builder(requireContext());
         builder.setTitle("Brak zezwolenia na dostęp do lokalizacji");
@@ -385,8 +441,42 @@ public class MapaFragment extends Fragment implements OnMapReadyCallback {
             e.printStackTrace();
         }
     }
+
     private boolean checkLocationPermission() {
         return ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                 || ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private float currentMapRotation = 0;
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        // Sprawdzamy, czy przełącznik jest zaznaczony
+        Log.d("MyApp", "Stan przełącznika: " + gyroscopeSwitch.isChecked());
+
+        if (gyroscopeSwitch.isChecked() && event.sensor.getType() == Sensor.TYPE_GYROSCOPE) {
+            float deltaRotationY = event.values[1] * LOCATION_UPDATE_INTERVAL / 1000.0f * 0.5f;
+            currentMapRotation -= Math.toDegrees(deltaRotationY);
+            updateMap();
+        }
+    }
+
+    private void updateMap() {
+        // Sprawdzamy, czy przełącznik jest zaznaczony
+        if (gyroscopeSwitch.isChecked() && myMap != null) {
+            myMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myMap.getCameraPosition().target, myMap.getCameraPosition().zoom));
+            myMap.animateCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition.Builder()
+                    .target(myMap.getCameraPosition().target)
+                    .zoom(myMap.getCameraPosition().zoom)
+                    .bearing(currentMapRotation)
+                    .tilt(myMap.getCameraPosition().tilt)
+                    .build()));
+        }
+    }
+
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+        // Ta metoda jest wywoływana, gdy dokładność czujnika się zmienia.
+        // Możesz ją zaimplementować, jeśli potrzebujesz reagować na zmiany dokładności czujnika.
     }
 }
