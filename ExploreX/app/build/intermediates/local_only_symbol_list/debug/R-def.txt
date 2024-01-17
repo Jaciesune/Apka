@@ -44,10 +44,10 @@ id reg_email
 id reg_password_1
 id reg_password_2
 id register_now
+id rootLayout
 id settingsButton
 id settings_text
 id switch_gyroscope
-id rootLayout
 id textViewLoggedUser
 id textViewUzytkownik
 id tvFileName

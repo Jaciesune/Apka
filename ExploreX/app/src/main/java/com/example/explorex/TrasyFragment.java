@@ -167,6 +167,7 @@ public class TrasyFragment extends Fragment implements TrasyAdapter.TrasyAdapter
     }
     private void drawRouteOnMap(ArrayList<LatLng> routePoints) {
         mapView.getMapAsync(googleMap -> {
+            googleMap.clear();
             if (routePoints != null && !routePoints.isEmpty()) {
                 // Ustaw styl linii trasy
                 PolylineOptions polylineOptions = new PolylineOptions()
